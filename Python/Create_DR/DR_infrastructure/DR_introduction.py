@@ -6,14 +6,12 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
 import sys
 import os
 
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Utility.functions import add_numbered_list_item
 
 def DR_introduction(DR, figure_count):
     # Section Title 

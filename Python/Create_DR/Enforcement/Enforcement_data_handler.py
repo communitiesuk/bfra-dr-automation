@@ -18,8 +18,7 @@ sys.path.append(utility_path)
 
 
 # Now you can import your functions
-from Utility.functions import format_percentage, chop_df, convert_number, get_excel_path
-from Utility.dates import sort_dates
+from Utility.functions import chop_df
 
 def Enforcement_retrieve_data(paths_variables):
     print('Handling Enforcement Data')

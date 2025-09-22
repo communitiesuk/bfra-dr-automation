@@ -6,11 +6,7 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
+from docx.shared import Cm
 import sys
 import os
 
@@ -18,7 +14,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Utility.functions import Change_line_in_DR, format_percentage, create_table
+from Utility.functions import create_table
 import Utility.docx_svg_patch
 
 def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, dates_variables, paths_variables, DR):

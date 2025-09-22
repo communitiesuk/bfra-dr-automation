@@ -5,7 +5,6 @@ Created on Tuesday 26 August 2025, 11:18:21
 Author: Matthew Bandura
 """
 
-import pandas as pd
 import os
 import sys
 
@@ -16,8 +15,6 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from RAP.RAP_data_handler import RAP_retrieve_data
 from Utility.functions import format_percentage
 
 def RAP_variable_creator(RAP_handled_data):

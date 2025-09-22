@@ -5,11 +5,7 @@ Created on Monday 16 December 2024, 15:57:33
 Author: Harry Simmons
 """
 
-from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
+from docx.shared import Cm
 import sys
 import os
 
@@ -17,9 +13,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Estimates.Estimates_variables import Estimates_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, make_text_bold, create_table, create_bullet_points_forecast, add_hyperlink
-from Utility.dates import sort_dates
+from Utility.functions import create_table, add_hyperlink
 import Utility.docx_svg_patch
 
 # Estimates section writer

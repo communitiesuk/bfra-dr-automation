@@ -17,8 +17,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 sys.path.append(utility_path)
 
 # Now you can import your functions
-from Utility.functions import format_percentage, chop_df, convert_number, get_excel_path, create_paths
-from Utility.dates import sort_dates
+from Utility.functions import format_percentage, chop_df
 
 def Developer_retrieve_data_last_month(paths_variables):
     print("Handling Last Month's Developer Data")

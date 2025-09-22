@@ -6,11 +6,6 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
-import sys
-import os
-from Utility.dates import sort_dates
-
 
 
 def DR_start(dates_variables, DR):

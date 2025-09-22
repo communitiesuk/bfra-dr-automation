@@ -22,8 +22,7 @@ sys.path.append(utility_path)
 
 
 # Now you can import your functions
-from Utility.functions import format_percentage, chop_df, convert_number, get_excel_path
-from Utility.dates import sort_dates
+from Utility.functions import format_percentage, chop_df, convert_number
 
 def ACM_retrieve_data(dates_variables, paths_variables):
     print('Handing ACM Data')

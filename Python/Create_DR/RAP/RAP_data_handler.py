@@ -18,8 +18,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-from Utility.functions import chop_df, get_excel_path, format_percentage
-from Utility.dates import sort_dates
+from Utility.functions import chop_df
 
 def RAP_retrieve_data(paths_variables):
     print('Handling RAP Data')

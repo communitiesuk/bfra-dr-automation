@@ -6,7 +6,6 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
 import sys
 import os
 

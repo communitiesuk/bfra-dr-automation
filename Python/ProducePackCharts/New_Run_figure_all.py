@@ -4,8 +4,7 @@ Created on Tuesday 11 February 2025, 10:53:31
 Author: Harry Simmons
 """
 
-import time
-import os 
+import time 
 
 # Start the timer
 start_time = time.time()

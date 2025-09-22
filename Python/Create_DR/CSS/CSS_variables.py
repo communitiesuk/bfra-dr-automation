@@ -19,9 +19,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from CSS.CSS_data_handler import CSS_retrieve_data
-from Utility.functions import convert_number, format_percentage, Change_line_in_DR, number_or_none
+from Utility.functions import format_percentage, Change_line_in_DR, number_or_none
 
 def CSS_variable_creator (CSS_handled_data):
     CSS_1a = CSS_handled_data['CSS_1a']

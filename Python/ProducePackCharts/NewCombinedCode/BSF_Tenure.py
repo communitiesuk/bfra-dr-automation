@@ -21,7 +21,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 sys.path.append(utility_path)
 
 # Now you can import your functions
-from Utility.functions import chop_df, get_excel_path
+from Utility.functions import chop_df
 from Utility.MakeCurlyBrace import curlyBrace
 
 def create_BSF_Tenure(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict):

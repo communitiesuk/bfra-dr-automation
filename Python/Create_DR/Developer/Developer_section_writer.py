@@ -6,9 +6,7 @@ Author: Harry Simmons
 """
 
 from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
+from docx.shared import Cm
 from docx.enum.text import WD_COLOR_INDEX
 import sys
 import os
@@ -17,9 +15,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Developer.Developer_variables import Developer_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, make_text_bold, create_table, create_bullet_points_forecast, add_hyperlink
-from Utility.dates import sort_dates
+from Utility.functions import create_table, add_hyperlink
 
 # Developer section writer
 def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, Developer_tables, figure_count, table_count, dates_variables, paths_variables, DR):

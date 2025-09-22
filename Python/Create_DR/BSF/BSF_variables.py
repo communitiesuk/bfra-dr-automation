@@ -19,8 +19,6 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from BSF.BSF_data_handler import BSF_retrieve_data
 from Utility.functions import convert_number, format_percentage, Change_line_in_DR, more_or_fewer
 
 def BSF_variable_creator (BSF_handled_data):
