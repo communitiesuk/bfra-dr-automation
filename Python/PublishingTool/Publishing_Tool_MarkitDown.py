@@ -1,6 +1,12 @@
+
+"""
+Created on Wednesday 24 September 2025, 09:21:26
+
+Author: Matthew Bandura
+"""
+
 from markitdown import MarkItDown
 import re
-import os
 from functions import create_paths
 
 md = MarkItDown()
@@ -11,30 +17,34 @@ md_path = paths_variables['md_path']
 
 def word_to_markdown(docx_path, md_path):
 
-    output = md.convert(docx_path)
-    #performs the initial md conversion
-    with open(md_path, "w", encoding="utf-8") as f:
-        f.write(output.text_content)
+    # perform the initial conversion and get the text content into a variable
+    conversion = md.convert(docx_path)
+    md_text = conversion.text_content
 
-    #reopens the file in order to wrap emails and replace images
-    with open(md_path, 'r', encoding='utf-8') as f:
-        md_text = f.read()
+    # regex search for email pattern, which then wraps them in <> (correct HTML formatting)
 
-    # 1. Wrap emails with <>
+    pattern =  r'(?<!<)(\b[\w\.-]+@[\w\.-]+\.\w{2,}\b)(?!>)'
     md_text = re.sub(
-        r'(?<!<)(\b[\w\.-]+@[\w\.-]+\.\w{2,}\b)(?!>)',
+        pattern,
         r'<\1>',
         md_text)
 
-    # 2. Replace base64 image text to format correctly in md
-    figure_count = 1
+    # regex pattern to pick up the text string to which MarkitDown converts embedded images
     pattern = r'!\[[^\]]*\]\(\s*data:image/[^)]+\)'
-    md_text, figure_count = re.subn(pattern, f'[Image: Figure{figure_count}.svg]', md_text)
+
+    # function to increment the figure count every time the pattern is matched, returning the string with which it should be substituted
+    figure_count = 0
+    def replace_figure(match):
+        nonlocal figure_count
+        figure_count += 1
+        return f'[Image: Figure{figure_count}.svg]'
+
+    md_text = re.sub(pattern, 
+                     replace_figure,
+                     md_text)
 
     #save processed version
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(md_text)
-
-
 
 word_to_markdown(docx_path, md_path)
