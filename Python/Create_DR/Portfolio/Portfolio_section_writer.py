@@ -19,10 +19,10 @@ import Utility.docx_svg_patch
 def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking date variables
     figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
+    placeholder_path = paths_variables['placeholder_path']
     
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
-    year = dates_variables['year']
     last_year_month = dates_variables['last_year_month']
     last_month_year = dates_variables['last_month_year']
     
@@ -181,7 +181,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     paragraph = DR.add_paragraph(text, style = 'Heading 3')
 
     # Map
-    DR.add_picture('Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[ADD FIGURE HERE INSERT]\\Add_figure_here.png', width=Cm(17))
+    DR.add_picture(placeholder_path, width=Cm(17))
     figure_count += 1
     
     # Map caption
