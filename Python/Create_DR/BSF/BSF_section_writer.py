@@ -35,6 +35,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     BSF_CSS_transfers_last_month = BSF_section_dict['BSF_CSS_transfers_last_month']
     BSF_CSS_transfers_this_month = BSF_section_dict['BSF_CSS_transfers_this_month']
     BSF_CSS_transfers_line = BSF_section_dict['BSF_CSS_transfers_line']
+    BSF_CSS_retained = BSF_section_dict['BSF_CSS_retained']
     BSF_ineligible = BSF_section_dict['BSF_ineligible']
     BSF_withdrawn = BSF_section_dict['BSF_withdrawn']
     BSF_developer_transfers = BSF_section_dict['BSF_developer_transfers']
@@ -103,7 +104,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph('BSF remediation: key statistics', style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {cutoff}, {BSF_BSF_5_total} buildings were assessed as eligible and are proceeding with an application for funding from the Building Safety Fund. The remaining {BSF_BSF_1_total} buildings registered with the fund are either ineligible ({BSF_ineligible}), withdrawn ({BSF_withdrawn}), in review or have given insufficient evidence ({BSF_insufficient_evidence}), or have transferred to the Cladding Safety Scheme ({BSF_CSS_transfers_this_month}).'
+    text = f'As at {cutoff}, {BSF_BSF_5_total} buildings were assessed as eligible and are proceeding with an application for funding from the Building Safety Fund. The remaining {BSF_BSF_1_total} buildings registered with the fund are either ineligible ({BSF_ineligible}), withdrawn ({BSF_withdrawn}), in review or have given insufficient evidence ({BSF_insufficient_evidence}), have transferred to the Cladding Safety Scheme ({BSF_CSS_transfers_this_month}), or have been retained by the Cladding Safety Scheme ({BSF_CSS_retained}).'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
