@@ -369,7 +369,13 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     text = f'Further information on the progress developers have made regarding the buildings they’ve reported on is available in the accompanying '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'management information tables', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
-    paragraph.add_run('. Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site. This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].')
+    paragraph.add_run(' and quarterly Developer remediation contract data release. From August 2025 these include an update against the commitments set out in the ')
+    add_hyperlink(paragraph, 'joint plan to accelerate developer-led remediation and improve resident experience', f'https://www.gov.uk/government/publications/joint-plan-to-accelerate-developer-led-remediation-and-improve-resident-experience')
+    paragraph.add_run(', which was published alongside the department Remediation Acceleration Plan (RAP).')
+
+    #Paragraph
+    text = 'Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site. This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].'
+    DR.add_paragraph(text, style = 'Normal')
 
 
 
