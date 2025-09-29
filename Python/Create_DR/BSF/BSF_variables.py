@@ -5,12 +5,9 @@ Created on Thursday 09 January 2025, 10:39:17
 Author: Harry Simmons
 """
 
-from datetime import datetime
-import calendar as cal
 import pandas as pd
 import sys
 import os
-import inflect
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.abspath(__file__))
