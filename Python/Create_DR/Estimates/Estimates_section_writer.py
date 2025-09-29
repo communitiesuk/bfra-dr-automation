@@ -42,7 +42,7 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'An estimated 2,900 – 5,800 buildings are 11-18m (7-10% of the estimated 39,000 - 59,000 11-18m buildings).'
+    text = f'An estimated 2,900 - 5,800 buildings are 11-18m (7-10% of the estimated 39,000 - 59,000 11-18m buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -58,7 +58,7 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'22% are 14-18m buildings (15-19% of the estimated 4,000 – 7,000 14-18m buildings).'
+    text = f'22% are 14-18m buildings (15-19% of the estimated 4,000 - 7,000 14-18m buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
@@ -91,11 +91,11 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'An estimated 2,800 – 5,400 buildings are 11-18m.'
+    text = f'An estimated 2,800 - 5,400 buildings are 11-18m.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'An estimated 3,000 – 3,200 buildings are 18m+.'
+    text = f'An estimated 3,000 - 3,200 buildings are 18m+.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Table caption

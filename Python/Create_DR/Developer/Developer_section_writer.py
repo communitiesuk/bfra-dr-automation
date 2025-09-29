@@ -221,7 +221,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation– {Developer_signoff_line} since the {last_month} data release. Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
+    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation – {Developer_signoff_line} since the {last_month} data release. Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -272,7 +272,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'{Developer_BSF_transfer_plans_nc_no} ({Developer_BSF_transfer_plans_nc_pct}) are reported to have not started remediation but have plans in place - {Developer_BSF_transfer_plans_line} since the {last_month} data release.'
+    text = f'{Developer_BSF_transfer_plans_nc_no} ({Developer_BSF_transfer_plans_nc_pct}) are reported to have not started remediation but have plans in place – {Developer_BSF_transfer_plans_line} since the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
