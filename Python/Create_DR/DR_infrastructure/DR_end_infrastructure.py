@@ -4,22 +4,12 @@ Created on Thursday 13 March 2025, 10:05:24
 
 Author: Harry Simmons
 """
-
-import docx
-import sys
-import os
-
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
-
 from Utility.functions import add_hyperlink
 
 def DR_end(DR, dates_variables):
-
-    this_month = dates_variables['this_month']
-
-    #converts this month into a format which will work in the hyperlink
+    # import months in a format which will work in hyperlinks
     hyperlink_month = dates_variables['hyperlink_month']
+    hyperlink_quarterly_dr = dates_variables['hyperlink_quarterly_dr']
     
     # Section Title 
     paragraph = DR.add_paragraph('Accompanying dashboard', style = 'Heading 2')
@@ -68,11 +58,11 @@ def DR_end(DR, dates_variables):
 
     # Paragraph
     paragraph = DR.add_paragraph("Previously, MHCLG published a ", style = 'Normal')
-    add_hyperlink(paragraph, "table on samples", "https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fassets.publishing.service.gov.uk%2Fmedia%2F5d9de664ed915d35d0dcca58%2FTable_4_Building_Safety_Data_Release_September_2019.csv&data=05%7C02%7CHolly.Turner%40levellingup.gov.uk%7Ca3beedc540d64b9b07e208dc7b1c15e4%7Cbf3468109c7d43dea87224a2ef3995a8%7C0%7C0%7C638520607758745355%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=9Ou2NuiGcT1nn5yD1YRLNvMGxWaPGDETmm4F8x5vEUk%3D&reserved=0")
+    add_hyperlink(paragraph, "table on samples", "https://assets.publishing.service.gov.uk/media/5fac156ce90e075c51b736da/Table_4_Building_Safety_Data_Release_October_2020.csv")
     paragraph.add_run(' received by BRE for testing which has been discontinued as of October 2019 (see ')
-    add_hyperlink(paragraph, 'see technical notes document',  f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-july-2025')
+    add_hyperlink(paragraph, 'technical notes document',  f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
     paragraph.add_run('). The ')
-    add_hyperlink(paragraph, "data table of descriptions of large-scale system tests", "https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fassets.publishing.service.gov.uk%2Fmedia%2F5fac156ce90e075c51b736da%2FTable_4_Building_Safety_Data_Release_October_2020.csv&data=05%7C02%7CHolly.Turner%40levellingup.gov.uk%7Ca3beedc540d64b9b07e208dc7b1c15e4%7Cbf3468109c7d43dea87224a2ef3995a8%7C0%7C0%7C638520607758758036%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=cOTllZJQFFJvcleJKXTgxUyjUj9KmAGe%2B07ACvlJx50%3D&reserved=0")
+    add_hyperlink(paragraph, 'data table of descriptions of large-scale system tests', 'https://assets.publishing.service.gov.uk/media/5fac156ce90e075c51b736da/Table_4_Building_Safety_Data_Release_October_2020.csv')
     paragraph.add_run(" undertaken by the BRE and the number of buildings with similar cladding systems was discontinued in November 2020.")
 
     # Heading
@@ -81,7 +71,7 @@ def DR_end(DR, dates_variables):
     # Paragraph
     paragraph = DR.add_paragraph(style = 'Normal')
     paragraph.add_run('MHCLG has published data ')
-    add_hyperlink(paragraph, 'provided by developers', 'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-may-2025')
+    add_hyperlink(paragraph, 'provided by developers', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_quarterly_dr}')
     paragraph.add_run(' who have signed the developer remediation contract. This release provides information on the number of buildings in scope of the contract, assessments in place, number of buildings requiring remediation works and status of those works by developer.')
 
     # Heading
@@ -134,9 +124,9 @@ def DR_end(DR, dates_variables):
 
     # Paragraph
     paragraph = DR.add_paragraph(style = 'Normal')
-    run = paragraph.add_run('MHCLG has published ')
-    run = paragraph.add_run('data provided by social housing providers')
-    run = paragraph.add_run(' on remediation progress of their building stock. This release provides information on the number of buildings, assessments in place, number of buildings requiring remediation works and status of those works by social housing provider.')
+    paragraph.add_run('MHCLG has published ')
+    add_hyperlink(paragraph, 'data provided by social housing providers', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_quarterly_dr}')
+    paragraph.add_run(' on remediation progress of their building stock. This release provides information on the number of buildings, assessments in place, number of buildings requiring remediation works and status of those works by social housing provider.')
 
     # Heading
     paragraph = DR.add_paragraph('Waking Watch costs', style = 'Heading 3')
@@ -155,10 +145,10 @@ def DR_end(DR, dates_variables):
     paragraph.add_run(", providing data on costs per square metre of cladding remediated for high-rise non-ACM buildings, including analysis by cladding area and cost categories.")
 
     # Section Title 
-    paragraph = DR.add_paragraph('Technical note', style = 'Heading 2')
+    paragraph = DR.add_paragraph('Technical note', style = 'Heading 3')
 
     # Paragraph
     paragraph = DR.add_paragraph(style = 'Normal')
     paragraph.add_run('Please see the accompanying ')
     add_hyperlink(paragraph,'technical notes document', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
-    paragraph.add_run(' document for further details.')
+    paragraph.add_run(' for further details.')

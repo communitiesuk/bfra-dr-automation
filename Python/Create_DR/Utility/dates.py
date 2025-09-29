@@ -9,7 +9,7 @@ import re
 import pandas as pd
 import calendar as cal
 from datetime import datetime
-from Utility.functions import get_excel_path, create_paths
+from Utility.functions import create_paths
 
 paths_variables = create_paths()
 
@@ -29,6 +29,23 @@ def calculate_end_of_quarter_word(month, year):
         return "Invalid month"
     
     return quarter_end_word
+
+# Function to create the correct link to the most recent social/developer data release
+def calculate_quarterly_hyperlink(month, year):
+    if month in [1]:
+        hyperlink_quarterly_dr = f'november-{year-1}'
+    elif month in [2, 3, 4]:
+        hyperlink_quarterly_dr = f'february-{year}'
+    elif month in [5, 6, 7]:
+        hyperlink_quarterly_dr = f'may-{year}'
+    elif month in [8, 9, 10]:
+        hyperlink_quarterly_dr = f'august-{year}'
+    elif month in [11, 12]:
+        hyperlink_quarterly_dr = f'november-{year}'
+    else:
+        return "Invalid month"
+    
+    return hyperlink_quarterly_dr
 
 # Function to create end of next quarter in numbers
 def calculate_end_of_quarter_no(month, year):
@@ -88,13 +105,11 @@ def extract_month_year(sheet_name, file_path):
         return {
             "last_day": last_day,
             "year": year,
-            "month_name": month_word,
             "month": month }
     else:
         return {
             f'{sheet_prefix}_last_day' : last_day,
             f'{sheet_prefix}_year' :  year,            
-            f"{sheet_prefix}_month_name": month_word,
             f"{sheet_prefix}_month": month 
         }
 
@@ -108,25 +123,25 @@ def sort_dates():
     publishing_cell_0 = cover.iloc[5,0]
     publishing_cell_1 = cover.iloc[6,0]
 
-    #this is the info from the main DR
+    # extract the current DR month and year
     cover_info = extract_month_year('Cover', MI_tables_path)
-    month, month_name, year = cover_info['month'], cover_info['month_name'], cover_info['year']
+    month, year, last_day = cover_info['month'], cover_info['year'], cover_info['last_day']
     
     #this is the info related to the developer section of the DR
     dev_info = extract_month_year('Developer_3', MI_tables_path)
-    dev_month, dev_year, dev_last_day = dev_info['dev_month'], dev_info['dev_year'], dev_info['dev_last_day']
-
+    dev_month, dev_year, dev_last_day,  = dev_info['dev_month'], dev_info['dev_year'], dev_info['dev_last_day']
     dev_cutoff = f"{dev_last_day} {cal.month_name[dev_month]} {dev_year}"
 
     # Working out dates for the main DR
-    _, last_day = cal.monthrange(year, month)
     cutoff = f"{last_day} {cal.month_name[month]} {year}"
     last_month = cal.month_name[((month - 2) % 12 + 1)]
     this_month = f'{cal.month_name[month]} {year}'
 
     end_quarter_no = calculate_end_of_quarter_no(month, year)
     end_quarter_word = calculate_end_of_quarter_word(month, year)
+    hyperlink_quarterly_dr = calculate_quarterly_hyperlink(month, year)
     end_year_word = get_end_of_year_word(year, month)
+
 
     next_year = year + 1
     end_this_year = get_end_of_year_no(year, month)
@@ -134,12 +149,9 @@ def sort_dates():
     last_year = year - 1
 
     last_year_month = f'{cal.month_name[month]} {last_year}'
-    this_month_word = f'{cal.month_name[month]}'.lower()
 
     publishing_date_0 = (re.search(r'\d{1,2} \w+ \d{4}', publishing_cell_0)).group()
     publishing_date_1 = (re.search(r'\d{1,2} \w+ \d{4}', publishing_cell_1)).group()
-
-    _this_month = f'{cal.month_name[month]}_{year}'
 
     if month == 1:
         last_month__year = year - 1
@@ -157,6 +169,7 @@ def sort_dates():
         'end_quarter_no': end_quarter_no,
         'end_quarter_word': end_quarter_word,
         'dev_month' : dev_month,
+        'hyperlink_quarterly_dr' : hyperlink_quarterly_dr,
         'dev_year' : dev_year,
         'dev_last_day' : dev_last_day,
         'dev_cutoff' : dev_cutoff,
@@ -165,11 +178,9 @@ def sort_dates():
         'end_this_year': end_this_year,
         'end_next_year': end_next_year,
         'last_year_month': last_year_month,
-        'this_month_word': this_month_word,
         'publishing_date_0':  publishing_date_0,
         'publishing_date_1':  publishing_date_1,
         'last_month_year': last_month__year,
-        '_this_month':_this_month,
     }
 
     print('DONE!')

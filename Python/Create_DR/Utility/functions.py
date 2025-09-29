@@ -191,12 +191,6 @@ def get_excel_path(folder_path):
         return excel_path
     else:
         raise FileNotFoundError("No Excel file found in the folder.")
-    
-# Function to add a numbered list item
-def add_numbered_list_item(doc, text):
-    p = doc.add_paragraph(text)
-    p.style = 'List Number'
-    return p
 
 def add_hyperlink(paragraph, text, url):
     # Create the w:hyperlink tag and add needed values
@@ -238,6 +232,8 @@ def create_paths():
     # Build the path to the graph output folder
     figure_path = os.path.join(home_dir, "GitHub", "sgba-DR-automation", "DR_outputs", "DR_graphs")
 
+    placeholder_path = os.path.join(home_dir, "GitHub", "sgba-DR-automation", 'Excel_inputs', '[ADD FIGURE HERE INSERT]', 'Add_figure_here.png')
+
     previous_MI_folder = os.path.join(home_dir,  "GitHub", "sgba-DR-automation", "Excel_inputs","[PUT MI TABLES HERE]", "[LAST MONTHS MI TABLES]")    
     previous_tables_path = get_excel_path(previous_MI_folder)
 
@@ -245,7 +241,6 @@ def create_paths():
     MI_tables_path = get_excel_path(MI_folder)
 
     additional_folder = os.path.join(home_dir,  "GitHub", "sgba-DR-automation", "Excel_inputs","[PUT ADDITIONAL DR STATS HERE]")
-    print(additional_folder)
     additional_tables_path = get_excel_path(additional_folder)
 
     save_path = os.path.join(home_dir, "GitHub", "sgba-dr-automation", "DR_outputs", "Auto_DR")
@@ -254,7 +249,8 @@ def create_paths():
              'previous_tables_path' : previous_tables_path,
              'MI_tables_path' : MI_tables_path,
              'additional_tables_path' : additional_tables_path,
-             'save_path' : save_path
+             'save_path' : save_path, 
+             'placeholder_path' : placeholder_path
     }
     return paths
 

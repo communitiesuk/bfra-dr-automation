@@ -62,7 +62,7 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022. New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the'
+    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022. New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'Technical Note', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
     paragraph.add_run('.')
