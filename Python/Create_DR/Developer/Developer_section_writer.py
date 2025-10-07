@@ -24,7 +24,6 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
-    this_month = dates_variables['this_month']
     #converts this month into a format which will work in the hyperlink
     hyperlink_month = dates_variables['hyperlink_month']
 
@@ -136,7 +135,6 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
 
     Developer_self_reported_started_c_no = Developer_section_dict['Developer_self_reported_started_c_no']
     Developer_self_reported_started_c_pct = Developer_section_dict['Developer_self_reported_started_c_pct']
-    Developer_self_reported_started_line = Developer_section_dict['Developer_self_reported_started_line']
 
     Developer_self_reported_plans_c_no = Developer_section_dict['Developer_self_reported_plans_c_no']
     Developer_self_reported_plans_c_pct = Developer_section_dict['Developer_self_reported_plans_c_pct']
@@ -157,13 +155,12 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     text = 'The estimates in this section include some buildings which are also included in other sections of this data release e.g., those reported under the following sections: ‘ACM Remediation’, ‘Building Safety Fund’, ‘Cladding Safety Scheme’ and ‘Social Housing Sector’.'
     DR.add_paragraph(text, style = 'Normal')
 
-    # Figure  Title
+    # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
     text = f'Figure {figure_count}: {Developer_started_c_pct} of buildings in the developer remediation contract have either started or completed remediation works on life-critical fire safety risks, with {Developer_signoff_c_pct} having completed remediation works.'
     run = paragraph.add_run(text)
     run.bold = True
     
-
     # Figure
     DR.add_picture(figure_path, width=Cm(17))
     figure_count += 1

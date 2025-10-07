@@ -76,6 +76,28 @@ def get_end_of_year_word(year, month):
     else:
         return f'December {year}'
 
+def calculate_previous_release(MI_tables_path):
+    Social_5 = pd.read_excel(MI_tables_path, sheet_name='Social_5')
+    quarter_cell = Social_5.iloc[4, -4]
+    quarter_initial = quarter_cell[:6]
+
+    months = {
+        "1": 'Jan', "Feb": 2, "Mar": 3, "Apr": 4,
+        "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
+        "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12}
+    
+    quarter_month = months[quarter_initial[:3]]
+
+    quarter_year = '20' + quarter_initial[4:6]
+
+    _, last_day = cal.monthrange(int(quarter_year), quarter_month)
+    previous_release = f"{last_day} {cal.month_name[quarter_month]} {quarter_year}"
+    print(previous_release)
+    return previous_release
+
+
+
+
 def extract_month_year(sheet_name, file_path):
     #Extracts month and year from the first column header of a given Excel sheet using regex searches.
     df = pd.read_excel(file_path, sheet_name=sheet_name)
@@ -127,36 +149,44 @@ def sort_dates():
     cover_info = extract_month_year('Cover', MI_tables_path)
     month, year, last_day = cover_info['month'], cover_info['year'], cover_info['last_day']
     
-    #this is the info related to the developer section of the DR
+    # this is the info related to the developer section of the DR
     dev_info = extract_month_year('Developer_3', MI_tables_path)
     dev_month, dev_year, dev_last_day,  = dev_info['dev_month'], dev_info['dev_year'], dev_info['dev_last_day']
     dev_cutoff = f"{dev_last_day} {cal.month_name[dev_month]} {dev_year}"
 
+    # this is the info related to the social section of the DR
+    social_info = extract_month_year('Social_2', MI_tables_path)
+    social_month, social_year, social_last_day = social_info['soc_month'], social_info['soc_year'], social_info['soc_last_day']
+    social_cutoff = f"{social_last_day} {cal.month_name[social_month]} {social_year}"
+
+    social_previous_release = calculate_previous_release(MI_tables_path)
+
     # Working out dates for the main DR
     cutoff = f"{last_day} {cal.month_name[month]} {year}"
+
     last_month = cal.month_name[((month - 2) % 12 + 1)]
     this_month = f'{cal.month_name[month]} {year}'
 
     end_quarter_no = calculate_end_of_quarter_no(month, year)
     end_quarter_word = calculate_end_of_quarter_word(month, year)
     hyperlink_quarterly_dr = calculate_quarterly_hyperlink(month, year)
-    end_year_word = get_end_of_year_word(year, month)
 
+    end_year_word = get_end_of_year_word(year, month)
+    end_next_year = datetime(year + 2, 1, 1)
+    end_this_year = get_end_of_year_no(year, month)
+
+    last_year = year - 1
+    last_year_month = f'{cal.month_name[month]} {last_year}'
 
     next_year = year + 1
-    end_this_year = get_end_of_year_no(year, month)
-    end_next_year = datetime(year + 2, 1, 1)
-    last_year = year - 1
-
-    last_year_month = f'{cal.month_name[month]} {last_year}'
 
     publishing_date_0 = (re.search(r'\d{1,2} \w+ \d{4}', publishing_cell_0)).group()
     publishing_date_1 = (re.search(r'\d{1,2} \w+ \d{4}', publishing_cell_1)).group()
 
     if month == 1:
-        last_month__year = year - 1
+        last_month_year = year - 1
     else:
-        last_month__year = year
+        last_month_year = year
 
     # Dictionary of variables for easy transport
     dates_variables = {
@@ -164,6 +194,8 @@ def sort_dates():
         'year': year,
         'cutoff': cutoff,
         'last_month': last_month,
+        'end_next_year' : end_next_year,
+        'next_year': next_year,
         'this_month': this_month,
         'hyperlink_month' : this_month.lower().replace(" ", "-"), #converts e.g. July 2025 to july-2025 for use in internal links in the DR (e.g. to the MI tables)
         'end_quarter_no': end_quarter_no,
@@ -173,14 +205,14 @@ def sort_dates():
         'dev_year' : dev_year,
         'dev_last_day' : dev_last_day,
         'dev_cutoff' : dev_cutoff,
+        'social_cutoff' : social_cutoff,
+        'social_previous_release' : social_previous_release,
         'end_year_word': end_year_word,
-        'next_year': next_year,
         'end_this_year': end_this_year,
-        'end_next_year': end_next_year,
         'last_year_month': last_year_month,
         'publishing_date_0':  publishing_date_0,
         'publishing_date_1':  publishing_date_1,
-        'last_month_year': last_month__year,
+        'last_month_year': last_month_year,
     }
 
     print('DONE!')
