@@ -58,7 +58,7 @@ from Developer.Developer_section_writer import Developer_section_writer
 #from RAP.RAP_variables import RAP_variable_creator
 #from RAP.RAP_section_writer import RAP_section_writer
 
-from Social.Social_data_handler import Social_retrieve_data_last_month, Social_retrieve_data_this_month
+from Social.Social_data_handler import Social_retrieve_data_last_quarter, Social_retrieve_data_last_month, Social_retrieve_data_this_month
 from Social.Social_variables import Social_variable_creator
 from Social.Social_headline_writer import Social_headline_writer
 from Social.Social_section_writer import Social_section_writer
@@ -82,6 +82,7 @@ def create_DR():
     CSS_handled_data = CSS_retrieve_data(paths_variables)
     Developer_handled_data_last_month = Developer_retrieve_data_last_month(paths_variables)
     Developer_handled_data_this_month = Developer_retrieve_data_this_month(paths_variables)
+    Social_handled_data_last_quarter = Social_retrieve_data_last_quarter(paths_variables)
     Social_handled_data_last_month = Social_retrieve_data_last_month(paths_variables)
     Social_handled_data_this_month = Social_retrieve_data_this_month(paths_variables)
 #    RAP_handled_data = RAP_retrieve_data(paths_variables)
@@ -96,7 +97,7 @@ def create_DR():
     CSS_tables, CSS_headline_dict, CSS_section_dict = CSS_variable_creator (CSS_handled_data)
     Developer_tables, Developer_headline_dict, Developer_section_dict = Developer_variable_creator(Developer_handled_data_last_month, Developer_handled_data_this_month, dates_variables)
 #    RAP_section_dict = RAP_variable_creator(RAP_handled_data)
-    Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_this_month, Social_handled_data_last_month)
+    Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_last_quarter, Social_handled_data_this_month, Social_handled_data_last_month)
     Enforcement_headline_dict, Enforcement_section_dict = Enforcement_variable_creator(Enforcement_handled_data)
     print('DONE!')
 

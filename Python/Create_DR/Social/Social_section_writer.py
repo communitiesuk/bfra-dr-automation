@@ -118,12 +118,15 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     # Heading
     DR.add_paragraph('Social Housing remediation: Key statistics', style = 'Heading 3')
 
+    # Paragraph
     text = 'The estimates in this section are based on a combination of self-reported data submitted by registered providers and information that has been imputed from Building Safety Fund (BSF), Cladding Safety Scheme, ACM programme data and data submitted by developers under the Developer Remediation Contract. A building is identified with life-critical fire safety defects if the registered provider has self-reported cladding defects, the building is eligible for funding in the BSF, CSS or is being monitored under the ACM programme, or the building is reported by developers with cladding defects in their latest quarterly data report.'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Paragraph
     text = f'{Social_RP_surveyed} registered providers of social housing were invited to respond to this round of a survey on their 11m+ stock. {Social_RP_excluded} small registered providers were excluded from this round of the survey because they had indicated that they were not Responsible Entity for any 11m+ residential buildings.'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Paragraph
     text = f'As at {cutoff}, {Social_life_critical_total_no} social buildings 11 metres and over in height have been identified as having life-critical fire-safety cladding defects – {Social_life_critical_total_change} buildings since the {last_month} data release. Of the {Social_life_critical_total_no} buildings identified with unsafe cladding:'
     DR.add_paragraph(text, style = 'Normal')
 
@@ -139,22 +142,28 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     text = f'{Social_crossover_total} were identified under other remediation programmes (BSF, ACM, CSS or developer remediation) as having unsafe cladding and are also being monitored in those programmes.'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Paragraph
     text = f'Of the {Social_life_critical_total_no} buildings identified to have unsafe cladding:'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Paragraph
     text = f'{Social_started_no} buildings ({Social_started_pct}) are reported to have started or completed remediation  – {Social_started_change} buildings since reported in the {last_month} data release. [INSERT STAT HERE] are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings), or have cladding defects ([INSERT STAT HERE] buildings).'
     text += f'The status of [INSERT STAT HERE] buildings changed from having started or completed remediation to not having cladding defects or no longer being reported in the survey ([INSERT STAT HERE] buildings) or to not having started remediation ([INSERT STAT HERE] buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Paragraph
     text = f'{Social_not_started_no} buildings ({Social_not_started_pct}) are reported to have not yet started remediation – {Social_not_started_change} buildings since reported in the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Paragraph
     text = f'{Social_plans_no} buildings ({Social_plans_pct}) are reported to have not started remediation but have plans in place – {Social_plans_change} buildings since reported in the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Paragraph
     text = f'Of the {Social_not_started_no} buildings with cladding defects that have not yet started remediation, {Social_unique_no} buildings are not currently covered by the developer remediation contract or are not currently eligible in another government programme.'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Paragraph
     text = 'Although information from registered providers of social housing is received quarterly, these statistics will be updated monthly as information from other programmes which relate to social building remediation is updated monthly.'
     DR.add_paragraph(text, style = 'Normal')
  
@@ -168,6 +177,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_picture(figure_path, width=Cm(17))
     figure_count += 1
 
+    # Paragraph
     text = 'Additional information available for individual social housing providers is available in the ' 
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'management information tables', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
@@ -175,27 +185,32 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     add_hyperlink(paragraph, 'social housing provider release document', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_quarterly_dr}')
     paragraph.add_run('.')
 
-
+    # Paragraph
     text =  'The estimates in this section exclude one building identified with unsafe cladding which has been decanted prior to demolition.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Heading
     paragraph = DR.add_paragraph('Social housing remediation: data reported by registered providers of social housing', style = 'Heading 3')
 
+    # Paragraph
     text = f'The estimates in this section include buildings self-reported by registered providers in the latest survey (as at {Social_cutoff}) as having unsafe cladding since June 2017.'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Paragraph
     text = f'Registered Providers reported that {Social_rp_total} buildings have been found to have unsafe cladding since June 2017, {Social_rp_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release.'
     text += f'Of these, {Social_rp_prior_completes_no} completed remediation prior to their most recent building works assessment and {Social_rp_identified_no} have been identified with unsafe cladding at the time of the most recent building works assessment. Of the {Social_rp_total} buildings:'
     DR.add_paragraph(text, style = 'Normal')
 
+    # Bullet Point
     text = f'{Social_rp_completes_no} buildings ({Social_rp_completes_pct}) that were identified with unsafe cladding since June 2017 are reported to have completed remediation – {Social_rp_completes_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Bullet Point
     text = f'{Social_rp_starts_no} buildings ({Social_rp_starts_pct}) are reported to have started or completed remediation – {Social_rp_starts_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release. [INSERT STAT HERE] buildings are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings) or have cladding defects ([INSERT STAT HERE]).'
     text += f'The status of [INSERT STAT HERE] buildings changed from having started or completed remediation to not having cladding defects or no longer being reported in the survey ([INSERT STAT HERE] buildings), or to not having started remediation ([INSERT STAT HERE] buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
+    # Paragraph
     text = f'{Social_rp_plans_no} buildings ({Social_rp_plans_pct}) buildings are reported to have not started remediation but have plans in place – {Social_rp_plans_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 

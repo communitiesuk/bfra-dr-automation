@@ -16,7 +16,7 @@ docx_path = paths_variables['docx_path']
 md_path = paths_variables['md_path']
 
 def word_to_markdown(docx_path, md_path):
-
+    print('Converting to markdown...')
     # perform the initial conversion and get the text content into a variable
     conversion = md.convert(docx_path)
     md_text = conversion.text_content
@@ -46,5 +46,6 @@ def word_to_markdown(docx_path, md_path):
     #save processed version
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(md_text)
-
+    print('Conversion complete!')
+    
 word_to_markdown(docx_path, md_path)

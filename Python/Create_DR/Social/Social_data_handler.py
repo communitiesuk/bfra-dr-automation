@@ -20,7 +20,19 @@ sys.path.append(utility_path)
 
 from Utility.functions import chop_df, format_percentage
 
+def Social_retrieve_data_last_quarter(paths_variables):
+    print("Handling Last Quarter's Social Data")
+    previous_social_path = paths_variables['previous_social_path']
+    Social_1 = pd.read_excel(previous_social_path, sheet_name='Social_1')
 
+    Social_1b = chop_df(Social_1, 11, 6)
+    Social_1b.rename(columns={Social_1b.columns[-2]: 'Total Number'}, inplace=True)
+    Social_1b['Cumulative Number'] = Social_1b['Total Number'].cumsum()
+
+    Social_handled_data_last_quarter = {
+        'Social_1b' : Social_1b
+    }
+    return Social_handled_data_last_quarter
 
 def Social_retrieve_data_last_month(paths_variables):
     print("Handling Last Month's Social Data")

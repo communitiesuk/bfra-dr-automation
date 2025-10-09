@@ -18,7 +18,9 @@ sys.path.append(utility_path)
 
 from Utility.functions import Change_line_in_DR, format_percentage
 
-def Social_variable_creator(Social_handled_data_this_month, Social_handled_data_last_month):
+def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_data_this_month, Social_handled_data_last_month):
+    
+    Social_1b_last_quarter = Social_handled_data_last_quarter['Social_1b']
     # Unpack last months dfs
     Social_1a_last_month = Social_handled_data_last_month['Social_1a']
     Social_1b_last_month = Social_handled_data_last_month['Social_1b']
@@ -98,14 +100,14 @@ def Social_variable_creator(Social_handled_data_this_month, Social_handled_data_
 
         'Social_rp_completes_no' : format(Social_1b_this_month.loc[1, 'Cumulative Number'], ','),
         'Social_rp_completes_pct' : Social_1b_this_month.loc[1, 'Cumulative'],
-        'Social_rp_completes_change' : Change_line_in_DR(Social_1b_this_month.loc[1, 'Cumulative Number'] - Social_1b_last_month.loc[1, 'Cumulative Number']),
+        'Social_rp_completes_change' : Change_line_in_DR(Social_1b_this_month.loc[1, 'Cumulative Number'] - Social_1b_last_quarter.loc[1, 'Cumulative Number']),
 
         'Social_rp_starts_no' : format(Social_1b_this_month.loc[2, 'Cumulative Number'], ','),
         'Social_rp_starts_pct' : Social_1b_this_month.loc[2, 'Cumulative'],
-        'Social_rp_starts_change' : Change_line_in_DR(Social_1b_this_month.loc[2, 'Cumulative Number'] - Social_1b_last_month.loc[2, 'Cumulative Number']),
+        'Social_rp_starts_change' : Change_line_in_DR(Social_1b_this_month.loc[2, 'Cumulative Number'] - Social_1b_last_quarter.loc[2, 'Cumulative Number']),
 
         'Social_rp_plans_no' : format(Social_1b_this_month.loc[3, 'Total Number'], ','),
         'Social_rp_plans_pct' : Social_1b_this_month.loc[3, 'Total'],
-        'Social_rp_plans_change' : Change_line_in_DR(Social_1b_this_month.loc[3, 'Total Number'] - Social_1b_last_month.loc[3, 'Total Number'])
+        'Social_rp_plans_change' : Change_line_in_DR(Social_1b_this_month.loc[3, 'Total Number'] - Social_1b_last_quarter.loc[3, 'Total Number'])
     }
     return Social_tables, Social_headline_dict, Social_section_dict
