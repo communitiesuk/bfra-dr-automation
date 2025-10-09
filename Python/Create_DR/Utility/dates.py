@@ -92,7 +92,6 @@ def calculate_previous_release(MI_tables_path):
 
     _, last_day = cal.monthrange(int(quarter_year), quarter_month)
     previous_release = f"{last_day} {cal.month_name[quarter_month]} {quarter_year}"
-    print(previous_release)
     return previous_release
 
 
