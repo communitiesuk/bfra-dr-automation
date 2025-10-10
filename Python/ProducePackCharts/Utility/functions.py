@@ -35,8 +35,6 @@ def get_excel_path(folder_path):
     
 
 def create_paths():
-    home_dir = os.path.expanduser("~")
-
     # Build the path to the graph output folder
     figure_path = r'Q:\BSP\Automation\DR Automation\DR_outputs\DR_graphs'
 
