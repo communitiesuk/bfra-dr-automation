@@ -1,0 +1,6 @@
+pandas
+inflect
+python-docx
+openpyxl
+matplotlib
+markitdown

@@ -6,9 +6,6 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
-import sys
-import os
 
 def DR_building_safety_overview(DR):
     # Section Title 

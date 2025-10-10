@@ -6,9 +6,7 @@ Author: Harry Simmons
 """
 
 import pandas as pd
-import sys
-import os
-from Utility.functions import chop_df, get_excel_path, format_percentage
+from Utility.functions import chop_df, format_percentage
 
 
 def Portfolio_retrieve_data(paths_variables):

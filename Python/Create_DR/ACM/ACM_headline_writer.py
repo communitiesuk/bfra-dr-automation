@@ -5,19 +5,12 @@ Created on Monday 20 January 2025, 14:10:37
 Author: Harry Simmons
 """
 
-from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
 import sys
 import os
 
 # Add the Utility folder to sys.path
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
-
-from ACM.ACM_variables import ACM_variable_creator
 
 def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
     cutoff = dates_variables['cutoff']

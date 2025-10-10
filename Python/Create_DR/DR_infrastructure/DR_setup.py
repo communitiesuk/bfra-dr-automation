@@ -6,7 +6,6 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 def setup_doc():

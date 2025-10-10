@@ -6,9 +6,7 @@ Author: Harry Simmons
 """
 
 from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
+from docx.shared import Cm
 from docx.enum.text import WD_COLOR_INDEX
 import sys
 import os
@@ -17,9 +15,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Developer.Developer_variables import Developer_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, make_text_bold, create_table, create_bullet_points_forecast, add_hyperlink
-from Utility.dates import sort_dates
+from Utility.functions import create_table, add_hyperlink
 
 # Developer section writer
 def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, Developer_tables, figure_count, table_count, dates_variables, paths_variables, DR):
@@ -28,7 +24,6 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
-    this_month = dates_variables['this_month']
     #converts this month into a format which will work in the hyperlink
     hyperlink_month = dates_variables['hyperlink_month']
 
@@ -140,7 +135,6 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
 
     Developer_self_reported_started_c_no = Developer_section_dict['Developer_self_reported_started_c_no']
     Developer_self_reported_started_c_pct = Developer_section_dict['Developer_self_reported_started_c_pct']
-    Developer_self_reported_started_line = Developer_section_dict['Developer_self_reported_started_line']
 
     Developer_self_reported_plans_c_no = Developer_section_dict['Developer_self_reported_plans_c_no']
     Developer_self_reported_plans_c_pct = Developer_section_dict['Developer_self_reported_plans_c_pct']
@@ -161,13 +155,12 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     text = 'The estimates in this section include some buildings which are also included in other sections of this data release e.g., those reported under the following sections: ‘ACM Remediation’, ‘Building Safety Fund’, ‘Cladding Safety Scheme’ and ‘Social Housing Sector’.'
     DR.add_paragraph(text, style = 'Normal')
 
-    # Figure  Title
+    # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
     text = f'Figure {figure_count}: {Developer_started_c_pct} of buildings in the developer remediation contract have either started or completed remediation works on life-critical fire safety risks, with {Developer_signoff_c_pct} having completed remediation works.'
     run = paragraph.add_run(text)
     run.bold = True
     
-
     # Figure
     DR.add_picture(figure_path, width=Cm(17))
     figure_count += 1
@@ -225,7 +218,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation– {Developer_signoff_line} since the {last_month} data release. Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
+    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation – {Developer_signoff_line} since the {last_month} data release. Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -276,7 +269,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'{Developer_BSF_transfer_plans_nc_no} ({Developer_BSF_transfer_plans_nc_pct}) are reported to have not started remediation but have plans in place - {Developer_BSF_transfer_plans_line} since the {last_month} data release.'
+    text = f'{Developer_BSF_transfer_plans_nc_no} ({Developer_BSF_transfer_plans_nc_pct}) are reported to have not started remediation but have plans in place – {Developer_BSF_transfer_plans_line} since the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -373,7 +366,13 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     text = f'Further information on the progress developers have made regarding the buildings they’ve reported on is available in the accompanying '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'management information tables', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
-    paragraph.add_run('. Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site. This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].')
+    paragraph.add_run(' and quarterly Developer remediation contract data release. From August 2025 these include an update against the commitments set out in the ')
+    add_hyperlink(paragraph, 'joint plan to accelerate developer-led remediation and improve resident experience', f'https://www.gov.uk/government/publications/joint-plan-to-accelerate-developer-led-remediation-and-improve-resident-experience')
+    paragraph.add_run(', which was published alongside the department Remediation Acceleration Plan (RAP).')
+
+    #Paragraph
+    text = 'Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site. This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].'
+    DR.add_paragraph(text, style = 'Normal')
 
 
 

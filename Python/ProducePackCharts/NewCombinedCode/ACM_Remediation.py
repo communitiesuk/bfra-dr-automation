@@ -5,7 +5,6 @@ author: Harry Simmons
 """
 
 import os
-import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
@@ -13,16 +12,8 @@ from matplotlib.patches import Patch
 import numpy as np
 
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
-
-from Utility.functions import chop_df, get_excel_path
+from Utility.functions import chop_df
 from Utility.MakeCurlyBrace import curlyBrace
 
 def create_ACM_Remediation(type, figure_count, colours, grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict):

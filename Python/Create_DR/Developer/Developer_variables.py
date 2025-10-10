@@ -18,10 +18,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from Developer.Developer_data_handler import Developer_retrieve_data_last_month, Developer_retrieve_data_this_month
-from Utility.functions import Change_line_in_DR, format_percentage, convert_number
-from Utility.dates import sort_dates
+from Utility.functions import Change_line_in_DR
 
 def Developer_variable_creator(Developer_handled_data_last_month, Developer_handled_data_this_month, dates_variables):
     # Unpack dates variables

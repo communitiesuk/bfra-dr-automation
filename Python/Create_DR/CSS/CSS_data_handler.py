@@ -17,8 +17,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 sys.path.append(utility_path)
 
 # Now you can import your functions
-from Utility.functions import format_percentage, chop_df, get_excel_path
-from Utility.dates import sort_dates
+from Utility.functions import format_percentage, chop_df
 
 def CSS_retrieve_data(paths_variables):
     print('Handling CSS Data')

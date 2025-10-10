@@ -6,25 +6,15 @@ author: Harry Simmons
 
 import re
 import os
-import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
-
 # Now you can import your functions
-from Utility.functions import chop_df, get_excel_path
+from Utility.functions import chop_df
 
 def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
     if type==0:

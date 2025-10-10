@@ -5,12 +5,9 @@ Created on Thursday 09 January 2025, 10:39:17
 Author: Harry Simmons
 """
 
-from datetime import datetime
-import calendar as cal
 import pandas as pd
 import sys
 import os
-import inflect
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,8 +16,6 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from BSF.BSF_data_handler import BSF_retrieve_data
 from Utility.functions import convert_number, format_percentage, Change_line_in_DR, more_or_fewer
 
 def BSF_variable_creator (BSF_handled_data):
@@ -58,14 +53,20 @@ def BSF_variable_creator (BSF_handled_data):
         'BSF_signoff_c_pct': BSF_1.loc[1, 'Cumulative Percentage'],
         'BSF_started_c_pct': BSF_1.loc[2, 'Cumulative Percentage'],
         'BSF_BSF_5_total': BSF_5.loc[5, 'Current Month'],
+
         'BSF_CSS_transfers_last_month': format(BSF_reg_status.loc[1, 'Last Month'], ','),
         'BSF_CSS_transfers_this_month': format(BSF_reg_status.loc[1, 'Current Month'], ','),
         'BSF_CSS_transfers_line': Change_line_in_DR(BSF_reg_status.loc[1, 'Current Month'] - BSF_reg_status.loc[1, 'Last Month']),
-        'BSF_ineligible': format(BSF_reg_status.loc[2, 'Current Month'], ','),
-        'BSF_withdrawn': format(BSF_reg_status.loc[3, 'Current Month'], ','),
-        'BSF_developer_transfers': format(BSF_reg_status.loc[4, 'Current Month'], ','),
-        'BSF_insufficient_evidence': format(BSF_reg_status.loc[5, 'Current Month'] + BSF_reg_status.loc[6, 'Current Month'], ','),
-        'BSF_BSF_1_total': format(BSF_reg_status.loc[8, 'Current Month'] - BSF_reg_status.loc[0, 'Current Month'], ','),
+
+        'BSF_CSS_retained' : format(BSF_reg_status.loc[2, 'Current Month'], ','),
+
+        'BSF_ineligible': format(BSF_reg_status.loc[3, 'Current Month'], ','),
+        'BSF_withdrawn': format(BSF_reg_status.loc[4, 'Current Month'], ','),
+
+        'BSF_developer_transfers': format(BSF_reg_status.loc[5, 'Current Month'], ','),
+        'BSF_insufficient_evidence': format(BSF_reg_status.loc[6, 'Current Month'] + BSF_reg_status.loc[7, 'Current Month'], ','),
+        'BSF_BSF_1_total': format(BSF_reg_status.loc[9, 'Current Month'] - BSF_reg_status.loc[0, 'Current Month'], ','),
+
         'BSF_developer_reimbursed_word': convert_number(BSF_misc.loc[0, 'Number']),
         'BSF_developer_anticipated_word': convert_number(BSF_misc.loc[1, 'Number']),
         'BSF_developer_reimbursed_pct': format_percentage(BSF_misc.loc[0, 'Number'] / BSF_5.loc[5, 'Current Month']),
@@ -95,6 +96,6 @@ def BSF_variable_creator (BSF_handled_data):
         'BSF_private_complete_pct': BSF_1.loc[1, 'Cumulative Private Percentage']
     }
 
-    BSF_developer_transfers =  format(BSF_reg_status.loc[4, 'Current Month'], ',')
+    BSF_developer_transfers =  format(BSF_reg_status.loc[5, 'Current Month'], ',')
 
     return BSF_tables, BSF_headline_dict, BSF_section_dict, BSF_developer_transfers

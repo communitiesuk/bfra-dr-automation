@@ -6,11 +6,7 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
+from docx.shared import Cm
 import sys
 import os
 
@@ -18,9 +14,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from BSF.BSF_variables import BSF_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, create_table
-from Utility.dates import sort_dates
+from Utility.functions import create_table
 import Utility.docx_svg_patch
 
 def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, dates_variables, paths_variables, DR):
@@ -41,6 +35,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     BSF_CSS_transfers_last_month = BSF_section_dict['BSF_CSS_transfers_last_month']
     BSF_CSS_transfers_this_month = BSF_section_dict['BSF_CSS_transfers_this_month']
     BSF_CSS_transfers_line = BSF_section_dict['BSF_CSS_transfers_line']
+    BSF_CSS_retained = BSF_section_dict['BSF_CSS_retained']
     BSF_ineligible = BSF_section_dict['BSF_ineligible']
     BSF_withdrawn = BSF_section_dict['BSF_withdrawn']
     BSF_developer_transfers = BSF_section_dict['BSF_developer_transfers']
@@ -109,7 +104,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph('BSF remediation: key statistics', style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {cutoff}, {BSF_BSF_5_total} buildings were assessed as eligible and are proceeding with an application for funding from the Building Safety Fund. The remaining {BSF_BSF_1_total} buildings registered with the fund are either ineligible ({BSF_ineligible}), withdrawn ({BSF_withdrawn}), in review or have given insufficient evidence ({BSF_insufficient_evidence}), or have transferred to the Cladding Safety Scheme ({BSF_CSS_transfers_this_month}).'
+    text = f'As at {cutoff}, {BSF_BSF_5_total} buildings were assessed as eligible and are proceeding with an application for funding from the Building Safety Fund. The remaining {BSF_BSF_1_total} buildings registered with the fund are either ineligible ({BSF_ineligible}), withdrawn ({BSF_withdrawn}), in review or have given insufficient evidence ({BSF_insufficient_evidence}), have transferred to the Cladding Safety Scheme ({BSF_CSS_transfers_this_month}), or have been retained by the Cladding Safety Scheme ({BSF_CSS_retained}).'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph

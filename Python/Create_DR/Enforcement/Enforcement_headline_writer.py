@@ -5,15 +5,8 @@ Created on Tuesday 04 March 2025, 08:43:31
 Author: Harry Simmons
 """
 
-import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
-
 def Enforcement_headline_writer(Enforcement_headline_dict, dates_variables, DR):
-    # Unpack date vaiables
+    # Unpack date variables
     last_month = dates_variables['last_month']
 
     # Unpack variables

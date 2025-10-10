@@ -6,11 +6,7 @@ Author: Harry Simmons
 """
 
 import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
+from docx.shared import Cm
 import sys
 import os
 
@@ -18,9 +14,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Portfolio.Portfolio_variables import Portfolio_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, create_table, add_hyperlink
-import Utility.docx_svg_patch
+from Utility.functions import add_hyperlink
 
 def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, figure_count, dates_variables, paths_variables, DR):
     last_month = dates_variables['last_month']

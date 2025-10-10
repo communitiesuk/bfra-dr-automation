@@ -5,11 +5,7 @@ Created on Monday 16 December 2024, 15:57:33
 Author: Harry Simmons
 """
 
-from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
+from docx.shared import Cm
 import sys
 import os
 
@@ -17,9 +13,7 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Estimates.Estimates_variables import Estimates_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, make_text_bold, create_table, create_bullet_points_forecast, add_hyperlink
-from Utility.dates import sort_dates
+from Utility.functions import create_table, add_hyperlink
 import Utility.docx_svg_patch
 
 # Estimates section writer
@@ -48,7 +42,7 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'An estimated 2,900 – 5,800 buildings are 11-18m (7-10% of the estimated 39,000 - 59,000 11-18m buildings).'
+    text = f'An estimated 2,900 - 5,800 buildings are 11-18m (7-10% of the estimated 39,000 - 59,000 11-18m buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -64,11 +58,11 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'22% are 14-18m buildings (15-19% of the estimated 4,000 – 7,000 14-18m buildings).'
+    text = f'22% are 14-18m buildings (15-19% of the estimated 4,000 - 7,000 14-18m buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022. New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the'
+    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022. New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'Technical Note', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
     paragraph.add_run('.')
@@ -97,11 +91,11 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'An estimated 2,800 – 5,400 buildings are 11-18m.'
+    text = f'An estimated 2,800 - 5,400 buildings are 11-18m.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'An estimated 3,000 – 3,200 buildings are 18m+.'
+    text = f'An estimated 3,000 - 3,200 buildings are 18m+.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Table caption

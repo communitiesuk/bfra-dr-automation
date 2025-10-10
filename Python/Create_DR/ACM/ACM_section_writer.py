@@ -5,10 +5,7 @@ Created on Monday 16 December 2024, 15:57:33
 Author: Harry Simmons
 """
 
-from docx import Document
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
+from docx.shared import Cm 
 from docx.enum.text import WD_COLOR_INDEX
 import sys
 import os
@@ -17,19 +14,17 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from ACM.ACM_variables import ACM_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, make_text_bold, create_table, create_bullet_points_forecast
-from Utility.dates import sort_dates
+from Utility.functions import create_table, create_bullet_points_forecast
 import Utility.docx_svg_patch
 
 # ACM section writer
 def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     
     figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
+    placeholder_path = paths_variables['placeholder_path']
 
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
-    month = dates_variables['month']
     year = dates_variables['year']
     next_year = dates_variables['next_year']
     end_year_word = dates_variables['end_year_word']
@@ -206,7 +201,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     
 
     # Figure 
-    DR.add_picture('Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[ADD FIGURE HERE INSERT]\\Add_figure_here.png', width=Cm(17))
+    DR.add_picture(placeholder_path, width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -225,7 +220,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     
 
     # Figure
-    DR.add_picture('Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[ADD FIGURE HERE INSERT]\\Add_figure_here.png', width=Cm(17))
+    DR.add_picture(placeholder_path, width=Cm(17))
     figure_count += 1
 
     # Paragraph

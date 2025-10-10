@@ -17,9 +17,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 sys.path.append(utility_path)
 
 
-from Portfolio.Portfolio_data_handler import Portfolio_retrieve_data
-from Utility.functions import format_percentage, convert_number, more_or_fewer, Change_line_in_DR
-from Utility.dates import sort_dates
+from Utility.functions import more_or_fewer, Change_line_in_DR
 
 def Portfolio_variable_creator(Portfolio_handled_data):
     # Unpacking dataframes from ACM_data_handler
