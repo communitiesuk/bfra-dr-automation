@@ -36,20 +36,16 @@ def extract_month_year(sheet_name, file_path):
 
 
 def create_paths():
-    home_dir = os.path.expanduser("~")
-
-    MI_folder = os.path.join(home_dir,  "GitHub", "sgba-DR-automation", "Excel_inputs","[PUT MI TABLES HERE]")    
+    MI_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]"
     MI_tables_path = get_excel_path(MI_folder)
 
     # extract the current DR month and year
     this_month, this_year = extract_month_year('Cover', MI_tables_path)
 
-    md_path = os.path.join(home_dir, "GitHub", "sgba-DR-automation", "DR_outputs", "DR_markdown", f'Building Safety Release {this_month} {this_year} - Markdown version.md')
+    md_path =f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\DR_markdown\\Building Safety Release {this_month} {this_year} - Markdown version.md'
 
-    docx_path = os.path.join(home_dir,"GitHub", "sgba-DR-automation", "Excel_inputs", "[PUT DR HERE]", f'Building Safety Release {this_month} {this_year}.docx')
+    docx_path = f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\Auto_DR\\Building Safety Release {this_month} {this_year}.docx'
 
-
-    
     paths = {'docx_path' : docx_path,
              'md_path' : md_path,
     }
