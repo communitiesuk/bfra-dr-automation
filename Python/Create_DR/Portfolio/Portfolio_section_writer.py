@@ -62,7 +62,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
 
     # Figure 
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
 
@@ -133,7 +133,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
     
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -147,7 +147,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     
 
     # Figure 4
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -160,7 +160,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Figure caption

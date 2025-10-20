@@ -66,7 +66,7 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     run.bold = True
     
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Table caption
@@ -139,7 +139,7 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     run.bold = True
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -153,6 +153,6 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
    
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
     return figure_count, table_count

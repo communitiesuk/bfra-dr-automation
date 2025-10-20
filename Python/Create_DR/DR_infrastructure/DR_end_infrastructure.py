@@ -115,9 +115,9 @@ def DR_end(DR, dates_variables):
     paragraph = DR.add_paragraph('RSH publication', style = 'Heading 3')
 
     # Paragraph
-    paragraph = DR.add_paragraph("On 20 March 2025, the Regulator of Social Housing published ", style = 'Normal')
+    paragraph = DR.add_paragraph("On 25 September 2025, the Regulator of Social Housing published ", style = 'Normal')
     add_hyperlink(paragraph, "findings from the Fire Safety Remediation Survey (FRS)", "https://www.gov.uk/government/collections/fire-safety-remediation-in-social-housing-in-england")
-    paragraph.add_run(" for buildings 11 metres and over in height as at 31 December 2024, which opened to all landlords on 13 December 2024 and closed on 22 January 2025.")
+    paragraph.add_run(" for buildings 11 metres and over in height as at 30 June 2025, which opened to all landlords on 23 June 2025 and closed on 1 September 2025.")
 
     # Heading
     paragraph = DR.add_paragraph('Social Housing Provider Data', style = 'Heading 3')

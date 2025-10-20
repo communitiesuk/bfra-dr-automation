@@ -50,8 +50,8 @@ def create_Overall_Remediation2_Curly(type, figure_count, colours, grey, paths_v
     data = pd.DataFrame({
         "In programme": [0] + [number_of_buildings[2]] * (len(number_of_buildings) - 1),
         "Remediation underway": [yet_to_be_completed] + [number_of_buildings[1]] * (len(number_of_buildings) - 1),
-        "Remediation complete": [number_of_buildings[0]] * len(number_of_buildings)
-    }, index=["Remediation complete", "Remediation underway", "In programme"])
+        "Total buildings": [number_of_buildings[0]] * len(number_of_buildings)
+    }, index=["Total buildings", "Remediation underway", "In programme"])
 
 
     ###########

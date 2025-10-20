@@ -162,7 +162,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     run.bold = True
     
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Table caption
@@ -295,7 +295,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
     
     # Heading

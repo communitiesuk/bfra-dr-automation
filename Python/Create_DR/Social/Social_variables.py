@@ -75,6 +75,10 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_started_pct': Social_1a_this_month.loc[2, 'Cumulative'],
         'Social_started_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),
 
+        'Social_bc_signoff_no' : format(Social_1a_this_month.loc[0, 'Total Number'], ','),
+        'Social_bc_signoff_pct' : Social_1a_this_month.loc[0, 'Cumulative'],
+        'Social_bc_signoff_change' : Change_line_in_DR(Social_1a_this_month.loc[1, 'Total Number'] - Social_1a_last_month.loc[1, 'Total Number']),
+
         'Social_completed_no': format(Social_1a_this_month.loc[1, 'Cumulative Number'], ','),
         'Social_completed_pct': Social_1a_this_month.loc[1, 'Cumulative'],
         'Social_completed_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),

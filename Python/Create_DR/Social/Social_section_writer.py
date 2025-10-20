@@ -17,8 +17,6 @@ from Utility.functions import create_table, add_hyperlink
 
 def Social_section_writer(Social_section_dict, Social_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
-
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
     Social_cutoff = dates_variables['social_cutoff']
@@ -28,8 +26,6 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
 
     Social_remediation_table = Social_tables['Social_remediation_table']
 
-    Social_completed_pct = Social_section_dict['Social_completed_pct']
-    Social_started_pct = Social_section_dict['Social_started_pct']
     Social_RP_surveyed = Social_section_dict['Social_RP_surveyed']
     Social_RP_excluded = Social_section_dict['Social_RP_excluded']
 
@@ -39,10 +35,19 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     Social_recent_assessment_total = Social_section_dict['Social_recent_assessment_total']
     Social_recent_assessment_remediated = Social_section_dict['Social_recent_assessment_remediated']
 
+    Social_completed_no = Social_section_dict['Social_completed_no']
+    Social_completed_pct = Social_section_dict['Social_completed_pct']
+    Social_completed_change = Social_section_dict['Social_completed_change']
+
     Social_crossover_total = Social_section_dict['Social_crossover_total']
+
     Social_started_no = Social_section_dict['Social_started_no']
+    Social_started_pct = Social_section_dict['Social_started_pct']
     Social_started_change = Social_section_dict['Social_started_change']
 
+    Social_bc_signoff_no = Social_section_dict['Social_bc_signoff_no']
+    Social_bc_signoff_pct = Social_section_dict['Social_bc_signoff_pct']
+    Social_bc_signoff_change = Social_section_dict['Social_bc_signoff_change']
 
     Social_not_started_no = Social_section_dict['Social_not_started_no']
     Social_not_started_pct = Social_section_dict['Social_not_started_pct']
@@ -98,7 +103,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     run.bold = True
  
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
 
@@ -147,16 +152,20 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'{Social_started_no} buildings ({Social_started_pct}) are reported to have started or completed remediation  – {Social_started_change} buildings since reported in the {last_month} data release. [INSERT STAT HERE] are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings), or have cladding defects ([INSERT STAT HERE] buildings).'
-    text += f'The status of [INSERT STAT HERE] buildings changed from having started or completed remediation to not having cladding defects or no longer being reported in the survey ([INSERT STAT HERE] buildings) or to not having started remediation ([INSERT STAT HERE] buildings).'
+    text = f'{Social_completed_no} buildings ({Social_completed_pct}) are reported to have completed remediation  – {Social_completed_change} since reported in the {last_month} data release. '
+    text += f'Of these, {Social_bc_signoff_no} ({Social_bc_signoff_pct} of all buildings with defects) are reported to have received building control sign-off - {Social_bc_signoff_change} since reported in the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'{Social_not_started_no} buildings ({Social_not_started_pct}) are reported to have not yet started remediation – {Social_not_started_change} buildings since reported in the {last_month} data release.'
+    text= f'{Social_started_no} buildings ({Social_started_pct}) are reported to have completed remediation  – {Social_started_change} since reported in the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'{Social_plans_no} buildings ({Social_plans_pct}) are reported to have not started remediation but have plans in place – {Social_plans_change} buildings since reported in the {last_month} data release.'
+    text = f'{Social_not_started_no} buildings ({Social_not_started_pct}) are reported to have not yet started remediation – {Social_not_started_change} since reported in the {last_month} data release.'
+    DR.add_paragraph(text, style = 'List Bullet')
+
+    # Paragraph
+    text = f'{Social_plans_no} buildings ({Social_plans_pct}) are reported to have not started remediation but have plans in place – {Social_plans_change} since reported in the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
@@ -174,7 +183,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     run.bold = True
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Paragraph
@@ -197,7 +206,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'Registered Providers reported that {Social_rp_total} buildings have been found to have unsafe cladding since June 2017, {Social_rp_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release.'
+    text = f'Registered Providers reported that {Social_rp_total} buildings have been found to have unsafe cladding since June 2017, {Social_rp_change} since reported in the {Social_previous_release} Social Housing Remediation data release.'
     text += f'Of these, {Social_rp_prior_completes_no} completed remediation prior to their most recent building works assessment and {Social_rp_identified_no} have been identified with unsafe cladding at the time of the most recent building works assessment. Of the {Social_rp_total} buildings:'
     DR.add_paragraph(text, style = 'Normal')
 
@@ -206,12 +215,12 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet Point
-    text = f'{Social_rp_starts_no} buildings ({Social_rp_starts_pct}) are reported to have started or completed remediation – {Social_rp_starts_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release. [INSERT STAT HERE] buildings are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings) or have cladding defects ([INSERT STAT HERE]).'
+    text = f'{Social_rp_starts_no} buildings ({Social_rp_starts_pct}) are reported to have started or completed remediation – {Social_rp_starts_change} since reported in the {Social_previous_release} Social Housing Remediation data release. [INSERT STAT HERE] buildings are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings) or have cladding defects ([INSERT STAT HERE]).'
     text += f'The status of [INSERT STAT HERE] buildings changed from having started or completed remediation to not having cladding defects or no longer being reported in the survey ([INSERT STAT HERE] buildings), or to not having started remediation ([INSERT STAT HERE] buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'{Social_rp_plans_no} buildings ({Social_rp_plans_pct}) buildings are reported to have not started remediation but have plans in place – {Social_rp_plans_change} buildings since reported in the {Social_previous_release} Social Housing Remediation data release.'
+    text = f'{Social_rp_plans_no} buildings ({Social_rp_plans_pct}) buildings are reported to have not started remediation but have plans in place – {Social_rp_plans_change} since reported in the {Social_previous_release} Social Housing Remediation data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     return figure_count, table_count

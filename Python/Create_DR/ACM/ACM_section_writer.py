@@ -14,13 +14,12 @@ import os
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
 
-from Utility.functions import create_table, create_bullet_points_forecast
+from Utility.functions import create_table, create_bullet_points_forecast 
 import Utility.docx_svg_patch
 
 # ACM section writer
 def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
     placeholder_path = paths_variables['placeholder_path']
 
     cutoff = dates_variables['cutoff']
@@ -103,7 +102,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Table caption
@@ -261,7 +260,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     run.bold = True
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     return figure_count, table_count

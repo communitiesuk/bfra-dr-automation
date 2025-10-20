@@ -20,7 +20,6 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
     last_month = dates_variables['last_month']
     this_month = dates_variables['this_month']
     
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
     last_month_year = dates_variables['last_month_year']
     hyperlink_month = dates_variables['hyperlink_month']
 
@@ -62,11 +61,11 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
   
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Figure caption
-    paragraph = DR.add_paragraph('Note: From October 2023 onwards combined remediation progress is shown across the BSF, ACM programme, Cladding Safety Scheme, developer remediation contract and as reported by registered providers of social housing. The total number of buildings identified with unsafe cladding, reported in the ', style= 'Normal')
+    paragraph = DR.add_paragraph('Note: The total number of buildings identified with unsafe cladding, reported in the ', style= 'Normal')
     add_hyperlink(paragraph, 'Overall Remediation section', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}/building-safety-remediation-monthly-data-release-{hyperlink_month}#overall-remediation-progress')                 
     paragraph.add_run(' of the data release, does not sum to the total number of buildings in each remediation programme, reported in each respective section of the data release. This is due to some buildings appearing in more than one remediation programme.')
 

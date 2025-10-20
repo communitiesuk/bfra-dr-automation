@@ -5,7 +5,6 @@ Created on Thursday 09 January 2025, 10:39:20
 Author: Harry Simmons
 """
 
-import docx
 from docx.shared import Cm
 import sys
 import os
@@ -24,7 +23,6 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     last_month = dates_variables['last_month']
     last_year_month = dates_variables['last_year_month']
     
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
 
     BSF_remediation_table = BSF_tables['BSF_remediation_table']
 
@@ -32,9 +30,9 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     BSF_signoff_c_pct = BSF_section_dict['BSF_signoff_c_pct']
     BSF_started_c_pct = BSF_section_dict['BSF_started_c_pct']
     BSF_BSF_5_total = BSF_section_dict['BSF_BSF_5_total']
-    BSF_CSS_transfers_last_month = BSF_section_dict['BSF_CSS_transfers_last_month']
     BSF_CSS_transfers_this_month = BSF_section_dict['BSF_CSS_transfers_this_month']
     BSF_CSS_transfers_line = BSF_section_dict['BSF_CSS_transfers_line']
+    BSF_CSS_transfers_not_started = BSF_section_dict['BSF_CSS_transfers_not_started']
     BSF_CSS_retained = BSF_section_dict['BSF_CSS_retained']
     BSF_ineligible = BSF_section_dict['BSF_ineligible']
     BSF_withdrawn = BSF_section_dict['BSF_withdrawn']
@@ -84,7 +82,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     
 
     # Figure 
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Table caption
@@ -112,7 +110,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'As at {cutoff}, {BSF_CSS_transfers_this_month} buildings have been transferred to the Cladding Safety Scheme for their remediation and are progressing through the CSS fund, {BSF_CSS_transfers_line} buildings since reported at the end of {last_month}. Of these, 179 buildings had not started remediation works before transferring to the CSS.'
+    text = f'As at {cutoff}, {BSF_CSS_transfers_this_month} buildings have been transferred to the Cladding Safety Scheme for their remediation and are progressing through the CSS fund, {BSF_CSS_transfers_line} buildings since reported at the end of {last_month}. Of these, {BSF_CSS_transfers_not_started} buildings had not started remediation works before transferring to the CSS.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -181,7 +179,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17), height=Cm(15))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17), height=Cm(15))
     figure_count += 1
 
     # Paragraph
@@ -210,7 +208,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17), height=Cm(8))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17), height=Cm(8))
     figure_count += 1
     
     return figure_count, table_count

@@ -57,15 +57,18 @@ def BSF_variable_creator (BSF_handled_data):
         'BSF_CSS_transfers_last_month': format(BSF_reg_status.loc[1, 'Last Month'], ','),
         'BSF_CSS_transfers_this_month': format(BSF_reg_status.loc[1, 'Current Month'], ','),
         'BSF_CSS_transfers_line': Change_line_in_DR(BSF_reg_status.loc[1, 'Current Month'] - BSF_reg_status.loc[1, 'Last Month']),
+ 
 
         'BSF_CSS_retained' : format(BSF_reg_status.loc[2, 'Current Month'], ','),
+        'BSF_CSS_transfers_not_started' : format(BSF_reg_status.loc[2, 'Current Month'] - 3, ','),
+        
 
         'BSF_ineligible': format(BSF_reg_status.loc[3, 'Current Month'], ','),
         'BSF_withdrawn': format(BSF_reg_status.loc[4, 'Current Month'], ','),
 
         'BSF_developer_transfers': format(BSF_reg_status.loc[5, 'Current Month'], ','),
         'BSF_insufficient_evidence': format(BSF_reg_status.loc[6, 'Current Month'] + BSF_reg_status.loc[7, 'Current Month'], ','),
-        'BSF_BSF_1_total': format(BSF_reg_status.loc[9, 'Current Month'] - BSF_reg_status.loc[0, 'Current Month'], ','),
+        'BSF_BSF_1_total': format(BSF_reg_status.loc[0, 'Current Month'] - BSF_reg_status.loc[8, 'Current Month'], ','),
 
         'BSF_developer_reimbursed_word': convert_number(BSF_misc.loc[0, 'Number']),
         'BSF_developer_anticipated_word': convert_number(BSF_misc.loc[1, 'Number']),

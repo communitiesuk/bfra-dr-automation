@@ -71,7 +71,7 @@ def create_Overall_Remediation_Across_Schemes(type, figure_count, colours, paths
     Social_in_programme = Social_1.iloc[3, 6] + Social_1.iloc[4, 6]
 
     data = pd.DataFrame({
-        "Remediation complete": [Social_complete, Developer_complete, CSS_complete, BSF_complete, ACM_complete],
+        "Remediation Complete": [Social_complete, Developer_complete, CSS_complete, BSF_complete, ACM_complete],
         "Remediation underway": [Social_underway, Developer_underway, CSS_underway, BSF_underway, ACM_underway],
         "In programme": [Social_in_programme, Developer_in_programme, CSS_in_programme, BSF_in_programme, ACM_in_programme]
     }, index=["Social Housing", "Developer", "CSS", "BSF", "ACM"])
