@@ -5,7 +5,6 @@ Created on Thursday 13 March 2025, 10:05:24
 Author: Harry Simmons
 """
 
-import docx
 from docx.enum.text import WD_COLOR_INDEX
 import sys
 import os

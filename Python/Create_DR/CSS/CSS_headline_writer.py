@@ -4,8 +4,6 @@ Created on Friday 17 January 2025, 14:33:41
 
 Author: Harry Simmons
 """
-
-import docx
 import sys
 import os
 

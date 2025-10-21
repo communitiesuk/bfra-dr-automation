@@ -6,7 +6,6 @@ Author: Harry Simmons
 """
 
 from datetime import datetime
-import calendar as cal
 import pandas as pd
 import sys
 import os
@@ -18,10 +17,7 @@ utility_path = os.path.join(script_dir, 'Utility')
 # Add it to sys.path so that python can import from it
 sys.path.append(utility_path)
 
-
-from ACM.ACM_data_handler import ACM_retrieve_data
 from Utility.functions import Change_line_in_DR, format_percentage, convert_number
-from Utility.dates import sort_dates
 
 def ACM_variable_creator(ACM_handled_data, dates_variables):
     # Imports the date variables

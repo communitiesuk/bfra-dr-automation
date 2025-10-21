@@ -82,10 +82,10 @@ def CSS_retrieve_data(paths_variables):
     CSS_6 = pd.read_excel(MI_tables_path, sheet_name='CSS_6')
     CSS_6 = chop_df(CSS_6, 4, 4)
     CSS_6 = CSS_6.rename(columns={CSS_6.columns[-1]: 'Current Month', CSS_6.columns[-2]: 'Last Month'})
-    CSS_6['Cumulative'] = CSS_6['Current Month'].cumsum()
+    CSS_6['Formatted Cumulative Number'] = CSS_6['Current Month'].cumsum()
     CSS_6['Change'] = CSS_6['Current Month'] - CSS_6['Last Month']
     CSS_6['Cumulative Change'] = CSS_6['Change'].cumsum()
-    CSS_6.at[3, 'Cumulative'] = CSS_6.at[3, 'Current Month']
+    CSS_6.at[3, 'Formatted Cumulative Number'] = CSS_6.at[3, 'Current Month']
     CSS_6.at[3, 'Cumulative Change'] = CSS_6.at[3, 'Change']
 
     # Accessing and transforming CSS_misc

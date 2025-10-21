@@ -49,12 +49,12 @@ def BSF_retrieve_data(paths_variables):
     BSF_5 = pd.read_excel(MI_tables_path, sheet_name='BSF_5')
     BSF_5 = chop_df(BSF_5, 5, 6)
     BSF_5.rename(columns={BSF_5.columns[0]: 'Remediation Category', BSF_5.columns[-1]: 'Current Month', BSF_5.columns[-2]: 'Last Month', BSF_5.columns[-13]: 'Last Year'}, inplace=True)
-    BSF_5['Cumulative'] = BSF_5['Current Month'].cumsum()
+    BSF_5['Formatted Cumulative Number'] = BSF_5['Current Month'].cumsum()
     BSF_5['Monthly Change'] = BSF_5['Current Month'] - BSF_5['Last Month']
     BSF_5['Yearly Change'] = BSF_5['Current Month'] - BSF_5['Last Year']
     BSF_5['Cumulative Monthly Change'] = BSF_5['Monthly Change'].cumsum()
     BSF_5['Cumulative Yearly Change'] = BSF_5['Yearly Change'].cumsum()
-    BSF_5.at[5, 'Cumulative'] = BSF_5.at[5, 'Current Month']
+    BSF_5.at[5, 'Formatted Cumulative Number'] = BSF_5.at[5, 'Current Month']
     BSF_5.at[5, 'Cumulative Monthly Change'] = BSF_5.at[5, 'Monthly Change']
     BSF_5.at[5, 'Cumulative Yearly Change'] = BSF_5.at[5, 'Yearly Change']
 

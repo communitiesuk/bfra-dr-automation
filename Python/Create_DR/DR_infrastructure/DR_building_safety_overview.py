@@ -5,8 +5,6 @@ Created on Thursday 13 March 2025, 10:05:24
 Author: Harry Simmons
 """
 
-import docx
-
 def DR_building_safety_overview(DR):
     # Section Title 
     paragraph = DR.add_paragraph('Building Safety Overview', style = 'Heading 2')

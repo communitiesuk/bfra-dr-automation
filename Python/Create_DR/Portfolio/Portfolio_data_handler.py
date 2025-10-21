@@ -50,13 +50,13 @@ def Portfolio_retrieve_data(paths_variables):
     Combined_6 = pd.read_excel(MI_tables_path, sheet_name='Combined_6')
     Combined_6 = chop_df(Combined_6, 4, 4)
     Combined_6.rename(columns={Combined_6.columns[-1]: 'Current Month', Combined_6.columns[-2]: 'Last Month', Combined_6.columns[-13]: 'Last Year', Combined_6.columns[11]: 'October 2023'}, inplace=True)
-    Combined_6['Cumulative'] = Combined_6['Current Month'].cumsum()
+    Combined_6['Formatted Cumulative Number'] = Combined_6['Current Month'].cumsum()
     Combined_6['Monthly Change'] = Combined_6['Current Month'] - Combined_6['Last Month']
     Combined_6['Yearly Change'] = Combined_6['Current Month'] - Combined_6['Last Year']
     Combined_6['Since October 2023'] = Combined_6['Current Month'] - Combined_6['October 2023']
     Combined_6['Cumulative Monthly Change'] = Combined_6['Monthly Change'].cumsum()
     Combined_6['Cumulative Yearly Change'] = Combined_6['Yearly Change'].cumsum()
-    Combined_6.at[3, 'Cumulative'] = Combined_6.at[3, 'Current Month']
+    Combined_6.at[3, 'Formatted Cumulative Number'] = Combined_6.at[3, 'Current Month']
     Combined_6.at[3, 'Cumulative Monthly Change'] = Combined_6.at[3, 'Monthly Change']
     Combined_6.at[3, 'Cumulative Yearly Change'] = Combined_6.at[3, 'Yearly Change']
 

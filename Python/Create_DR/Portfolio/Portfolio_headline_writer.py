@@ -5,7 +5,6 @@ Created on Monday 03 February 2025, 11:21:36
 Author: Harry Simmons
 """
 
-import docx
 from docx.shared import Cm
 import sys
 import os

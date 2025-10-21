@@ -34,11 +34,11 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
 
     # Format the table for social remediation progress
     Social_remediation_table = pd.DataFrame({
-        'Remediation Stage': ['Remediation complete', 'Remediation complete – awaiting building control sign-off', 'Remediation started', 'Remediation works planned', 'Remediation plans unclear from survey', 'Total'],
+        'Remediation Stage': ['Remediation complete', 'Remediation complete – awaiting building control sign-off', 'Remediation started', 'Remediation works planned', 'Remediation plans unclear from survey', 'Formatted Total Percentage'],
         'Number': Social_1a_this_month['Total Number'],
-        'Percentage': Social_1a_this_month['Total'],
+        'Percentage': Social_1a_this_month['Formatted Total Percentage'],
         'Cumulative Number': Social_1a_this_month['Cumulative Number'],
-        'Cumulative Percentage': Social_1a_this_month['Cumulative']
+        'Cumulative Percentage': Social_1a_this_month['Formatted Cumulative Percentage']
     })
     
     Social_tables = {
@@ -50,11 +50,11 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_life_critical_total_change': Change_line_in_DR(Social_1a_this_month.iloc[5, 5] - Social_1a_last_month.iloc[5, 5]),
 
         'Social_started_no': format(Social_1a_this_month.loc[2, 'Cumulative Number'], ','),
-        'Social_started_pct': Social_1a_this_month.loc[2, 'Cumulative'],
+        'Social_started_pct': Social_1a_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Social_started_change': Change_line_in_DR(Social_1a_this_month.loc[2, 'Cumulative Number'] - Social_1a_last_month.loc[2, 'Cumulative Number']),
 
         'Social_completed_no': format(Social_1a_this_month.loc[1, 'Cumulative Number'], ','),
-        'Social_completed_pct': Social_1a_this_month.loc[1, 'Cumulative'],
+        'Social_completed_pct': Social_1a_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Social_completed_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),
     }
     
@@ -72,15 +72,15 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_crossover_total' : format(Social_misc.loc[2, 'Number']),
 
         'Social_started_no': format(Social_1a_this_month.loc[1, 'Cumulative Number'], ','),
-        'Social_started_pct': Social_1a_this_month.loc[2, 'Cumulative'],
+        'Social_started_pct': Social_1a_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Social_started_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),
 
         'Social_bc_signoff_no' : format(Social_1a_this_month.loc[0, 'Total Number'], ','),
-        'Social_bc_signoff_pct' : Social_1a_this_month.loc[0, 'Cumulative'],
+        'Social_bc_signoff_pct' : Social_1a_this_month.loc[0, 'Formatted Cumulative Percentage'],
         'Social_bc_signoff_change' : Change_line_in_DR(Social_1a_this_month.loc[1, 'Total Number'] - Social_1a_last_month.loc[1, 'Total Number']),
 
         'Social_completed_no': format(Social_1a_this_month.loc[1, 'Cumulative Number'], ','),
-        'Social_completed_pct': Social_1a_this_month.loc[1, 'Cumulative'],
+        'Social_completed_pct': Social_1a_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Social_completed_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),
 
         'Social_not_started_no' : format(Social_1a_this_month.loc[3, 'Total Number'] + Social_1a_this_month.loc[4, 'Total Number'], ','),
@@ -88,7 +88,7 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_not_started_change' : Change_line_in_DR((Social_1a_this_month.loc[3, 'Total Number'] + Social_1a_this_month.loc[4, 'Total Number']) - (Social_1a_last_month.loc[3, 'Total Number'] + Social_1a_last_month.loc[4, 'Total Number'])),
 
         'Social_plans_no' : format(Social_1a_this_month.loc[3, 'Total Number'], ','),
-        'Social_plans_pct' : Social_1a_this_month.loc[3, 'Total'],
+        'Social_plans_pct' : Social_1a_this_month.loc[3, 'Formatted Total Percentage'],
         'Social_plans_change' : Change_line_in_DR(Social_1a_this_month.loc[3, 'Total Number'] - Social_1a_last_month.loc[3, 'Total Number']),
 
         'Social_unique_no' : format(Social_misc.loc[3, 'Number'], ','),
@@ -103,15 +103,15 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_rp_identified_no' : format(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_this_month.loc[0, 'Total Number'], ','),
 
         'Social_rp_completes_no' : format(Social_1b_this_month.loc[1, 'Cumulative Number'], ','),
-        'Social_rp_completes_pct' : Social_1b_this_month.loc[1, 'Cumulative'],
+        'Social_rp_completes_pct' : Social_1b_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Social_rp_completes_change' : Change_line_in_DR(Social_1b_this_month.loc[1, 'Cumulative Number'] - Social_1b_last_quarter.loc[1, 'Cumulative Number']),
 
         'Social_rp_starts_no' : format(Social_1b_this_month.loc[2, 'Cumulative Number'], ','),
-        'Social_rp_starts_pct' : Social_1b_this_month.loc[2, 'Cumulative'],
+        'Social_rp_starts_pct' : Social_1b_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Social_rp_starts_change' : Change_line_in_DR(Social_1b_this_month.loc[2, 'Cumulative Number'] - Social_1b_last_quarter.loc[2, 'Cumulative Number']),
 
         'Social_rp_plans_no' : format(Social_1b_this_month.loc[3, 'Total Number'], ','),
-        'Social_rp_plans_pct' : Social_1b_this_month.loc[3, 'Total'],
+        'Social_rp_plans_pct' : Social_1b_this_month.loc[3, 'Formatted Total Percentage'],
         'Social_rp_plans_change' : Change_line_in_DR(Social_1b_this_month.loc[3, 'Total Number'] - Social_1b_last_quarter.loc[3, 'Total Number'])
     }
     return Social_tables, Social_headline_dict, Social_section_dict

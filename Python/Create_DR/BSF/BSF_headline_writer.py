@@ -5,21 +5,12 @@ Created on Monday 20 January 2025, 14:11:13
 Author: Harry Simmons
 """
 
-import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
 import sys
 import os
 
 # Add the Utility folder to sys.path
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
 sys.path.append(folder_path)
-
-from BSF.BSF_variables import BSF_variable_creator
-from Utility.functions import Change_line_in_DR, format_percentage, create_table
 
 def BSF_headline_writer(BSF_headline_dict, dates_variables, DR):
     cutoff = dates_variables['cutoff']
