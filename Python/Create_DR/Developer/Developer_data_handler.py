@@ -71,47 +71,59 @@ def Developer_retrieve_data_this_month(paths_variables):
     # Accessing the folder which stores the additional stats
     additional_tables_path = paths_variables['additional_tables_path']
 
-
     # Accessing Developer_1
     Developer_1 = pd.read_excel(MI_tables_path, sheet_name='Developer_1')
 
     # Transforming Developer_1a
     Developer_1a = chop_df(Developer_1, 3, 6)
     Developer_1a.rename(columns={Developer_1a.columns[2]: '11_18m Percentage', Developer_1a.columns[4]: '18m Percentage', Developer_1a.columns[-1]: 'Current Percentage', Developer_1a.columns[-2]: 'Current Number'}, inplace=True)
+
     Developer_1a['Cumulative Number'] = Developer_1a['Current Number'].cumsum()
     Developer_1a['Cumulative Percentage'] = Developer_1a['Current Percentage'].cumsum()
     Developer_1a['Cumulative 11_18m Percentage'] = Developer_1a['11_18m Percentage'].cumsum()
     Developer_1a['Cumulative 18m Percentage'] = Developer_1a['18m Percentage'].cumsum()
+
     Developer_1a.at[5, 'Cumulative Number'] = Developer_1a.at[5, 'Current Number']
-    Developer_1a['Current'] = Developer_1a['Current Percentage'].apply(format_percentage)
-    Developer_1a['Cumulative'] = Developer_1a['Cumulative Percentage'].apply(format_percentage)
+
+    #formatting for tables 
+    Developer_1a['Formatted Current Percentage'] = Developer_1a['Current Percentage'].apply(format_percentage)
+    Developer_1a['Formatted Cumulative Percentage'] = Developer_1a['Cumulative Percentage'].apply(format_percentage)
     Developer_1a['Cumulative 11_18m Percentage'] = Developer_1a['Cumulative 11_18m Percentage'].apply(format_percentage)
     Developer_1a['Cumulative 18m Percentage'] = Developer_1a['Cumulative 18m Percentage'].apply(format_percentage)
-    Developer_1a.at[5, 'Current'] = "100%"
-    Developer_1a.at[5, 'Cumulative'] = "100%"
-    Developer_1a.at[4, 'Cumulative'] = "100%"
+    Developer_1a.at[5, 'Formatted Current Percentage'] = "100%"
+    Developer_1a.at[5, 'Formatted Cumulative Percentage'] = "100%"
+    Developer_1a.at[4, 'Formatted Cumulative Percentage'] = "100%"
 
     # Transforming Developer_1b
     Developer_1b = chop_df(Developer_1, 12, 6)
     Developer_1b.rename(columns={Developer_1b.columns[-1]: 'Current Percentage', Developer_1b.columns[-2]: 'Current Number'}, inplace=True)
+
     Developer_1b['Cumulative Number'] = Developer_1b['Current Number'].cumsum()
     Developer_1b['Cumulative Percentage'] = Developer_1b['Current Percentage'].cumsum()
-    Developer_1b['Current'] = Developer_1b['Current Percentage'].apply(format_percentage)
-    Developer_1b['Cumulative'] = Developer_1b['Cumulative Percentage'].apply(format_percentage)
+
+    #formatting for tables
+    Developer_1b['Formatted Current Percentage'] = Developer_1b['Current Percentage'].apply(format_percentage)
+    Developer_1b['Formatted Cumulative Percentage'] = Developer_1b['Cumulative Percentage'].apply(format_percentage)
 
     # Transforming Developer_1c
     Developer_1c = chop_df(Developer_1, 21, 6)
     Developer_1c.rename(columns={Developer_1c.columns[-1]: 'Current Percentage', Developer_1c.columns[-2]: 'Current Number'}, inplace=True)
+
     Developer_1c['Cumulative Number'] = Developer_1c['Current Number'].cumsum()
     Developer_1c['Cumulative Percentage'] = Developer_1c['Current Percentage'].cumsum()
-    Developer_1c['Current'] = Developer_1c['Current Percentage'].apply(format_percentage)
-    Developer_1c['Cumulative'] = Developer_1c['Cumulative Percentage'].apply(format_percentage)
+
+    #formatting for tables
+    Developer_1c['Formatted Current Percentage'] = Developer_1c['Current Percentage'].apply(format_percentage)
+    Developer_1c['Formatted Cumulative Percentage'] = Developer_1c['Cumulative Percentage'].apply(format_percentage)
 
     # Transforming Developer_1d
     Developer_1d = chop_df(Developer_1, 30, 7)
     Developer_1d.rename(columns={ Developer_1d.columns[2]: 'Current Percentage', Developer_1d.columns[1]: 'Current Number'}, inplace=True)
+
     Developer_1d['Cumulative Number'] = Developer_1d['Current Number'].cumsum()
     Developer_1d['Cumulative Percentage'] = Developer_1d['Current Percentage'].cumsum()
+    
+    #formatting for tables
     Developer_1d['Current Percentage'] = Developer_1d['Current Percentage'].apply(format_percentage)
     Developer_1d['Cumulative Percentage'] = Developer_1d['Cumulative Percentage'].apply(format_percentage)
 

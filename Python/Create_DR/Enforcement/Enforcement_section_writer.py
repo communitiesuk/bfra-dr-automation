@@ -37,7 +37,8 @@ def Enforcement_section_writer(Enforcement_section_dict, dates_variables, DR):
     paragraph = DR.add_paragraph('Local authority enforcement action: key statistics', style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {Enforcement_cutoff}, enforcement action has been, or is being, taken under the Housing Act against {Enforcement_total} buildings over 11m with suspected unsafe cladding - {Enforcement_total_line} since the end of {last_month}. Of these, {Enforcement_JIT_building_total} buildings have had {Enforcement_JIT_inspection_total} inspections with Joint Inspection Team support – {Enforcement_JIT_inspection_total_line} inspections since the end of {last_month}.'
+    text = f'As at {Enforcement_cutoff}, enforcement action has been, or is being, taken under the Housing Act against {Enforcement_total} buildings over 11m with suspected unsafe cladding - {Enforcement_total_line} since the end of {last_month}.'
+    text += f'Of these, {Enforcement_JIT_building_total} buildings have had {Enforcement_JIT_inspection_total} inspections with Joint Inspection Team support – {Enforcement_JIT_inspection_total_line} inspections since the end of {last_month}.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -56,5 +57,6 @@ def Enforcement_section_writer(Enforcement_section_dict, dates_variables, DR):
     DR.add_paragraph('As several buildings have now had two or more inspections, from August 2024, only the most recent inspection’s category rating is reported on, as this is used to gauge the risks of the buildings in each Local Authority’s portfolio. Additional inspections are still reported as enforcement action.', style = 'Normal')
 
     # Paragraph
-    text = f'Of the {Enforcement_total} buildings, we are aware that at least {Enforcement_improvement_notices} improvement notices, {Enforcement_hazard_awareness_notices} hazard awareness notices and {Enforcement_prohibition_order} prohibition order have been served to date. Some buildings may have received multiple notices. We understand that {Enforcement_improvement_notice_appeals} of the improvement notices have been subject to appeals.'
+    text = f'Of the {Enforcement_total} buildings, we are aware that at least {Enforcement_improvement_notices} improvement notices, {Enforcement_hazard_awareness_notices} hazard awareness notices and {Enforcement_prohibition_order} prohibition order have been served to date.'
+    text += f'Some buildings may have received multiple notices. We understand that {Enforcement_improvement_notice_appeals} of the improvement notices have been subject to appeals.'
     DR.add_paragraph(text, style = 'Normal')

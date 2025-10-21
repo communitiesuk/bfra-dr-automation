@@ -29,39 +29,56 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     # Unpacking regular variables
     BSF_signoff_c_pct = BSF_section_dict['BSF_signoff_c_pct']
     BSF_started_c_pct = BSF_section_dict['BSF_started_c_pct']
+
     BSF_BSF_5_total = BSF_section_dict['BSF_BSF_5_total']
+
     BSF_CSS_transfers_this_month = BSF_section_dict['BSF_CSS_transfers_this_month']
     BSF_CSS_transfers_line = BSF_section_dict['BSF_CSS_transfers_line']
     BSF_CSS_transfers_not_started = BSF_section_dict['BSF_CSS_transfers_not_started']
+
     BSF_CSS_retained = BSF_section_dict['BSF_CSS_retained']
+
     BSF_ineligible = BSF_section_dict['BSF_ineligible']
     BSF_withdrawn = BSF_section_dict['BSF_withdrawn']
     BSF_developer_transfers = BSF_section_dict['BSF_developer_transfers']
     BSF_insufficient_evidence = BSF_section_dict['BSF_insufficient_evidence']
+
     BSF_BSF_1_total = BSF_section_dict['BSF_BSF_1_total']
+
     BSF_developer_reimbursed_word = BSF_section_dict['BSF_developer_reimbursed_word']
     BSF_developer_anticipated_word = BSF_section_dict['BSF_developer_anticipated_word']
     BSF_developer_reimbursed_pct = BSF_section_dict['BSF_developer_reimbursed_pct']
     BSF_developer_anticipated_pct = BSF_section_dict['BSF_developer_anticipated_pct']
+
     BSF_FRAEW = BSF_section_dict['BSF_FRAEW']
     BSF_CAN = BSF_section_dict['BSF_CAN']
+
     BSF_started_c_no = BSF_section_dict['BSF_started_c_no']
     BSF_started_c_line = BSF_section_dict['BSF_started_c_line']
+
     BSF_started_nc_no = BSF_section_dict['BSF_started_nc_no']
     BSF_started_nc_pct = BSF_section_dict['BSF_started_nc_pct']
+
     BSF_signoff_c_no = BSF_section_dict['BSF_signoff_c_no']
     BSF_signoff_c_line = BSF_section_dict['BSF_signoff_c_line']
+
     BSF_complete_nc_no = BSF_section_dict['BSF_complete_nc_no']
     BSF_complete_nc_pct = BSF_section_dict['BSF_complete_nc_pct']
+
     BSF_not_yet_started = BSF_section_dict['BSF_not_yet_started']
+
     BSF_plans_nc_no = BSF_section_dict['BSF_plans_nc_no']
     BSF_plans_nc_pct = BSF_section_dict['BSF_plans_nc_pct']
+
     BSF_intent_nc_no = BSF_section_dict['BSF_intent_nc_no']
     BSF_intent_nc_pct = BSF_section_dict['BSF_intent_nc_pct']
+
     BSF_dwellings = BSF_section_dict['BSF_dwellings']
-    BSF_figure12_eligable_change = BSF_section_dict['BSF_figure12_eligable_change']
-    BSF_figure12_started_c_change = BSF_section_dict['BSF_figure12_started_c_change']
-    BSF_figure12_completed_c_change = BSF_section_dict['BSF_figure12_completed_c_change']
+
+    BSF_fig_eligible_change = BSF_section_dict['BSF_fig_eligible_change']
+    BSF_fig_started_c_change = BSF_section_dict['BSF_fig_started_c_change']
+    BSF_fig_completed_c_change = BSF_section_dict['BSF_fig_completed_c_change']
+
     BSF_social_started_pct = BSF_section_dict['BSF_social_started_pct']
     BSF_private_started_pct = BSF_section_dict['BSF_private_started_pct']
     BSF_social_complete_pct = BSF_section_dict['BSF_social_complete_pct']
@@ -172,7 +189,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph('BSF remediation progress over time', style = 'Heading 3')
 
     # Figure Title
-    text = f'Figure {figure_count}: {BSF_figure12_started_c_change.capitalize()} buildings proceeding with an application for funding in the BSF have started or completed remediation since the end of {last_year_month}'
+    text = f'Figure {figure_count}: {BSF_fig_started_c_change.capitalize()} buildings proceeding with an application for funding in the BSF have started or completed remediation since the end of {last_year_month}'
     paragraph = DR.add_paragraph(style = 'Normal')
     run = paragraph.add_run(text)
     run.bold = True
@@ -187,11 +204,11 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Bullet Point
-    text = f'{BSF_figure12_eligable_change.capitalize()} eligible buildings are proceeding with an application for funding from the Building Safety Fund.'
+    text = f'{BSF_fig_eligible_change.capitalize()} eligible buildings are proceeding with an application for funding from the Building Safety Fund.'
     paragraph = DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet Point
-    text = f'{BSF_figure12_started_c_change.capitalize()} eligible buildings have started or completed remediation, and {BSF_figure12_completed_c_change} eligible buildings have completed remediation.'
+    text = f'{BSF_fig_started_c_change.capitalize()} eligible buildings have started or completed remediation, and {BSF_fig_completed_c_change} eligible buildings have completed remediation.'
     paragraph = DR.add_paragraph(text, style = 'List Bullet')
 
     # Heading

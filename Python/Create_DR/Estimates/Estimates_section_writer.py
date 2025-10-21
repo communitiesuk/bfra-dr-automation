@@ -34,7 +34,8 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     paragraph = DR.add_paragraph('Key statistics:', style = 'Heading 3')
 
     # Paragraph 
-    text = f'MHCLG’s best estimates, as of January 2025, are that there are between 5,900 and 9,000 residential buildings, containing dwellings, 11 metres and over in height that have or had unsafe cladding requiring work in England. This equates to an estimated 12-13% of the residential building stock, containing dwellings, over 11 metres in England.'
+    text = f'MHCLG’s best estimates, as of January 2025, are that there are between 5,900 and 9,000 residential buildings, containing dwellings, 11 metres and over in height that have or had unsafe cladding requiring work in England.'
+    text += 'This equates to an estimated 12-13% of the residential building stock, containing dwellings, over 11 metres in England.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph 
@@ -62,7 +63,8 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022. New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
+    text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022.'
+    text +='New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'Technical Note', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
     paragraph.add_run('.')
@@ -79,7 +81,8 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'18m+ hotels, student accommodation or public buildings identified with unsafe ACM cladding are included in the estimates in this section, because these buildings are remediated through the ACM programme, but are excluded from the Key Statistics section above because the buildings do not contain dwellings. At the time the estimate was made there were 98 of these buildings.'
+    text = f'18m+ hotels, student accommodation or public buildings identified with unsafe ACM cladding are included in the estimates in this section, because these buildings are remediated through the ACM programme, but are excluded from the Key Statistics section above because the buildings do not contain dwellings.'
+    text += 'At the time the estimate was made there were 98 of these buildings.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -125,7 +128,8 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
     create_table(DR, table_data, table_widths, table_heights)
 
     # Paragraph 
-    text = f'As at the end of {this_month}, MHCLG is monitoring the remediation progress of an estimated {Estimates_11m_proportion_of_high_estimate}-{Estimates_11m_proportion_of_low_estimate} of residential buildings with unsafe cladding expected to be remediated or mitigated in the department’s remediation programmes. More information on the remediation progress of buildings MHCLG are currently monitoring can be found in the '
+    text = f'As at the end of {this_month}, MHCLG is monitoring the remediation progress of an estimated {Estimates_11m_proportion_of_high_estimate}-{Estimates_11m_proportion_of_low_estimate} of residential buildings with unsafe cladding expected to be remediated or mitigated in the department’s remediation programmes.'
+    text += 'More information on the remediation progress of buildings MHCLG are currently monitoring can be found in the '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'Overall Remediation section', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}/building-safety-remediation-monthly-data-release-{hyperlink_month}#overall-remediation-progress')                 
     paragraph.add_run(' of the data release.')

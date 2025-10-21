@@ -124,7 +124,8 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph('Social Housing remediation: Key statistics', style = 'Heading 3')
 
     # Paragraph
-    text = 'The estimates in this section are based on a combination of self-reported data submitted by registered providers and information that has been imputed from Building Safety Fund (BSF), Cladding Safety Scheme, ACM programme data and data submitted by developers under the Developer Remediation Contract. A building is identified with life-critical fire safety defects if the registered provider has self-reported cladding defects, the building is eligible for funding in the BSF, CSS or is being monitored under the ACM programme, or the building is reported by developers with cladding defects in their latest quarterly data report.'
+    text = 'The estimates in this section are based on a combination of self-reported data submitted by registered providers and information that has been imputed from Building Safety Fund (BSF), Cladding Safety Scheme, ACM programme data and data submitted by developers under the Developer Remediation Contract.'
+    text += 'A building is identified with life-critical fire safety defects if the registered provider has self-reported cladding defects, the building is eligible for funding in the BSF, CSS or is being monitored under the ACM programme, or the building is reported by developers with cladding defects in their latest quarterly data report.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -136,7 +137,8 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Social_recent_assessment_total} were reported by Registered Providers to have unsafe cladding at the time of their most recent assessment. This could include buildings whose remediation work has been completed but await building control sign off and those awaiting a subsequent assessment to confirm no outstanding life-critical fire-safety defects. Additional information on these buildings is available in the accompanying management information tables, social housing provider release document and the Regulator for Social Housing’s publication on Fire safety remediation in social housing in England.'
+    text = f'{Social_recent_assessment_total} were reported by Registered Providers to have unsafe cladding at the time of their most recent assessment. This could include buildings whose remediation work has been completed but await building control sign off and those awaiting a subsequent assessment to confirm no outstanding life-critical fire-safety defects.'
+    text += 'Additional information on these buildings is available in the accompanying management information tables, social housing provider release document and the Regulator for Social Housing’s publication on Fire safety remediation in social housing in England.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -215,7 +217,8 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet Point
-    text = f'{Social_rp_starts_no} buildings ({Social_rp_starts_pct}) are reported to have started or completed remediation – {Social_rp_starts_change} since reported in the {Social_previous_release} Social Housing Remediation data release. [INSERT STAT HERE] buildings are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings) or have cladding defects ([INSERT STAT HERE]).'
+    text = f'{Social_rp_starts_no} buildings ({Social_rp_starts_pct}) are reported to have started or completed remediation – {Social_rp_starts_change} since reported in the {Social_previous_release} Social Housing Remediation data release.'
+    text += f'[INSERT STAT HERE] buildings are reported to have started or completed remediation, when they previously were not reported to have started remediation ([INSERT STAT HERE] buildings) or have cladding defects ([INSERT STAT HERE]).'
     text += f'The status of [INSERT STAT HERE] buildings changed from having started or completed remediation to not having cladding defects or no longer being reported in the survey ([INSERT STAT HERE] buildings), or to not having started remediation ([INSERT STAT HERE] buildings).'
     DR.add_paragraph(text, style = 'List Bullet')
 

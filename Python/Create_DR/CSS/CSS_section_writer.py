@@ -11,7 +11,7 @@ import sys
 import os
 
 # Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
+folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility')) 
 sys.path.append(folder_path)
 
 from Utility.functions import create_table
@@ -29,26 +29,36 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     CSS_total_total = CSS_section_dict['CSS_total_total']
     CSS_pre_eligible = CSS_section_dict['CSS_pre_eligible']
     CSS_eligible_total = CSS_section_dict['CSS_eligible_total']
+
     CSS_started_c_no = CSS_section_dict['CSS_started_c_no']
     CSS_started_c_pct = CSS_section_dict['CSS_started_c_pct']
+
     CSS_completed_c_no = CSS_section_dict['CSS_completed_c_no']
     CSS_completed_c_pct = CSS_section_dict['CSS_completed_c_pct']
+
     CSS_pre_eligible_total = CSS_section_dict['CSS_pre_eligible_total']
     CSS_pre_application = CSS_section_dict['CSS_pre_application']
     CSS_eligible_total_line = CSS_section_dict['CSS_eligible_total_line']
+
     CSS_BSF_transfer = CSS_section_dict['CSS_BSF_transfer']
     CSS_BSF_transfer_line = CSS_section_dict['CSS_BSF_transfer_line']
+
     CSS_GFA = CSS_section_dict['CSS_GFA']
     CSS_GFA_pct = CSS_section_dict['CSS_GFA_pct']
     CSS_GFA_line = CSS_section_dict['CSS_GFA_line']
+
     CSS_PTSP = CSS_section_dict['CSS_PTSP']
     CSS_PTSP_pct = CSS_section_dict['CSS_PTSP_pct']
     CSS_PTSP_line = CSS_section_dict['CSS_PTSP_line']
+
     CSS_started_c_line = CSS_section_dict['CSS_started_c_line']
     CSS_completed_c_line = CSS_section_dict['CSS_completed_c_line']
+
     CSS_northern_ireland = CSS_section_dict['CSS_northern_ireland']
+
     CSS_18m_c_pct = CSS_section_dict['CSS_18m_c_pct']
     CSS_11_18m_c_pct = CSS_section_dict['CSS_11_18m_c_pct']
+    
     CSS_social_c_pct = CSS_section_dict['CSS_social_c_pct']
     CSS_private_c_pct = CSS_section_dict['CSS_private_c_pct']
 
@@ -61,7 +71,8 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: There are {CSS_total_total} buildings at different stages of the Cladding Safety Scheme, including {CSS_pre_eligible} buildings with live applications and {CSS_eligible_total} eligible buildings, of which {CSS_started_c_no} buildings have started or completed works, with {CSS_completed_c_no} having completed works.'
+    text = f'Figure {figure_count}: There are {CSS_total_total} buildings at different stages of the Cladding Safety Scheme, including {CSS_pre_eligible} buildings with live applications and {CSS_eligible_total} eligible buildings,'
+    text += f'of which {CSS_started_c_no} buildings have started or completed works, with {CSS_completed_c_no} having completed works.'
     run = paragraph.add_run(text)
     run.bold = True
     
@@ -98,11 +109,13 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'There are {CSS_eligible_total} eligible buildings as at the end of {this_month}, {CSS_eligible_total_line} since the end of {last_month}. {CSS_BSF_transfer_line.capitalize()} of the newly eligible buildings this month have been transferred from the BSF. In total, {CSS_BSF_transfer} of the eligible buildings in the CSS have been transferred from the BSF.'
+    text = f'There are {CSS_eligible_total} eligible buildings as at the end of {this_month}, {CSS_eligible_total_line} since the end of {last_month}.'
+    text += f'{CSS_BSF_transfer_line.capitalize()} of the newly eligible buildings this month have been transferred from the BSF. In total, {CSS_BSF_transfer} of the eligible buildings in the CSS have been transferred from the BSF.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'The number of eligible CSS buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of buildings that have transferred from the BSF to the CSS in the BSF section of the data release. This is because different programmes may define buildings differently due to how they operate. One building has also withdrawn from the CSS since transferring from the BSF.'
+    text = f'The number of eligible CSS buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of buildings that have transferred from the BSF to the CSS in the BSF section of the data release.'
+    text += f'This is because different programmes may define buildings differently due to how they operate. One building has also withdrawn from the CSS since transferring from the BSF.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph

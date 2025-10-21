@@ -148,7 +148,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     paragraph = DR.add_paragraph('Developer-Led Remediation', style = 'Heading 2')
 
     # Paragraph
-    text = f'Information in this section received by developers is correct as at {Developer_cutoff}{Developer_data_change_line}. Information in this section received from other programmes that relate to developer-led remediation (where cladding remediation is being carried out in a government funded remediation programme and the developer will subsequently pay for the works) is correct as at {cutoff}.'
+    text = f'Information in this section received by developers is correct as at {Developer_cutoff}{Developer_data_change_line}.'
+    text +f'Information in this section received from other programmes that relate to developer-led remediation (where cladding remediation is being carried out in a government funded remediation programme and the developer will subsequently pay for the works) is correct as at {cutoff}.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -210,7 +211,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'As at {cutoff}, {Developer_number_of} developers have signed the developer remediation contract. There are {Developer_responsibility_total} buildings covered by the developer remediation contract. Of these, {Developer_life_critical_total} have been identified as having life-critical fire safety defects that developers are obligated to remediate or pay to remediate – {Developer_life_critical_total_line} since the {last_month} data release.'
+    text = f'As at {cutoff}, {Developer_number_of} developers have signed the developer remediation contract. There are {Developer_responsibility_total} buildings covered by the developer remediation contract.'
+    text += f'Of these, {Developer_life_critical_total} have been identified as having life-critical fire safety defects that developers are obligated to remediate or pay to remediate – {Developer_life_critical_total_line} since the {last_month} data release.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -218,7 +220,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation – {Developer_signoff_line} since the {last_month} data release. Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
+    text = f'{Developer_signoff_c_no} ({Developer_signoff_c_pct}) are reported to have completed remediation – {Developer_signoff_line} since the {last_month} data release.'
+    text += f'Of the {Developer_signoff_c_no} buildings that are reported to have completed remediation, {Developer_complete_c_no} buildings ({Developer_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -261,7 +264,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_BSF_transfer_signoff_c_no} ({Developer_BSF_transfer_signoff_c_pct}) have completed remediation - {Developer_BSF_transfer_signoff_line} since the {last_month} data release. Of these {Developer_BSF_transfer_signoff_c_no}, {Developer_BSF_transfer_complete_c_no} buildings ({Developer_BSF_transfer_complete_c_pct} of all buildings) are reported to have received building control sign-off.'
+    text = f'{Developer_BSF_transfer_signoff_c_no} ({Developer_BSF_transfer_signoff_c_pct}) have completed remediation - {Developer_BSF_transfer_signoff_line} since the {last_month} data release.'
+    text+= f'Of these {Developer_BSF_transfer_signoff_c_no}, {Developer_BSF_transfer_complete_c_no} buildings ({Developer_BSF_transfer_complete_c_pct} of all buildings) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -281,7 +285,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'The {Developer_BSF_transfer_total} buildings in the developer remediation contract differs from the {BSF_developer_transfers} reported in the Building Safety Fund section of the data release, due to developers defining buildings differently to in the Building Safety Fund. The same building structures are included in both sections of the release.'
+    text = f'The {Developer_BSF_transfer_total} buildings in the developer remediation contract differs from the {BSF_developer_transfers} reported in the Building Safety Fund section of the data release, due to developers defining buildings differently to in the Building Safety Fund.'
+    text = 'The same building structures are included in both sections of the release.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Heading
@@ -310,11 +315,13 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'Some remediation being undertaken by developers on buildings with life-critical fire safety risks relate to non-cladding defects. When excluding buildings reported to have only non-cladding defects, there are {Developer_cladding_defects_total} buildings which developers have reported as having unsafe cladding – {Developer_cladding_defects_total_line} since the {last_month} data release. Of these:'
+    text = f'Some remediation being undertaken by developers on buildings with life-critical fire safety risks relate to non-cladding defects.' 
+    text += f'When excluding buildings reported to have only non-cladding defects, there are {Developer_cladding_defects_total} buildings which developers have reported as having unsafe cladding – {Developer_cladding_defects_total_line} since the {last_month} data release. Of these:'
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_cladding_defects_signoff_c_no} ({Developer_cladding_defects_signoff_c_pct}) are reported to have completed remediation– {Developer_cladding_defects_signoff_line} since the {last_month} data release. Of the {Developer_cladding_defects_signoff_c_no} buildings that are reported to have completed remediation, {Developer_cladding_defects_complete_c_no} buildings ({Developer_cladding_defects_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
+    text = f'{Developer_cladding_defects_signoff_c_no} ({Developer_cladding_defects_signoff_c_pct}) are reported to have completed remediation– {Developer_cladding_defects_signoff_line} since the {last_month} data release.'
+    text += f'Of the {Developer_cladding_defects_signoff_c_no} buildings that are reported to have completed remediation, {Developer_cladding_defects_complete_c_no} buildings ({Developer_cladding_defects_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -336,10 +343,12 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     paragraph = DR.add_paragraph('Self-reported information', style = 'Heading 3')
 
     # Paragraph 
-    DR.add_paragraph('The figures reported for developers above combine information received directly from developers as well as information held by the department from other programmes which relate to remediation. This is to help better estimate a figure for buildings requiring remediation under the developer remediation contract. The figures reported above will also include buildings which are being remediated solely under a government remediation scheme, for which the developer will reimburse taxpayers.', style = 'Normal')
+    DR.add_paragraph('The figures reported for developers above combine information received directly from developers as well as information held by the department from other programmes which relate to remediation. \
+                    This is to help better estimate a figure for buildings requiring remediation under the developer remediation contract. The figures reported above will also include buildings which are being remediated solely under a government remediation scheme, for which the developer will reimburse taxpayers.', style = 'Normal')
 
     # Paragraph
-    text = f'The estimates in this section report on buildings which have been self-reported by developers as requiring remediation to life-critical fire safety risks. Furthermore, this section reports on buildings which are being remediated by the developer directly, rather than being remediated through a government fund and being reimbursed to taxpayers. However, some buildings being remediated under a government remediation programme will be included if other relevant fire safety defects have been found, which were not eligible for a government remediation programme and which the developer is remediating themselves. Developers have self-reported that {Developer_self_reported_total} buildings require life-critical fire safety remediation, which will be directly remediated by the developer, {Developer_self_reported_total_line} since the {last_month} data release.'
+    text = f'The estimates in this section report on buildings which have been self-reported by developers as requiring remediation to life-critical fire safety risks. Furthermore, this section reports on buildings which are being remediated by the developer directly, rather than being remediated through a government fund and being reimbursed to taxpayers.'
+    text += f'However, some buildings being remediated under a government remediation programme will be included if other relevant fire safety defects have been found, which were not eligible for a government remediation programme and which the developer is remediating themselves. Developers have self-reported that {Developer_self_reported_total} buildings require life-critical fire safety remediation, which will be directly remediated by the developer, {Developer_self_reported_total_line} since the {last_month} data release.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -347,7 +356,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{Developer_self_reported_signoff_c_no} buildings ({Developer_self_reported_signoff_c_pct}) have completed remediation, {Developer_self_reported_signoff_line} since the {last_month} data release. Of these, {Developer_self_reported_complete_c_no} buildings ({Developer_self_reported_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
+    text = f'{Developer_self_reported_signoff_c_no} buildings ({Developer_self_reported_signoff_c_pct}) have completed remediation, {Developer_self_reported_signoff_line} since the {last_month} data release.'
+    text += f'Of these, {Developer_self_reported_complete_c_no} buildings ({Developer_self_reported_complete_c_pct} of all buildings with defects) are reported to have received building control sign-off.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
@@ -371,7 +381,8 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     paragraph.add_run(', which was published alongside the department Remediation Acceleration Plan (RAP).')
 
     #Paragraph
-    text = 'Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site. This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].'
+    text = 'Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site.'
+    text += 'This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].'
     DR.add_paragraph(text, style = 'Normal')
 
 
