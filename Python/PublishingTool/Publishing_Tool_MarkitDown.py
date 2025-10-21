@@ -4,10 +4,10 @@ Created on Wednesday 24 September 2025, 09:21:26
 
 Author: Matthew Bandura
 """
-
 from markitdown import MarkItDown
 import re
 from functions import create_paths
+
 
 md = MarkItDown()
 paths_variables = create_paths()
@@ -49,3 +49,4 @@ def word_to_markdown(docx_path, md_path):
     print('Conversion complete!')
     
 word_to_markdown(docx_path, md_path)
+
