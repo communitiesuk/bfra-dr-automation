@@ -42,7 +42,7 @@ def word_to_markdown(docx_path, md_path):
     md_text = re.sub(pattern, 
                      replace_figure,
                      md_text)
-
+    
     #save processed version
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(md_text)

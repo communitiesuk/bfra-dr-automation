@@ -382,7 +382,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
 
     #Paragraph
     text = 'Additionally, alongside the Building Safety Remediation Data Release, MHCLG publishes a ‘developer progress chart’ which allows you to compare the progress developers have made on determining whether works are required on buildings they are responsible for, as well as progress being made on buildings requiring works that have started on site.'
-    text += 'This chart represents the self-reported information shown above and is published in the accompanying dashboard [INSERT LINK].'
+    text += 'This chart represents the self-reported information shown above and is published in the [accompanying dashboard](DASHBOARD LINK).'
     DR.add_paragraph(text, style = 'Normal')
 
 
