@@ -17,7 +17,6 @@ def DR_end(DR, dates_variables):
     # Paragraph
     paragraph = DR.add_paragraph('An additional [interactive dashboard](DASHBOARD LINK) showing the information in this release is available.', style = 'Normal')
 
-
     # Section Title 
     paragraph = DR.add_paragraph('Accompanying tables', style = 'Heading 2')
 
