@@ -5,6 +5,7 @@ Created on Monday 16 December 2024, 14:58:44
 Author: Harry Simmons
 """
 
+import re
 import inflect
 import os
 from docx.oxml.ns import qn

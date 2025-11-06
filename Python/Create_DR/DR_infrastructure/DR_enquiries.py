@@ -6,11 +6,6 @@ Author: Harry Simmons
 """
 
 from docx.enum.text import WD_COLOR_INDEX
-import sys
-import os
-
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 def DR_enquiries(dates_variables, DR):
     # Unpack date variables
