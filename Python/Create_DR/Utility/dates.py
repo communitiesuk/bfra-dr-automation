@@ -126,7 +126,8 @@ def extract_month_year(sheet_name, file_path):
         return {
             "last_day": last_day,
             "year": year,
-            "month": month }
+            "month": month,
+            "month_word" : month_word }
     else:
         return {
             f'{sheet_prefix}_last_day' : last_day,
@@ -143,10 +144,9 @@ def sort_dates():
     cover = pd.read_excel(MI_tables_path, sheet_name='Cover')
     publishing_cell_0 = cover.iloc[5,0]
     publishing_cell_1 = cover.iloc[6,0]
-
     # extract the current DR month and year
     cover_info = extract_month_year('Cover', MI_tables_path)
-    month, year, last_day = cover_info['month'], cover_info['year'], cover_info['last_day']
+    month, month_word, year, last_day = cover_info['month'], cover_info['month_word'], cover_info['year'], cover_info['last_day']
     
     # this is the info related to the developer section of the DR
     dev_info = extract_month_year('Developer_3', MI_tables_path)
@@ -189,6 +189,7 @@ def sort_dates():
     # Dictionary of variables for easy transport
     dates_variables = {
         'month': month,
+        'month_word' : month_word,
         'year': year,
         'cutoff': cutoff,
         'last_month': last_month,
