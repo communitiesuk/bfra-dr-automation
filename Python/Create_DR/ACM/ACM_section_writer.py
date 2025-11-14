@@ -126,7 +126,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point
-    text = f'{ACM_signoff_c_no} buildings ({ACM_signoff_c_pct} of all buildings) have completed ACM remediation – {ACM_signoff_line} since the end of {last_month}.'
+    text = f'{ACM_signoff_c_no} buildings ({ACM_signoff_c_pct} of all buildings) have completed ACM remediation – {ACM_signoff_line} since the end of {last_month}. '
     text += f'Of these, {ACM_complete_c_no} buildings ({ACM_complete_c_pct} of all buildings) have received building control sign off – {ACM_complete_line} since the end of {last_month}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
@@ -136,7 +136,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph 
-    text = f'There are an estimated {ACM_completed_dwellings_low}-{ACM_completed_dwellings_high} dwellings in private and social sector buildings that have completed remediation,'
+    text = f'There are an estimated {ACM_completed_dwellings_low}-{ACM_completed_dwellings_high} dwellings in private and social sector buildings that have completed remediation, '
     text += f'and a further {ACM_yet_to_dwellings_low}-{ACM_yet_to_dwellings_high} dwellings in occupied private and social sector buildings that have yet to be remediated.'
     DR.add_paragraph(text, style = 'Normal')
 
@@ -193,8 +193,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
 
 
     # Paragraph
-    DR.add_paragraph('These forecast estimates are based on information provided by building owners and agents and may change as further information is received. These estimates can also change as a result of buildings being newly identified.  \
-                      The department continues to engage with building owners to start remediation works on site as soon as possible, and will continue to support local authorities and fire and rescue services in the use of their enforcement powers.', style = 'Normal')
+    DR.add_paragraph('These forecast estimates are based on information provided by building owners and agents and may change as further information is received. These estimates can also change as a result of buildings being newly identified. The department continues to engage with building owners to start remediation works on site as soon as possible, and will continue to support local authorities and fire and rescue services in the use of their enforcement powers.', style = 'Normal')
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
