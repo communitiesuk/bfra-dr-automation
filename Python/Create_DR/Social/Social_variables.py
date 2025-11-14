@@ -88,7 +88,7 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_11m_starts_pct' : Social_1a_this_month.loc[2, 'Cumulative 11_18m Percentage'],
 
         'Social_rp_total' : format(Social_1b_this_month.loc[5, 'Total Number'], ','),
-        'Social_rp_change' : Change_line_in_DR(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_last_month.loc[5, 'Total Number']),
+        'Social_rp_change' : Change_line_in_DR(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_last_quarter.loc[5, 'Total Number']),
 
         'Social_rp_prior_completes_no' : format(Social_1b_this_month.loc[0, 'Total Number'], ','),
         'Social_rp_identified_no' : format(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_this_month.loc[0, 'Total Number'], ','),
