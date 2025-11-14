@@ -96,6 +96,7 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
 
 
   # Overall
+  non_accessible_figure_count = create_11m_RAP_estimates(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
   non_accessible_figure_count = create_Overall_Remediation_over_time2(0, non_accessible_figure_count, non_accessible_colour_scheme, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
   non_accessible_figure_count = create_Overall_Remediation2_Curly(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict)
   non_accessible_figure_count = create_Overall_Remediation_Across_Schemes(0, non_accessible_figure_count, non_accessible_colour_scheme, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
@@ -133,13 +134,13 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
 
   # RAP
   #non_accessible_figure_count = create_18m_RAP_estimates(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
-  non_accessible_figure_count = create_11m_RAP_estimates(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
 
   ##########
   # ACCESSIBLE
   ##########
 
   # Overall
+  accessible_figure_count = create_11m_RAP_estimates(1, accessible_figure_count, accessible_colour_scheme, accessible_grey, accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
   accessible_figure_count = create_Overall_Remediation_over_time2(1, accessible_figure_count, accessible_colour_scheme, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
   accessible_figure_count = create_Overall_Remediation2_Curly(1, accessible_figure_count, accessible_colour_scheme, accessible_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict)
   accessible_figure_count = create_Overall_Remediation_Across_Schemes(1, accessible_figure_count, accessible_colour_scheme, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
@@ -173,7 +174,6 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
   
   # RAP
   #accessible_figure_count = create_18m_RAP_estimates(1, accessible_figure_count, accessible_colour_scheme, accessible_grey, accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
-  accessible_figure_count = create_11m_RAP_estimates(1, accessible_figure_count, accessible_colour_scheme, accessible_grey, accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
 
   # Social
   accessible_figure_count = create_SocialHousing_Remediation3_Curly(1, accessible_figure_count, accessible_colour_scheme, accessible_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict)

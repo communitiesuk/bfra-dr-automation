@@ -123,7 +123,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring.'
+    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring. '
     text += f'Of these an estimated {Portfolio_completed_dwellings} dwellings are in buildings that have completed remediation, and an estimated {Portfolio_started_dwellings} additional dwellings are in buildings that have started remediation. An estimated {Portfolio_in_programme_dwellings} dwellings are in buildings that have not started remediation.'
     DR.add_paragraph(text, style = 'Normal')
 
