@@ -6,15 +6,6 @@ Author: Matthew Bandura
 """
 
 import pandas as pd
-import sys
-import os
-
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
 
 from Utility.functions import Change_line_in_DR, format_percentage
 
@@ -71,9 +62,9 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
 
         'Social_crossover_total' : format(Social_misc.loc[2, 'Number']),
 
-        'Social_started_no': format(Social_1a_this_month.loc[1, 'Cumulative Number'], ','),
+        'Social_started_no': format(Social_1a_this_month.loc[2, 'Cumulative Number'], ','),
         'Social_started_pct': Social_1a_this_month.loc[2, 'Formatted Cumulative Percentage'],
-        'Social_started_change': Change_line_in_DR(Social_1a_this_month.loc[1, 'Cumulative Number'] - Social_1a_last_month.loc[1, 'Cumulative Number']),
+        'Social_started_change': Change_line_in_DR(Social_1a_this_month.loc[2, 'Cumulative Number'] - Social_1a_last_month.loc[2, 'Cumulative Number']),
 
         'Social_bc_signoff_no' : format(Social_1a_this_month.loc[0, 'Total Number'], ','),
         'Social_bc_signoff_pct' : Social_1a_this_month.loc[0, 'Formatted Cumulative Percentage'],
@@ -97,7 +88,7 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
         'Social_11m_starts_pct' : Social_1a_this_month.loc[2, 'Cumulative 11_18m Percentage'],
 
         'Social_rp_total' : format(Social_1b_this_month.loc[5, 'Total Number'], ','),
-        'Social_rp_change' : Change_line_in_DR(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_last_month.loc[5, 'Total Number']),
+        'Social_rp_change' : Change_line_in_DR(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_last_quarter.loc[5, 'Total Number']),
 
         'Social_rp_prior_completes_no' : format(Social_1b_this_month.loc[0, 'Total Number'], ','),
         'Social_rp_identified_no' : format(Social_1b_this_month.loc[5, 'Total Number'] - Social_1b_this_month.loc[0, 'Total Number'], ','),

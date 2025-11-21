@@ -30,10 +30,11 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
     Portfolio_started_c_pct = Portfolio_headline_dict['Portfolio_started_c_pct']
     Portfolio_completed_c_no = Portfolio_headline_dict['Portfolio_completed_c_no']
     Portfolio_completed_c_pct = Portfolio_headline_dict['Portfolio_completed_c_pct']
+    Estimates_11m_remaining_low = Portfolio_headline_dict['Estimates_11m_remaining_low']
+    Estimates_11m_remaining_high = Portfolio_headline_dict['Estimates_11m_remaining_high']
 
     Estimates_11m_proportion_of_low_estimate = Estimates_headline_dict['Estimates_11m_proportion_of_low_estimate']
     Estimates_11m_proportion_of_high_estimate = Estimates_headline_dict['Estimates_11m_proportion_of_high_estimate']
-
 
 
     # Headline Title
@@ -51,6 +52,16 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
     # Paragraph
     text = f'Overall, {Portfolio_started_c_no} buildings ({Portfolio_started_c_pct}) have either started or completed remediation works. Of these, {Portfolio_completed_c_no} buildings ({Portfolio_completed_c_pct}) have completed remediation works.'
     DR.add_paragraph(text, style = 'Normal')
+
+    # Figure Title
+    paragraph = DR.add_paragraph(style = 'Normal')
+    text = f'Figure {figure_count}: {Portfolio_total} 11m+ buildings have been identified with unsafe cladding, and there are an estimated {Estimates_11m_remaining_low}-{Estimates_11m_remaining_high} 11m+ buildings expected to be remediated as part of MHCLG\'s remediation programmes yet to identify.'
+    run = paragraph.add_run(text)
+    run.bold = True
+  
+    # Figure
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
+    figure_count += 1
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')

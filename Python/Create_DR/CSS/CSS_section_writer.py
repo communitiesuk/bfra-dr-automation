@@ -71,7 +71,7 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: There are {CSS_total_total} buildings at different stages of the Cladding Safety Scheme, including {CSS_pre_eligible} buildings with live applications and {CSS_eligible_total} eligible buildings,'
+    text = f'Figure {figure_count}: There are {CSS_total_total} buildings at different stages of the Cladding Safety Scheme, including {CSS_pre_eligible} buildings with live applications and {CSS_eligible_total} eligible buildings, '
     text += f'of which {CSS_started_c_no} buildings have started or completed works, with {CSS_completed_c_no} having completed works.'
     run = paragraph.add_run(text)
     run.bold = True
@@ -109,12 +109,12 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'There are {CSS_eligible_total} eligible buildings as at the end of {this_month}, {CSS_eligible_total_line} since the end of {last_month}.'
+    text = f'There are {CSS_eligible_total} eligible buildings as at the end of {this_month}, {CSS_eligible_total_line} since the end of {last_month}. '
     text += f'{CSS_BSF_transfer_line.capitalize()} of the newly eligible buildings this month have been transferred from the BSF. In total, {CSS_BSF_transfer} of the eligible buildings in the CSS have been transferred from the BSF.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'The number of eligible CSS buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of buildings that have transferred from the BSF to the CSS in the BSF section of the data release.'
+    text = f'The number of eligible CSS buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of buildings that have transferred from the BSF to the CSS in the BSF section of the data release. '
     text += f'This is because different programmes may define buildings differently due to how they operate. One building has also withdrawn from the CSS since transferring from the BSF.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 

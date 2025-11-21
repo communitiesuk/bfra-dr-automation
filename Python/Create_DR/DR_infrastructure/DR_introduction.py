@@ -5,13 +5,6 @@ Created on Thursday 13 March 2025, 10:05:24
 Author: Harry Simmons
 """
 
-import sys
-import os
-
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
-
-
 def DR_introduction(DR, figure_count):
     # Section Title 
     paragraph = DR.add_paragraph('Introduction', style = 'Heading 2')

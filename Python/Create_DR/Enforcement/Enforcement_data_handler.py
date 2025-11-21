@@ -4,21 +4,8 @@ Created on Tuesday 04 March 2025, 08:43:30
 
 Author: Harry Simmons
 """
-#test for jamie
-
 import pandas as pd
-import sys
-import os
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
-
-
-# Now you can import your functions
 from Utility.functions import chop_df
 
 def Enforcement_retrieve_data(paths_variables):

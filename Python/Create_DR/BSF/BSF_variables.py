@@ -66,17 +66,17 @@ def BSF_variable_creator (BSF_handled_data):
         'BSF_ineligible': format(BSF_reg_status.loc[3, 'Current Month'], ','),
         'BSF_withdrawn': format(BSF_reg_status.loc[4, 'Current Month'], ','),
 
-        'BSF_developer_transfers': format(BSF_reg_status.loc[5, 'Current Month'], ','),
-        'BSF_insufficient_evidence': format(BSF_reg_status.loc[6, 'Current Month'] + BSF_reg_status.loc[7, 'Current Month'], ','),
-        'BSF_BSF_1_total': format(BSF_reg_status.loc[0, 'Current Month'] - BSF_reg_status.loc[8, 'Current Month'], ','),
+        'BSF_developer_transfers': format(BSF_misc.loc[0, 'Number'], ','),
+        'BSF_insufficient_evidence': format(BSF_reg_status.loc[5, 'Current Month'] + BSF_reg_status.loc[6, 'Current Month'], ','),
+        'BSF_BSF_1_total': format(BSF_reg_status.loc[0, 'Current Month'] - BSF_reg_status.loc[7, 'Current Month'], ','),
 
-        'BSF_developer_reimbursed_word': convert_number(BSF_misc.loc[0, 'Number']),
-        'BSF_developer_anticipated_word': convert_number(BSF_misc.loc[1, 'Number']),
-        'BSF_developer_reimbursed_pct': format_percentage(BSF_misc.loc[0, 'Number'] / BSF_5.loc[5, 'Current Month']),
-        'BSF_developer_anticipated_pct': format_percentage(BSF_misc.loc[1, 'Number'] / BSF_5.loc[5, 'Current Month']),
+        'BSF_developer_reimbursed_word': convert_number(BSF_misc.loc[1, 'Number']),
+        'BSF_developer_anticipated_word': convert_number(BSF_misc.loc[2, 'Number']),
+        'BSF_developer_reimbursed_pct': format_percentage(BSF_misc.loc[1, 'Number'] / BSF_5.loc[5, 'Current Month']),
+        'BSF_developer_anticipated_pct': format_percentage(BSF_misc.loc[2, 'Number'] / BSF_5.loc[5, 'Current Month']),
 
-        'BSF_FRAEW': BSF_misc.loc[3, 'Number'],
-        'BSF_CAN': BSF_misc.loc[4, 'Number'],
+        'BSF_FRAEW': BSF_misc.loc[4, 'Number'],
+        'BSF_CAN': BSF_misc.loc[5, 'Number'],
 
         'BSF_started_c_no': BSF_5.loc[2, 'Formatted Cumulative Number'],
         'BSF_started_c_line': Change_line_in_DR(BSF_5.loc[2, 'Cumulative Monthly Change']),
