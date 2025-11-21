@@ -14,11 +14,9 @@ folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Rep
 sys.path.append(folder_path)
 
 from Utility.functions import create_table
-import Utility.docx_svg_patch
 
 def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking date variables
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
     placeholder_path = paths_variables['placeholder_path']
     
     cutoff = dates_variables['cutoff']
@@ -123,7 +121,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring.'
+    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring. '
     text += f'Of these an estimated {Portfolio_completed_dwellings} dwellings are in buildings that have completed remediation, and an estimated {Portfolio_started_dwellings} additional dwellings are in buildings that have started remediation. An estimated {Portfolio_in_programme_dwellings} dwellings are in buildings that have not started remediation.'
     DR.add_paragraph(text, style = 'Normal')
 

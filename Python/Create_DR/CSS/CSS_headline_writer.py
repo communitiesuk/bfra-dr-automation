@@ -34,11 +34,11 @@ def CSS_headline_writer(CSS_headline_dict, dates_variables, DR):
     paragraph = DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {cutoff}, {CSS_eligible_total} buildings 11 metres and over in height have been assessed as eligible for the Cladding Safety Scheme (including {CSS_BSF_transfer} buildings that have transferred from the BSF), {CSS_eligible_total_line} since the end of {last_month}.'
+    text = f'As at {cutoff}, {CSS_eligible_total} buildings 11 metres and over in height have been assessed as eligible for the Cladding Safety Scheme (including {CSS_BSF_transfer} buildings that have transferred from the BSF), {CSS_eligible_total_line} since the end of {last_month}. '
     text += f'Of these, {CSS_started_c_no} buildings ({CSS_started_c_pct}) have either started or completed remediation works, {CSS_started_c_line} since the end of {last_month}. Of these, {CSS_completed_nc_no} buildings ({CSS_completed_c_pct}) have completed remediation works, including those awaiting building control sign-off, {CSS_completed_c_line} since the end of {last_month}.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'The CSS continues to investigate and pull in potentially eligible buildings. There are a further {CSS_pre_eligible_total} buildings 11 metres and over in height in the pre-eligible stages of the Cladding Safety Scheme, which launched fully in July 2023.'
+    text = f'The CSS continues to investigate and pull in potentially eligible buildings. There are a further {CSS_pre_eligible_total} buildings 11 metres and over in height in the pre-eligible stages of the Cladding Safety Scheme, which launched fully in July 2023. '
     text += f'Of these, {CSS_pre_eligible} buildings are progressing through eligibility checks, and {CSS_pre_application} buildings are in the pre-application stage.'
     paragraph = DR.add_paragraph(text, style = 'Normal')

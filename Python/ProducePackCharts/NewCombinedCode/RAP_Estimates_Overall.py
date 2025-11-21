@@ -45,15 +45,16 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
 
     # Select the required column
     no_11m_buildings = Combined_2.iloc[:, 5].reset_index(drop=True)
-    est_no_11m_buildings = Estimated_2.loc[[2]]
     max_total = no_11m_buildings[3]
-    yet_to_identify_lower = est_no_11m_buildings.iloc[0,1] - max_total
-    yet_to_identify_upper = est_no_11m_buildings.iloc[0,2] - max_total - yet_to_identify_lower
-
+    yet_to_identify_lower = 5723 - max_total
+    yet_to_identify_lower = round(yet_to_identify_lower/100) * 100 #round to the nearest 10
+    yet_to_identify_upper = 8584 - max_total - yet_to_identify_lower
+    yet_to_identify_upper = round(yet_to_identify_upper/100) * 100 #round to the nearest 100
 
     data = pd.DataFrame({
         "Complete": [no_11m_buildings[0]],
-        "Identified - yet to complete": [no_11m_buildings[1] + no_11m_buildings[2]],
+        "Identified - Remediation Underway": [no_11m_buildings[1]],
+        "Identified - In Programme" :  [no_11m_buildings[2]],
         "Estimated yet to identify - low estimate": [yet_to_identify_lower],
         "Estimated yet to identify - high estimate": [yet_to_identify_upper]
     }, index=["Number of buildings"])
@@ -62,9 +63,9 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
     ###########
     # CREATING THE GRAPH
     ###########
-    fig, ax = plt.subplots(figsize=(18, 3), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(13, 6), constrained_layout=True)
     bottom = np.zeros(len(data.index))
-    colours = colours[:2]
+    colours = colours[:3]
     colours.append(secondary_grey)
     colours.append(grey)
 
@@ -82,16 +83,16 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
             font_dict = data_label_font_dict_black if luminance > 0.5 else data_label_font_dict_white
             label = f'{width:.0f}'
          
-            if i < 2:
+            if i < 3:
                 if width / max_total >= 0.019:
                     label = f'{width:.0f}'
                     ax.text(bar.get_x() + width / 2, bar.get_y() + bar.get_height() / 2, label, **font_dict)    
-            elif i == 3:
-                start = bar.get_x() - data.iloc[:, 2].values[0]
+            elif i == 4:
+                start = bar.get_x() - data.iloc[:, 3].values[0]
                 end = bar.get_x() + bar.get_width()
                 midpoint = (start + end) / 2
 
-                combined_label = f"{data.iloc[:, 2].values[0]:.0f} – {data.iloc[:, 3].values[0] + data.iloc[:, 2].values[0]:.0f}"
+                combined_label = f"{data.iloc[:, 3].values[0]:.0f} – {data.iloc[:, 4].values[0] + data.iloc[:, 3].values[0]:.0f}"
                 ax.text(midpoint, bar.get_y() + bar.get_height() / 2, combined_label, **font_dict)
 
 
@@ -111,9 +112,9 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
 
     ax.tick_params(axis='x', colors='darkgrey')
     ax.set_axisbelow(True)
-    ax.legend(fontsize = 12,
+    ax.legend(fontsize = 13,
             loc='upper center', 
-            bbox_to_anchor=(0.5, 1.45),
+            bbox_to_anchor=(0.5, 1.25),
             fancybox=False,
             shadow=False,
             ncol=2,

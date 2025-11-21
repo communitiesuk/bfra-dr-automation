@@ -28,11 +28,11 @@ def Social_headline_writer(Social_headline_dict, dates_variables, DR):
     DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {cutoff}, {Social_life_critical_total_no} 11 metres and over in height have been identified as having life-critical fire safety cladding defects. This is {Social_life_critical_total_change} since reported in the {last_month} data release.'
+    text = f'As at {cutoff}, {Social_life_critical_total_no} 11 metres and over in height have been identified as having life-critical fire safety cladding defects. This is {Social_life_critical_total_change} since reported in the {last_month} data release. '
     text += f'The {Social_life_critical_total_no} buildings have been identified using survey data submitted by Registered Providers of social housing and data on buildings the government in monitoring under other government programmes (ACM programme, BSF, CSS, and Developer Remediation contract).'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release.'
+    text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release. '
     text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release. Further detail is available in the social housing section of the data release.'
     DR.add_paragraph(text, style = 'Normal')
