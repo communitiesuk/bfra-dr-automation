@@ -45,7 +45,6 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
 
     # Select the required column
     no_11m_buildings = Combined_2.iloc[:, 5].reset_index(drop=True)
-    est_no_11m_buildings = Estimated_2.loc[[2]]
     max_total = no_11m_buildings[3]
     yet_to_identify_lower = 5723 - max_total
     yet_to_identify_lower = round(yet_to_identify_lower/100) * 100 #round to the nearest 10
@@ -64,7 +63,7 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
     ###########
     # CREATING THE GRAPH
     ###########
-    fig, ax = plt.subplots(figsize=(18, 3), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(13, 6), constrained_layout=True)
     bottom = np.zeros(len(data.index))
     colours = colours[:3]
     colours.append(secondary_grey)
@@ -113,9 +112,9 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
 
     ax.tick_params(axis='x', colors='darkgrey')
     ax.set_axisbelow(True)
-    ax.legend(fontsize = 12,
+    ax.legend(fontsize = 13,
             loc='upper center', 
-            bbox_to_anchor=(0.5, 1.45),
+            bbox_to_anchor=(0.5, 1.25),
             fancybox=False,
             shadow=False,
             ncol=2,
