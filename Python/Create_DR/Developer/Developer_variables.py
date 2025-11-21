@@ -60,9 +60,9 @@ def Developer_variable_creator(Developer_handled_data_last_month, Developer_hand
     Developer_remediation_table = pd.DataFrame({
         'Remediation Stage': ['Remediation complete', 'Remediation complete – awaiting building control sign-off', 'Remediation started', 'Remediation not started – plans in place', 'Remediation not started – no plans in place', 'Total'],
         'Number of buildings': Developer_1a_this_month['Current Number'],
-        'Percentage': Developer_1a_this_month['Current'],
+        'Percentage': Developer_1a_this_month['Formatted Current Percentage'],
         'Cumulative Number': Developer_1a_this_month['Cumulative Number'],
-        'Cumulative Percentage': Developer_1a_this_month['Cumulative']
+        'Cumulative Percentage': Developer_1a_this_month['Formatted Cumulative Percentage']
     })
 
     Developer_tables = {
@@ -76,30 +76,30 @@ def Developer_variable_creator(Developer_handled_data_last_month, Developer_hand
         'Developer_life_critical_total_line': Change_line_in_DR(Developer_1a_this_month.iloc[5, 5] - Developer_1a_last_month.iloc[5, 5]),
 
         'Developer_started_c_no': format(Developer_1a_this_month.loc[2, 'Cumulative Number'], ','),
-        'Developer_started_c_pct': Developer_1a_this_month.loc[2, 'Cumulative'],
+        'Developer_started_c_pct': Developer_1a_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Developer_started_line': Change_line_in_DR(Developer_1a_this_month.loc[2, 'Cumulative Number'] - Developer_1a_last_month.loc[2, 'Cumulative Number']),
 
         'Developer_signoff_c_no': format(Developer_1a_this_month.loc[1, 'Cumulative Number'], ','),
-        'Developer_signoff_c_pct': Developer_1a_this_month.loc[1, 'Cumulative'],
+        'Developer_signoff_c_pct': Developer_1a_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Developer_signoff_line': Change_line_in_DR(Developer_1a_this_month.loc[1, 'Cumulative Number'] - Developer_1a_last_month.loc[1, 'Cumulative Number']),
 
         'Developer_cladding_defects_total': format(Developer_1b_this_month.iloc[5, 5], ','),
         'Developer_cladding_defects_total_line': Change_line_in_DR(Developer_1b_this_month.iloc[5, 5] - Developer_1b_last_month.iloc[5, 5]),
 
         'Developer_cladding_defects_started_c_no': format(Developer_1b_this_month.loc[2, 'Cumulative Number'], ','),
-        'Developer_cladding_defects_started_c_pct': Developer_1b_this_month.loc[2, 'Cumulative'],
+        'Developer_cladding_defects_started_c_pct': Developer_1b_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Developer_cladding_defects_started_line': Change_line_in_DR(Developer_1b_this_month.loc[2, 'Cumulative Number'] - Developer_1b_last_month.loc[2, 'Cumulative Number']),
 
         'Developer_cladding_defects_signoff_c_no': format(Developer_1b_this_month.loc[1, 'Cumulative Number'], ','),
-        'Developer_cladding_defects_signoff_c_pct': Developer_1b_this_month.loc[1, 'Cumulative'],
+        'Developer_cladding_defects_signoff_c_pct': Developer_1b_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Developer_cladding_defects_signoff_line': Change_line_in_DR(Developer_1b_this_month.loc[1, 'Cumulative Number'] - Developer_1b_last_month.loc[1, 'Cumulative Number']),
     }
 
     Developer_section_dict = {
         'Developer_cutoff': dates_variables['dev_cutoff'],
 
-        'Developer_started_c_pct': Developer_1a_this_month.loc[2, 'Cumulative'],
-        'Developer_signoff_c_pct': Developer_1a_this_month.loc[1, 'Cumulative'],
+        'Developer_started_c_pct': Developer_1a_this_month.loc[2, 'Formatted Cumulative Percentage'],
+        'Developer_signoff_c_pct': Developer_1a_this_month.loc[1, 'Formatted Cumulative Percentage'],
 
         'Developer_data_change_line': Developer_data_change_line,
 
@@ -114,17 +114,17 @@ def Developer_variable_creator(Developer_handled_data_last_month, Developer_hand
         'Developer_signoff_line': Change_line_in_DR(Developer_1a_this_month.loc[1, 'Cumulative Number'] - Developer_1a_last_month.loc[1, 'Cumulative Number']),
 
         'Developer_complete_c_no': format(Developer_1a_this_month.loc[0, 'Cumulative Number'], ','),
-        'Developer_complete_c_pct': Developer_1a_this_month.loc[0, 'Cumulative'],
+        'Developer_complete_c_pct': Developer_1a_this_month.loc[0, 'Formatted Cumulative Percentage'],
 
         'Developer_started_c_no': format(Developer_1a_this_month.loc[2, 'Cumulative Number'], ','),
         'Developer_started_line': Change_line_in_DR(Developer_1a_this_month.loc[2, 'Cumulative Number'] - Developer_1a_last_month.loc[2, 'Cumulative Number']),
     
         'Developer_plans_c_no': format(Developer_1a_this_month.loc[3, 'Current Number'], ','),
-        'Developer_plans_c_pct': Developer_1a_this_month.loc[3, 'Current'],
+        'Developer_plans_c_pct': Developer_1a_this_month.loc[3, 'Formatted Current Percentage'],
         'Developer_plans_line': Change_line_in_DR(Developer_1a_this_month.loc[3, 'Current Number'] - Developer_1a_last_month.loc[3, 'Current Number']),
 
         'Developer_no_plans_c_no': format(Developer_1a_this_month.loc[4, 'Current Number'], ','),
-        'Developer_no_plans_c_pct': Developer_1a_this_month.loc[4, 'Current'],
+        'Developer_no_plans_c_pct': Developer_1a_this_month.loc[4, 'Formatted Current Percentage'],
         'Developer_no_plans_line': Change_line_in_DR(Developer_1a_this_month.loc[4, 'Current Number'] - Developer_1a_last_month.loc[4, 'Current Number']),
 
         'Developer_cost': round(((Developer_2_this_month.iloc[0, 3]) / 1000), 1),
@@ -170,45 +170,45 @@ def Developer_variable_creator(Developer_handled_data_last_month, Developer_hand
         'Developer_cladding_defects_total_line': Change_line_in_DR(Developer_1b_this_month.iloc[5, 5] - Developer_1b_last_month.iloc[5, 5]),
 
         'Developer_cladding_defects_signoff_c_no': format(Developer_1b_this_month.loc[1, 'Cumulative Number'], ','),
-        'Developer_cladding_defects_signoff_c_pct': Developer_1b_this_month.loc[1, 'Cumulative'],
+        'Developer_cladding_defects_signoff_c_pct': Developer_1b_this_month.loc[1, 'Formatted Cumulative Percentage'],
         'Developer_cladding_defects_signoff_line': Change_line_in_DR(Developer_1b_this_month.loc[1, 'Cumulative Number'] - Developer_1b_last_month.loc[1, 'Cumulative Number']),
 
         'Developer_cladding_defects_complete_c_no': format(Developer_1b_this_month.loc[0, 'Cumulative Number'], ','),
-        'Developer_cladding_defects_complete_c_pct': Developer_1b_this_month.loc[0, 'Cumulative'],
+        'Developer_cladding_defects_complete_c_pct': Developer_1b_this_month.loc[0, 'Formatted Cumulative Percentage'],
 
         'Developer_cladding_defects_started_c_no': format(Developer_1b_this_month.loc[2, 'Cumulative Number'], ','),
-        'Developer_cladding_defects_started_c_pct': Developer_1b_this_month.loc[2, 'Cumulative'],
+        'Developer_cladding_defects_started_c_pct': Developer_1b_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Developer_cladding_defects_started_line': Change_line_in_DR(Developer_1b_this_month.loc[2, 'Cumulative Number'] - Developer_1b_last_month.loc[2, 'Cumulative Number']),
 
         'Developer_cladding_defects_plans_c_no': format(Developer_1b_this_month.loc[3, 'Current Number'], ','),
-        'Developer_cladding_defects_plans_c_pct': Developer_1b_this_month.loc[3, 'Current'],
+        'Developer_cladding_defects_plans_c_pct': Developer_1b_this_month.loc[3, 'Formatted Current Percentage'],
         'Developer_cladding_defects_plans_line': Change_line_in_DR(Developer_1b_this_month.loc[3, 'Current Number'] - Developer_1b_last_month.loc[3, 'Current Number']),
 
         'Developer_cladding_defects_no_plans_c_no': format(Developer_1b_this_month.loc[4, 'Current Number'], ','),
-        'Developer_cladding_defects_no_plans_c_pct': Developer_1b_this_month.loc[4, 'Current'],
+        'Developer_cladding_defects_no_plans_c_pct': Developer_1b_this_month.loc[4, 'Formatted Current Percentage'],
         'Developer_cladding_defects_no_plans_line': Change_line_in_DR(Developer_1b_this_month.loc[4, 'Current Number'] - Developer_1b_last_month.loc[4, 'Current Number']),
 
         'Developer_self_reported_total': format(Developer_1c_this_month.iloc[5, 5], ','),
         'Developer_self_reported_total_line': Change_line_in_DR(Developer_1c_this_month.iloc[5, 5] - Developer_1c_last_month.iloc[5, 5]),
 
         'Developer_self_reported_signoff_c_no': format(Developer_1c_this_month.loc[1, 'Cumulative Number'], ','),
-        'Developer_self_reported_signoff_c_pct': Developer_1c_this_month.loc[1, 'Cumulative'],
+        'Developer_self_reported_signoff_c_pct': Developer_1c_this_month.loc[1, 'Formatted Cumulative Percentage'],
 
         'Developer_self_reported_complete_c_no': format(Developer_1c_this_month.loc[0, 'Cumulative Number'], ','),
-        'Developer_self_reported_complete_c_pct': Developer_1c_this_month.loc[0, 'Cumulative'],
+        'Developer_self_reported_complete_c_pct': Developer_1c_this_month.loc[0, 'Formatted Cumulative Percentage'],
 
         'Developer_self_reported_signoff_line': Change_line_in_DR(Developer_1c_this_month.loc[1, 'Cumulative Number'] - Developer_1c_last_month.loc[1, 'Cumulative Number']),
 
         'Developer_self_reported_started_c_no': format(Developer_1c_this_month.loc[2, 'Cumulative Number'], ','),
-        'Developer_self_reported_started_c_pct': Developer_1c_this_month.loc[2, 'Cumulative'],
+        'Developer_self_reported_started_c_pct': Developer_1c_this_month.loc[2, 'Formatted Cumulative Percentage'],
         'Developer_self_reported_started_line': Change_line_in_DR(Developer_1c_this_month.loc[2, 'Cumulative Number'] - Developer_1c_last_month.loc[2, 'Cumulative Number']),
 
         'Developer_self_reported_plans_c_no': format(Developer_1c_this_month.loc[3, 'Current Number'], ','),
-        'Developer_self_reported_plans_c_pct': Developer_1c_this_month.loc[3, 'Current'],
+        'Developer_self_reported_plans_c_pct': Developer_1c_this_month.loc[3, 'Formatted Current Percentage'],
         'Developer_self_reported_plans_line': Change_line_in_DR(Developer_1c_this_month.loc[3, 'Current Number'] - Developer_1c_last_month.loc[3, 'Current Number']),
 
         'Developer_self_reported_no_plans_c_no': format(Developer_1c_this_month.loc[4, 'Current Number'], ','),
-        'Developer_self_reported_no_plans_c_pct': Developer_1c_this_month.loc[4, 'Current'],
+        'Developer_self_reported_no_plans_c_pct': Developer_1c_this_month.loc[4, 'Formatted Current Percentage'],
         'Developer_self_reported_no_plans_line': Change_line_in_DR(Developer_1c_this_month.loc[4, 'Current Number'] - Developer_1c_last_month.loc[4, 'Current Number']),
    }
 

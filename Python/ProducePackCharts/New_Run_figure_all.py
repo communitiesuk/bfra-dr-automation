@@ -6,6 +6,7 @@ Author: Harry Simmons
 
 import time 
 
+
 # Start the timer
 start_time = time.time()
 

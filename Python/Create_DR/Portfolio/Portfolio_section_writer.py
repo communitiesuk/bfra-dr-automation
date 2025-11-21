@@ -62,7 +62,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
 
     # Figure 
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
 
@@ -123,7 +123,8 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
-    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring. Of these an estimated {Portfolio_completed_dwellings} dwellings are in buildings that have completed remediation, and an estimated {Portfolio_started_dwellings} additional dwellings are in buildings that have started remediation. An estimated {Portfolio_in_programme_dwellings} dwellings are in buildings that have not started remediation.'
+    text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring.'
+    text += f'Of these an estimated {Portfolio_completed_dwellings} dwellings are in buildings that have completed remediation, and an estimated {Portfolio_started_dwellings} additional dwellings are in buildings that have started remediation. An estimated {Portfolio_in_programme_dwellings} dwellings are in buildings that have not started remediation.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Figure Title
@@ -133,7 +134,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
     
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -147,7 +148,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     
 
     # Figure 4
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Heading
@@ -160,7 +161,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     run.bold = True
 
     # Figure
-    DR.add_picture(figure_path, width=Cm(17))
+    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
     figure_count += 1
 
     # Figure caption

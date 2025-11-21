@@ -260,5 +260,3 @@ def create_paths():
 
 
 
-
-

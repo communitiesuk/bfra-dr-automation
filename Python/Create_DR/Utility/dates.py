@@ -152,11 +152,10 @@ def sort_dates():
     dev_info = extract_month_year('Developer_3', MI_tables_path)
     dev_month, dev_year, dev_last_day,  = dev_info['dev_month'], dev_info['dev_year'], dev_info['dev_last_day']
     dev_cutoff = f"{dev_last_day} {cal.month_name[dev_month]} {dev_year}"
-
+    
     # this is the info related to the social section of the DR
-    social_info = extract_month_year('Social_2', MI_tables_path)
-    social_month, social_year, social_last_day = social_info['soc_month'], social_info['soc_year'], social_info['soc_last_day']
-    social_cutoff = f"{social_last_day} {cal.month_name[social_month]} {social_year}"
+    social_title = pd.read_excel(MI_tables_path, sheet_name = 'Social_2').columns[0]
+    social_cutoff = re.search(r'\d{1,2} \w+ \d{4}', social_title).group()
 
     social_previous_release = calculate_previous_release(MI_tables_path)
 
@@ -199,11 +198,11 @@ def sort_dates():
         'hyperlink_month' : this_month.lower().replace(" ", "-"), #converts e.g. July 2025 to july-2025 for use in internal links in the DR (e.g. to the MI tables)
         'end_quarter_no': end_quarter_no,
         'end_quarter_word': end_quarter_word,
-        'dev_month' : dev_month,
         'hyperlink_quarterly_dr' : hyperlink_quarterly_dr,
+        'dev_cutoff' : dev_cutoff,
+        'dev_month' : dev_month,
         'dev_year' : dev_year,
         'dev_last_day' : dev_last_day,
-        'dev_cutoff' : dev_cutoff,
         'social_cutoff' : social_cutoff,
         'social_previous_release' : social_previous_release,
         'end_year_word': end_year_word,

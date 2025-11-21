@@ -18,12 +18,15 @@ def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
     this_month = dates_variables['this_month']
 
     ACM_total = ACM_headline_dict['ACM_total']
+
     ACM_started_c_no = ACM_headline_dict['ACM_started_c_no']
     ACM_started_c_pct = ACM_headline_dict['ACM_started_c_pct']
     ACM_started_line = ACM_headline_dict['ACM_started_line']
+
     ACM_signoff_c_no = ACM_headline_dict['ACM_signoff_c_no']
     ACM_signoff_c_pct = ACM_headline_dict['ACM_signoff_c_pct']
     ACM_signoff_line = ACM_headline_dict['ACM_signoff_line']
+    
     ACM_enforcement_total = ACM_headline_dict['ACM_enforcement_total']
     ACM_enforcement_pct = ACM_headline_dict['ACM_enforcement_pct']
     ACM_enforcement_line = ACM_headline_dict['ACM_enforcement_line']
@@ -37,7 +40,8 @@ def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
     paragraph = DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph 
-    text = f'As at {cutoff} of the {ACM_total} high-rise (18 metres and over in height) residential and publicly owned buildings with ACM cladding systems, unlikely to meet Building Regulations, {ACM_started_c_no} ({ACM_started_c_pct}) have either started or completed remediation works, {ACM_started_line} since the end of {last_month}.'
+    text = f'As at {cutoff} of the {ACM_total} high-rise (18 metres and over in height) residential and publicly owned buildings with ACM cladding systems, unlikely to meet Building Regulations,'
+    text += f'{ACM_started_c_no} ({ACM_started_c_pct}) have either started or completed remediation works, {ACM_started_line} since the end of {last_month}.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph

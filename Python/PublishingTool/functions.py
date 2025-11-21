@@ -44,7 +44,7 @@ def create_paths():
 
     md_path =f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\DR_markdown\\Building Safety Release {this_month} {this_year} - Markdown version.md'
 
-    docx_path = f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\Auto_DR\\Building Safety Release {this_month} {this_year}.docx'
+    docx_path = f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT DR HERE]\\Building Safety Release {this_month} {this_year} for release.docx'
 
     paths = {'docx_path' : docx_path,
              'md_path' : md_path,

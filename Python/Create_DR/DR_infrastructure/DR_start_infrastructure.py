@@ -8,18 +8,7 @@ Author: Harry Simmons
 
 def DR_start(dates_variables, DR):
     # Unpack date variables
-    cutoff = dates_variables['cutoff']
-    publishing_date_0 = dates_variables['publishing_date_0']
     publishing_date_1 = dates_variables['publishing_date_1']
-
-    # Document Title
-    text = f'Building Safety Remediation Data Release: {cutoff}'
-    paragraph = DR.add_paragraph(text, style = 'Heading 1')
-
-
-    # Publishing date
-    text = f'Published {publishing_date_0}'
-    DR.add_paragraph(text, style = 'Normal')
 
     # Next publication date
     paragraph = DR.add_paragraph(style = 'Normal')
@@ -30,7 +19,7 @@ def DR_start(dates_variables, DR):
 
     # Paragraph
     paragraph = DR.add_paragraph(style='Normal')
-    run = paragraph.add_run('All figures in this release can also be found in an interactive dashboard [INSERT LINK].')
+    run = paragraph.add_run('All figures in this release can also be found in an [interactive dashboard](DASHBOARD LINK).')
 
 
     # Section Title

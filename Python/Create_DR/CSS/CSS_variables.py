@@ -5,12 +5,9 @@ Created on Friday 17 January 2025, 14:32:06
 Author: Harry Simmons
 """
 
-from datetime import datetime
-import calendar as cal
 import pandas as pd
 import sys
 import os
-import inflect
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -37,7 +34,7 @@ def CSS_variable_creator (CSS_handled_data):
         'Remediation Stage': ['Remediation complete', 'Works started', 'In programme', 'Total'],
         'Number of buildings': CSS_6['Current Month'],
         'Percentage': CSS_1b['Current Percentage'],
-        'Cumulative Number': CSS_6['Cumulative'],
+        'Cumulative Number': CSS_6['Formatted Cumulative Number'],
         'Cumulative Percentage': CSS_1b['Cumulative Percentage']
     })
     
@@ -49,10 +46,10 @@ def CSS_variable_creator (CSS_handled_data):
         'CSS_eligible_total': format(CSS_6.loc[3, 'Current Month'], ','),
         'CSS_BSF_transfer': format(CSS_misc.loc[1, 'Current Month'], ','),
         'CSS_eligible_total_line': Change_line_in_DR(CSS_6.loc[3, 'Change']),
-        'CSS_started_c_no': format(CSS_6.loc[1, 'Cumulative'], ','),
+        'CSS_started_c_no': format(CSS_6.loc[1, 'Formatted Cumulative Number'], ','),
         'CSS_started_c_pct': CSS_1b.loc[1, 'Cumulative Percentage'],
         'CSS_started_c_line': Change_line_in_DR(CSS_6.loc[1, 'Cumulative Change']),
-        'CSS_completed_nc_no': format(CSS_6.loc[0, 'Cumulative'], ','),
+        'CSS_completed_nc_no': format(CSS_6.loc[0, 'Formatted Cumulative Number'], ','),
         'CSS_completed_c_pct': CSS_1b.loc[0, 'Cumulative Percentage'],
         'CSS_completed_c_line': Change_line_in_DR(CSS_6.loc[0, 'Change']),
         'CSS_pre_eligible_total': format(CSS_1a.loc[2, 'Number'], ','),
@@ -62,17 +59,23 @@ def CSS_variable_creator (CSS_handled_data):
 
     CSS_section_dict = {
         'CSS_total_total': format(CSS_1a.iloc[2, 1] + CSS_6.loc[3, 'Current Month'], ','),
+
         'CSS_pre_eligible': format(CSS_1a.iloc[1, 1], ','),
         'CSS_eligible_total': format(CSS_6.loc[3, 'Current Month'], ','),
-        'CSS_started_c_no': format(CSS_6.loc[1, 'Cumulative'], ','),
+
+        'CSS_started_c_no': format(CSS_6.loc[1, 'Formatted Cumulative Number'], ','),
         'CSS_started_c_pct': CSS_1b.loc[1, 'Cumulative Percentage'],
-        'CSS_completed_c_no': format(CSS_6.loc[0, 'Cumulative'], ','),
+
+        'CSS_completed_c_no': format(CSS_6.loc[0, 'Formatted Cumulative Number'], ','),
         'CSS_completed_c_pct': CSS_1b.loc[0, 'Cumulative Percentage'],
+
         'CSS_pre_eligible_total': format(CSS_1a.iloc[2, 1], ','),
         'CSS_pre_application': format(CSS_1a.iloc[0, 1], ','),
         'CSS_eligible_total_line': Change_line_in_DR(CSS_6.loc[3, 'Change']),
+
         'CSS_BSF_transfer': format(CSS_misc.loc[1, 'Current Month'], ','),
         'CSS_BSF_transfer_line': number_or_none(CSS_misc.loc[1, 'Change']),
+
         'CSS_GFA': format(CSS_misc.loc[0, 'Current Month'], ','),
         'CSS_GFA_pct': format_percentage(CSS_misc.loc[0, 'Current Month'] / CSS_6.loc[3, 'Current Month']),
         'CSS_GFA_line': Change_line_in_DR(CSS_misc.loc[0, 'Change']),
@@ -85,6 +88,7 @@ def CSS_variable_creator (CSS_handled_data):
         'CSS_completed_c_line': Change_line_in_DR(CSS_6.loc[0, 'Change']),
 
         'CSS_northern_ireland': number_or_none(CSS_2.iloc[9, 1]),
+
         'CSS_18m_c_pct': format_percentage(CSS_3.loc[1, '18m Cumulative Percentage']),
         'CSS_11_18m_c_pct': format_percentage(CSS_3.loc[1, '11_18m Cumulative Percentage']),
         'CSS_private_c_pct': format_percentage(CSS_4.loc[1, 'Private Cumulative Percentage']),

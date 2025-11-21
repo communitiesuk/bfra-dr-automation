@@ -33,5 +33,6 @@ def Social_headline_writer(Social_headline_dict, dates_variables, DR):
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release. Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release. Further detail is available in the social housing section of the data release.'
+    text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release.'
+    text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release. Further detail is available in the social housing section of the data release.'
     DR.add_paragraph(text, style = 'Normal')
