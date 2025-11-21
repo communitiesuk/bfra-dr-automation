@@ -169,7 +169,7 @@ def create_ACM_Remediation(type, figure_count, colours, grey, paths_variables, d
     ax.set_xticks(range(len(data.index)))
     ax.set_xticklabels(["Total buildings"] + data.index.tolist()[1:], fontsize=12)
 
-    legend_names = ['Remediation complete'] + ['Yet to be completed']
+    legend_names = ['Remediation complete - with\nbuilding control sign-off'] + ['Yet to be completed - including awaiting\nbuilding control sign-off']
     legend_colours = [colours[-1], grey]
 
     handles = [Patch(facecolor=color, edgecolor='none') for color in legend_colours]
