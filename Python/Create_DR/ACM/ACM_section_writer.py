@@ -95,7 +95,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
 
     # Figure Title
  
-    text = f'Figure {figure_count}: {ACM_started_c_pct} of the {ACM_total} identified ACM clad high-rise buildings have started or completed remediation, with {ACM_removed_c_pct} having had their ACM cladding removed and {ACM_signoff_c_pct} having completed remediation.'
+    text = f'Figure {figure_count}: {ACM_started_c_pct} of the {ACM_total} identified ACM clad high-rise buildings have started or completed remediation, with {ACM_removed_c_pct} having had their ACM cladding removed and {ACM_signoff_c_pct} having completed remediation, including those awaiting building control sign-off.'
     paragraph = DR.add_paragraph(style = 'Normal')
     run = paragraph.add_run(text)
     run.bold = True

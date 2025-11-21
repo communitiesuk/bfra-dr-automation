@@ -98,7 +98,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: {Social_started_pct} of social buildings identified to have unsafe cladding have started or completed remediation works, with {Social_completed_pct} (of identified buildings) having completed remediation works.'
+    text = f'Figure {figure_count}: {Social_started_pct} of social buildings identified to have unsafe cladding have started or completed remediation works, with {Social_completed_pct} (of identified buildings) having completed remediation works, including those awaiting building control sign-off.'
     run = paragraph.add_run(text)
     run.bold = True
  

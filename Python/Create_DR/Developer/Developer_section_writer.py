@@ -158,7 +158,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: {Developer_started_c_pct} of buildings in the developer remediation contract have either started or completed remediation works on life-critical fire safety risks, with {Developer_signoff_c_pct} having completed remediation works.'
+    text = f'Figure {figure_count}: {Developer_started_c_pct} of buildings in the developer remediation contract have either started or completed remediation works on life-critical fire safety risks, with {Developer_signoff_c_pct} having completed remediation works, including those awaiting building control sign-off.'
     run = paragraph.add_run(text)
     run.bold = True
     

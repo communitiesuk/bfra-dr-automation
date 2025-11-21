@@ -92,7 +92,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Figure Title
-    text = f'Figure {figure_count}: {BSF_started_c_pct} of buildings proceeding with an application for funding in the BSF have started or completed remediation, with {BSF_signoff_c_pct} having completed remediation.'
+    text = f'Figure {figure_count}: {BSF_started_c_pct} of buildings proceeding with an application for funding in the BSF have started or completed remediation, with {BSF_signoff_c_pct} having completed remediation, including those awaiting building control sign-off.'
     paragraph = DR.add_paragraph(style = 'Normal')
     run = paragraph.add_run(text)
     run.bold = True
