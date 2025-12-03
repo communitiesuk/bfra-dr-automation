@@ -29,6 +29,9 @@ def DR_end(DR, dates_variables):
     DR.add_paragraph('The tables provide data on:', style = 'Normal')
 
     # Bullet point
+    DR.add_paragraph('The estimated number of residential buildings 11 metres and over with unsafe cladding,', style = 'List Bullet')
+
+    # Bullet point
     DR.add_paragraph('the remediation progress of high-rise (18 metres and over) residential buildings identified with unsafe Aluminium Composite Material (ACM) cladding systems,', style = 'List Bullet')
     
     # Bullet point
