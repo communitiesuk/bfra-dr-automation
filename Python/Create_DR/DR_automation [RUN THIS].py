@@ -116,6 +116,8 @@ def create_DR():
     DR_enquiries(dates_variables, DR)
     DR_building_safety_overview(DR)
     table_count = Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_count, dates_variables, DR)
+    table_count += 2 
+    #FOR COSTS SECTION ^
     figure_count, table_count= Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, dates_variables, paths_variables, DR)
