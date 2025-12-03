@@ -47,6 +47,7 @@ from NewCombinedCode.RAP_Estimates_Overall import create_11m_RAP_estimates
 from NewCombinedCode.SocialHousing_Remediation3_Curly import create_SocialHousing_Remediation3_Curly
 from NewCombinedCode.SocialHousing2_Height import create_SocialHousing2_Height
 
+
 from Utility.functions import create_paths
 
 non_accessible_colour_scheme = ['#548235', '#A9D18E', '#E2F0D9', '#FFFF99', '#FFCC00', '#FF9900', '#FF0000']
@@ -134,7 +135,6 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
 
   # RAP
   #non_accessible_figure_count = create_18m_RAP_estimates(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
-
   ##########
   # ACCESSIBLE
   ##########
