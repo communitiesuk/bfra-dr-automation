@@ -10,7 +10,7 @@ import openpyxl
 def generate_BSF_reg_status(BSF_cut, last_month_BSF_cut):
     #file is too complex to load normally so must be read_only
     BSF_wb = openpyxl.load_workbook(BSF_cut, read_only= True, data_only= True)
-    BSF_tables_DR = BSF_wb['Essential Tables for DR V2']
+    BSF_tables_DR = BSF_wb['Essential Tables for DR']
 
     #iterates through the rows containing the registration status table
     BSF_reg_status_data = BSF_tables_DR.iter_rows(min_row = 20, max_row = 29,

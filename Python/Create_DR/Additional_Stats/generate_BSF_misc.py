@@ -14,7 +14,7 @@ def generate_BSF_misc(BSF_cut):
     #open the BSF cut in read only so it doesn't hang infinitely
     BSF_wb = openpyxl.load_workbook(BSF_cut, read_only= True, data_only= True)
 
-    BSF_tables_DR = BSF_wb['Essential Tables for DR V2']
+    BSF_tables_DR = BSF_wb['Essential Tables for DR']
     BSF_RAS_tables = BSF_wb['RAS Tables']
 
     #get the values from the relevant cells
