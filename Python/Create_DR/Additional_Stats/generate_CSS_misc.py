@@ -12,7 +12,7 @@ def generate_CSS_misc():
     CSS_transfers_last_month = 170
  
     #UPDATE MONTHLY FROM HOLLY
-    CSS_GFA_this_month = 820
+    CSS_GFA_this_month = 889
     CSS_GFA_last_month = 820
 
 
