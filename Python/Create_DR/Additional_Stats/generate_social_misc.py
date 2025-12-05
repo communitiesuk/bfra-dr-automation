@@ -17,7 +17,6 @@ def generate_social_misc():
     social_not_in_other_programmes = 1165
 
     social_misc= pd.DataFrame({ 'Number': [social_respondant_rps, social_excluded_rps, social_in_other_programmes, social_not_in_other_programmes]}, index = ['Respondant RPs', 'Excluded RPs', 'In other programmes', 'Not in other programmes'])
-    print(social_misc)
     return social_misc
 
     
