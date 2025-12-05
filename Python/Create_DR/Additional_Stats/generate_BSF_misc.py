@@ -14,12 +14,12 @@ def generate_BSF_misc(BSF_cut):
     #open the BSF cut in read only so it doesn't hang infinitely
     BSF_wb = openpyxl.load_workbook(BSF_cut, read_only= True, data_only= True)
 
-    BSF_tables_DR = BSF_wb['Essential Tables for DR V2']
+    BSF_tables_DR = BSF_wb['Essential Tables for DR']
     BSF_RAS_tables = BSF_wb['RAS Tables']
 
     #get the values from the relevant cells
-    BSF_reimburse = BSF_RAS_tables['C15'].value
-    BSF_transfers_expected = BSF_RAS_tables['C16'].value
+    BSF_reimburse = BSF_RAS_tables['K15'].value
+    BSF_transfers_expected = BSF_RAS_tables['K16'].value
     BSF_transfers_actual = BSF_RAS_tables['C19'].value
     
     BSF_dwellings_total = BSF_tables_DR['D40'].value
