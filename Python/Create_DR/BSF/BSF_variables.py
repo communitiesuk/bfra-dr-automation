@@ -97,7 +97,7 @@ def BSF_variable_creator (BSF_handled_data):
         'BSF_intent_nc_no': BSF_5.loc[4, 'Current Month'],
         'BSF_intent_nc_pct': BSF_1.loc[4, 'Current Percentage'],
 
-        'BSF_dwellings': format(round(BSF_misc.loc[2, 'Number'], -3), ','),
+        'BSF_dwellings': format(round(BSF_misc.loc[3, 'Number'], -3), ','),
 
         'BSF_fig_eligible_change': more_or_fewer(BSF_5.loc[5, 'Cumulative Yearly Change']),
         'BSF_fig_started_c_change': more_or_fewer(BSF_5.loc[2, 'Cumulative Yearly Change']),

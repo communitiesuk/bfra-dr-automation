@@ -108,7 +108,7 @@ def DR_end(DR, dates_variables):
     # Paragraph
     paragraph = DR.add_paragraph("Previously, MHCLG published estimates on population and dwelling numbers of residential buildings in the ", style = 'Normal')
     add_hyperlink(paragraph, "Building Safety Programme data release", "https://www.gov.uk/government/publications/building-safety-programme-monthly-data-release-september-2023")
-    paragraph.add_run(". Should these figures change, MHCLG will publish a new update. On 17 July, MHCLG published an ")
+    paragraph.add_run(". Should these figures change, MHCLG will publish a new update. On 17 July 2025, MHCLG published an ")
     add_hyperlink(paragraph, "updated estimate of the number of 11-18m residential buildings in England", "https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-june-2025")
     paragraph.add_run(". Should these figures change further, MHCLG will publish a new update.")
 

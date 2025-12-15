@@ -8,6 +8,7 @@ Author: Harry Simmons
 from docx import Document
 import sys
 import os
+from Utility.functions import add_hyperlink
 
 # Add the Utility folder to sys.path
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
@@ -17,6 +18,8 @@ def Developer_headline_writer(Developer_headline_dict, dates_variables, DR):
     # Unpacking dates variables 
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
+    hyperlink_month = dates_variables['hyperlink_month']
+
 
     # Unpacking  variables 
     Developer_cutoff = Developer_headline_dict['Developer_cutoff']
@@ -51,4 +54,9 @@ def Developer_headline_writer(Developer_headline_dict, dates_variables, DR):
 
     # Paragraph 
     text = f'When excluding buildings reported with only non-cladding defects, there are {Developer_cladding_defects_total} buildings which developers have reported as having unsafe cladding, {Developer_cladding_defects_total_line} since reported in the {last_month} data release. Of which {Developer_cladding_defects_started_c_no} ({Developer_cladding_defects_started_c_pct}) are reported to have started or completed remediation, {Developer_cladding_defects_started_line} since reported in the {last_month} data release, including {Developer_cladding_defects_signoff_c_no} ({Developer_cladding_defects_signoff_c_pct} of buildings) which are reported to have completed remediation, {Developer_cladding_defects_signoff_line} since reported in the {last_month} data release.'
+    text.add_run(f'Further detail is available in the ')
+    add_hyperlink(text, 'developer-led remediation', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}#developer-led-remediation')
+    text.add_run(f' section of the data release.')
     DR.add_paragraph(text, style = 'Normal')
+
+

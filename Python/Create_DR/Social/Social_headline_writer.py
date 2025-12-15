@@ -4,13 +4,14 @@ Created on Tuesday 30 May 2025, 12:13:00
 
 Author: Matthew Bandura
 """
+from Utility.functions import add_hyperlink
 
 def Social_headline_writer(Social_headline_dict, dates_variables, DR):
 
     social_cutoff = dates_variables['social_cutoff']
     last_month = dates_variables['last_month']
     cutoff = dates_variables['cutoff']
-
+    hyperlink_month = dates_variables['hyperlink_month']
 
     Social_life_critical_total_no = Social_headline_dict['Social_life_critical_total_no']
     Social_life_critical_total_change = Social_headline_dict['Social_life_critical_total_change']
@@ -34,5 +35,11 @@ def Social_headline_writer(Social_headline_dict, dates_variables, DR):
 
     # Paragraph
     text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release. '
-    text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release. Further detail is available in the social housing section of the data release.'
+    text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release.' 
     DR.add_paragraph(text, style = 'Normal')
+
+    # Paragraph
+    paragraph = DR.add_paragraph(style = 'Normal')
+    paragraph.add_run(f'Further detail is available in the ')
+    add_hyperlink(paragraph, 'social housing section', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}#social-housing-sector')
+    paragraph.add_run(f' section of the data release.')
