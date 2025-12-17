@@ -5,7 +5,11 @@ Created on Wednesday 21 May 2025, 13:49:16
 Author: Harry Simmons
 """
 
+import re
 import os
+import pandas as pd
+import calendar as cal
+
 
 def chop_df(df, top_rows_to_drop, bottom_rows_to_drop):
     # Drop rows from 0 to num_rows_to_drop - 1
@@ -57,7 +61,59 @@ def create_paths():
              'MI_tables_path' : MI_tables_path,
              'additional_tables_path' : additional_tables_path,
              'save_path' : save_path,
-             'partial_output_path' : partial_output_path
+             'partial_output_path' : partial_output_path,
     }
     return paths
 
+
+paths_variables = create_paths()
+MI_tables_path = paths_variables['MI_tables_path']
+
+
+def extract_month_year(sheet_name, file_path):
+    #Extracts month and year from the first column header of a given Excel sheet using regex searches.
+    df = pd.read_excel(file_path, sheet_name=sheet_name)
+    title = df.columns[0]
+
+    # Extract year
+    year_match = re.search(r'\b\d{4}\b', title)
+    year = int(year_match.group()) if year_match else None
+
+    # Extract month
+    month_match = re.search(r'\b(January|February|March|April|May|June|July|August|September|October|November|December)\b', title)
+    month_word = month_match.group() if month_match else None
+
+    # Convert month name to number
+    month = {
+        "January": 1, "February": 2, "March": 3, "April": 4,
+        "May": 5, "June": 6, "July": 7, "August": 8,
+        "September": 9, "October": 10, "November": 11, "December": 12
+    }.get(month_word, None)
+    
+    #this ensures the dictionary returns appropriately named variables
+    sheet_prefix = sheet_name[:3].lower()
+
+    # Get last day of the month - monthrange returns the first weekday (ignored by _) and the final day (given to last_day)
+    _, last_day = cal.monthrange(year, month)
+    if sheet_name == 'Cover':
+        return {
+            "last_day": last_day,
+            "year": year,
+            "month": month,
+            "month_word" : month_word }
+    else:
+        return {
+            f'{sheet_prefix}_last_day' : last_day,
+            f'{sheet_prefix}_year' :  year,            
+            f"{sheet_prefix}_month": month 
+        }
+
+def sort_dates():
+    print('Handling Dates')
+    # extract the current DR month and year
+    cover_info = extract_month_year('Cover', MI_tables_path)
+    month, month_word, year, last_day = cover_info['month'], cover_info['month_word'], cover_info['year'], cover_info['last_day']
+
+
+    print('DONE!')
+    return month, year
