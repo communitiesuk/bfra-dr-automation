@@ -4,7 +4,6 @@ Created on Thursday 20 February 2025, 11:27:10
 author: Harry Simmons
 """
 
-import re
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
