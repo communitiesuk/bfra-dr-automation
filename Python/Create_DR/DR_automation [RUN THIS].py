@@ -34,6 +34,11 @@ from Portfolio.Portfolio_section_writer import Portfolio_section_writer
 from Estimates.Estimates_variables import Estimates_variable_creator
 from Estimates.Estimates_section_writer import Estimates_section_writer
 
+from Costs.Costs_data_handler import Costs_retrieve_data
+from Costs.Costs_variables import Costs_variable_creator
+from Costs.Costs_section_writer import Costs_section_writer
+
+
 from ACM.ACM_data_handler import ACM_retrieve_data
 from ACM.ACM_variables import ACM_variable_creator
 from ACM.ACM_headline_writer import ACM_headline_writer
@@ -77,6 +82,7 @@ def create_DR():
     paths_variables = create_paths()
 
     Portfolio_handled_data = Portfolio_retrieve_data(paths_variables)
+    Costs_handled_data = Costs_retrieve_data(paths_variables)
     ACM_handled_data = ACM_retrieve_data(dates_variables, paths_variables)
     BSF_handled_data = BSF_retrieve_data(paths_variables)
     CSS_handled_data = CSS_retrieve_data(paths_variables)
@@ -91,6 +97,7 @@ def create_DR():
     # Format variables
     print('Formatting Variables')
     Estimates_tables, Estimates_headline_dict, Estimates_section_dict = Estimates_variable_creator(Portfolio_handled_data)
+    Costs_tables, Costs_section_dict = Costs_variable_creator(Costs_handled_data)
     Portfolio_tables, Portfolio_headline_dict, Portfolio_section_dict = Portfolio_variable_creator(Portfolio_handled_data)
     ACM_tables, ACM_headline_dict, ACM_section_dict = ACM_variable_creator(ACM_handled_data, dates_variables)
     BSF_tables, BSF_headline_dict, BSF_section_dict, BSF_developer_transfers = BSF_variable_creator (BSF_handled_data)
@@ -116,8 +123,7 @@ def create_DR():
     DR_enquiries(dates_variables, DR)
     DR_building_safety_overview(DR)
     table_count = Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_count, dates_variables, DR)
-    table_count += 2 
-    #FOR COSTS SECTION ^
+    table_count = Costs_section_writer(Costs_section_dict, Costs_tables, table_count, dates_variables, DR)
     figure_count, table_count= Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, dates_variables, paths_variables, DR)
