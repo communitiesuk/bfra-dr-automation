@@ -1,2 +1,2 @@
-# sgba-DR-automation
+# bfra-DR-automation
 Github repository for the DR automation 
