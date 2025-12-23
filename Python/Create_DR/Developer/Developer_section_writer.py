@@ -20,8 +20,6 @@ from Utility.functions import create_table, add_hyperlink
 # Developer section writer
 def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, Developer_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking Dates variables
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
-    
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
     #converts this month into a format which will work in the hyperlink
