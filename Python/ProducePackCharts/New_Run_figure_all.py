@@ -10,46 +10,9 @@ import time
 # Start the timer
 start_time = time.time()
 
-# Overall
-from NewCombinedCode.Overall_remediation_over_time2 import create_Overall_Remediation_over_time2
-from NewCombinedCode.Overall_remediation_estimates import create_Overall_remediation_estimates
-from NewCombinedCode.Overall_Remediation2_Curly import create_Overall_Remediation2_Curly
-from NewCombinedCode.Overall_Remediation_Across_Schemes import create_Overall_Remediation_Across_Schemes
-from NewCombinedCode.Overall_Height import create_Overall_Height
-from NewCombinedCode.Overall_Tenure import create_Overall_Tenure
-# Map
+from NewCombinedCode import create_Overall_Remediation_over_time2, create_Overall_remediation_estimates, create_Overall_Remediation2_Curly, create_Overall_Remediation_Across_Schemes, create_Overall_Height, create_Overall_Tenure, create_ACM_Remediation, create_ACM_By_Tenure, create_BSF_Remediation_Curly, create_BSF_Remediation_over_time, create_BSF_Tenure, create_CSS_Eligibility2, create_CSS_Height, create_CSS_Tenure, create_Developer_Remediation_Curly, create_Developer_Height, create_SocialHousing_Remediation3_Curly, create_SocialHousing2_Height
 
-# ACM
-from NewCombinedCode.ACM_Remediation import create_ACM_Remediation
-# Projections 
-
-# Dec19
-from NewCombinedCode.ACM_By_Tenure import create_ACM_By_Tenure
-
-# BSF
-from NewCombinedCode.BSF_Remediation_Curly import create_BSF_Remediation_Curly
-from NewCombinedCode.BSF_Remediation_over_time import create_BSF_Remediation_over_time
-from NewCombinedCode.BSF_Tenure import create_BSF_Tenure
-
-# CSS
-from NewCombinedCode.CSS_Eligibility2 import create_CSS_Eligibility2
-from NewCombinedCode.CSS_Height import create_CSS_Height
-from NewCombinedCode.CSS_Tenure import create_CSS_Tenure
-
-# Developer
-from NewCombinedCode.Developer_Remediation_Curly import create_Developer_Remediation_Curly
-from NewCombinedCode.Developer_Height import create_Developer_Height
-
-# RAP
-#from NewCombinedCode.RAP_Estimates_Tall import create_18m_RAP_estimates
-
-
-# Social
-from NewCombinedCode.SocialHousing_Remediation3_Curly import create_SocialHousing_Remediation3_Curly
-from NewCombinedCode.SocialHousing2_Height import create_SocialHousing2_Height
-
-
-from Utility.functions import create_paths, sort_dates
+from Utility import create_paths, sort_dates
 
 non_accessible_colour_scheme = ['#548235', '#A9D18E', '#E2F0D9', '#FFFF99', '#FFCC00', '#FF9900', '#FF0000']
 non_accessible_grey = "#D4D4D4"
@@ -96,7 +59,6 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
   ##########
   # NON ACCESSIBLE
   ##########
-  
 
 
   # Overall
