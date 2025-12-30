@@ -34,7 +34,7 @@ def create_CSS_Eligibility2(type, figure_count, colours, paths_variables, data_l
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming CSS_1
     CSS_1 = pd.read_excel(MI_tables_path, sheet_name='CSS_1')
     CSS_1a = chop_df(CSS_1, 3, 2)
     CSS_1b = chop_df(CSS_1, 8, 3)

@@ -32,7 +32,7 @@ def create_CSS_Height(type, figure_count, colours, paths_variables, data_label_f
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming CSS_3
     CSS_3 = pd.read_excel(MI_tables_path, sheet_name='CSS_3')
     CSS_3 = chop_df(CSS_3, 3, 3)
 

@@ -35,7 +35,7 @@ def create_Overall_remediation_estimates(type, figure_count, colours, grey, seco
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2 for the total nmber
+    # Accessing and transforming Combined_2 for the total number
     Combined_2 = pd.read_excel(MI_tables_path, sheet_name='Combined_2')
     Combined_2 = chop_df(Combined_2, 3, 4)
 
