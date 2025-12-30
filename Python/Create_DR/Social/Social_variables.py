@@ -14,7 +14,6 @@ def Social_variable_creator(Social_handled_data_last_quarter, Social_handled_dat
     Social_1b_last_quarter = Social_handled_data_last_quarter['Social_1b']
     # Unpack last months dfs
     Social_1a_last_month = Social_handled_data_last_month['Social_1a']
-    Social_1b_last_month = Social_handled_data_last_month['Social_1b']
 
     # Unpack this months dfs
     Social_1a_this_month = Social_handled_data_this_month['Social_1a']

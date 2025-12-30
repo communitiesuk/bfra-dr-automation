@@ -20,7 +20,6 @@ from Utility import sort_dates, create_paths
 
 from DR_infrastructure import setup_doc, DR_start, DR_introduction, DR_enquiries, DR_building_safety_overview, DR_end
 
-
 from Portfolio import Portfolio_retrieve_data, Portfolio_variable_creator, Portfolio_headline_writer, Portfolio_section_writer
 
 from Estimates import Estimates_variable_creator, Estimates_section_writer
