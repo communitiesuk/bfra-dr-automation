@@ -33,7 +33,7 @@ def create_SocialHousing2_Height(type, figure_count, colours, paths_variables, d
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming Social_1
     Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
     Social_1a = chop_df(Social_1, 3, 5)
 

@@ -35,7 +35,7 @@ def create_BSF_Remediation_Curly(type, figure_count, colours, grey, paths_variab
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming BSF_1
     BSF_1 = pd.read_excel(MI_tables_path, sheet_name='BSF_1')
     BSF_1 = chop_df(BSF_1, 4, 5)
 

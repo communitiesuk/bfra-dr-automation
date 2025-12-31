@@ -5,12 +5,7 @@ Created on Wednesday 01 October 2025, 15:55:04
 Author: Matthew Bandura
 """
 from docx.shared import Cm
-import sys
 import os
-
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 from Utility.functions import create_table, add_hyperlink
 

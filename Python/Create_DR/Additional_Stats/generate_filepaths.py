@@ -53,6 +53,5 @@ def generate_filepaths():
     # Portfolio_outputs_path = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{year}\\{month_year}\\ACM\\{Portfolio_outputs}')
     BSF_cut_path = main_folder + f'\\{BSF_cut}'
     last_month_BSF_cut_path = previous_folder + f'\\{last_month_BSF_cut}'
-    print(last_month_BSF_cut_path)
     return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, month_word
 

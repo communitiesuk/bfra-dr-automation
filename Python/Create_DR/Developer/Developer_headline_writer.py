@@ -8,6 +8,7 @@ Author: Harry Simmons
 from docx import Document
 import sys
 import os
+from Utility.functions import add_hyperlink
 
 # Add the Utility folder to sys.path
 folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
@@ -17,6 +18,8 @@ def Developer_headline_writer(Developer_headline_dict, dates_variables, DR):
     # Unpacking dates variables 
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
+    hyperlink_month = dates_variables['hyperlink_month']
+
 
     # Unpacking  variables 
     Developer_cutoff = Developer_headline_dict['Developer_cutoff']
@@ -39,7 +42,7 @@ def Developer_headline_writer(Developer_headline_dict, dates_variables, DR):
 
     # Headline Title
     text = f'Developer remediation – data received from developers as at {Developer_cutoff}. Data received from other programmes relating to developer-led remediation is as at {cutoff}.'
-    paragraph = DR.add_paragraph(text, style = 'Heading 3')
+    DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph
     text = f'As at {cutoff}, {Developer_life_critical_total} buildings 11 metres and over in height have been identified as having life-critical fire safety defects (including cladding and non-cladding defects) which developers have committed to remediate or pay to remediate (where the cladding remediation works are being carried out in a government funded remediation programme), {Developer_life_critical_total_line} since reported in the {last_month} data release.'
@@ -50,5 +53,10 @@ def Developer_headline_writer(Developer_headline_dict, dates_variables, DR):
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph 
-    text = f'When excluding buildings reported with only non-cladding defects, there are {Developer_cladding_defects_total} buildings which developers have reported as having unsafe cladding, {Developer_cladding_defects_total_line} since reported in the {last_month} data release. Of which {Developer_cladding_defects_started_c_no} ({Developer_cladding_defects_started_c_pct}) are reported to have started or completed remediation, {Developer_cladding_defects_started_line} since reported in the {last_month} data release, including {Developer_cladding_defects_signoff_c_no} ({Developer_cladding_defects_signoff_c_pct} of buildings) which are reported to have completed remediation, {Developer_cladding_defects_signoff_line} since reported in the {last_month} data release.'
-    DR.add_paragraph(text, style = 'Normal')
+    paragraph = DR.add_paragraph(style = 'Normal')
+    paragraph.add_run(f'When excluding buildings reported with only non-cladding defects, there are {Developer_cladding_defects_total} buildings which developers have reported as having unsafe cladding, {Developer_cladding_defects_total_line} since reported in the {last_month} data release. Of which {Developer_cladding_defects_started_c_no} ({Developer_cladding_defects_started_c_pct}) are reported to have started or completed remediation, {Developer_cladding_defects_started_line} since reported in the {last_month} data release, including {Developer_cladding_defects_signoff_c_no} ({Developer_cladding_defects_signoff_c_pct} of buildings) which are reported to have completed remediation, {Developer_cladding_defects_signoff_line} since reported in the {last_month} data release.')
+    paragraph.add_run(f'Further detail is available in the ')
+    add_hyperlink(paragraph, 'developer-led remediation', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}#developer-led-remediation')
+    paragraph.add_run(f' section of the data release.')
+
+

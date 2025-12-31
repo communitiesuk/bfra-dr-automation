@@ -186,9 +186,9 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     # Bullet point
     if ACM_enforcement_not_enforced_no_forecast_word != 'zero':
         if ACM_enforcement_not_enforced_no_forecast_word == 'one':
-            text = 'The remaining building has been determined as in scope of the ACM monitoring programme in 2024, and the department continues to engage with building owners to ensure their remediation is progressed.'
+            text = 'The remaining building has been determined as in scope of the ACM monitoring programme in 2025, and the department continues to engage with building owners to ensure their remediation is progressed.'
         else:
-            text = f'Of the remaining {ACM_enforcement_not_enforced_no_forecast_word} buildings, one has been determined as in scope of the ACM monitoring programme in 2024, and the other two in 2025. The department continues to engage with building owners to ensure their remediation is progressed.'
+            text = f'The remaining {ACM_enforcement_not_enforced_no_forecast_word} buildings were determined as in scope of the ACM monitoring programme in 2025. The department continues to engage with building owners to ensure their remediation is progressed.'
         DR.add_paragraph(text, style = 'List Bullet')
 
 

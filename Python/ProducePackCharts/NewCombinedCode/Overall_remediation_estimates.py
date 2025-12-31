@@ -15,14 +15,14 @@ from matplotlib.patches import FancyArrowPatch
 # Now you can import your functions
 from Utility.functions import chop_df
 
-def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
+def create_Overall_remediation_estimates(type, figure_count, colours, grey, secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
     ###########
     # Main script Notifications
     if type==0:
-        print(f'Figure{figure_count}_Overall_Height')
+        print(f'Figure{figure_count}_Overall_remediation_estimates')
 
     if type==1:
-        print(f'Accessible_Figure{figure_count}_Overall_Height')
+        print(f'Accessible_Figure{figure_count}_Overall_remediation_estimates')
     ###########
 
 
@@ -35,20 +35,16 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2 for the total nmber
+    # Accessing and transforming Combined_2 for the total number
     Combined_2 = pd.read_excel(MI_tables_path, sheet_name='Combined_2')
     Combined_2 = chop_df(Combined_2, 3, 4)
-    
-    # Accessing and transforming Estimated_2 for the estimates of total number off 11m+ buildings
-    Estimated_2 = pd.read_excel(MI_tables_path, sheet_name='Estimated_2')
-    Estimated_2 = chop_df(Estimated_2, 3, 4)
 
     # Select the required column
     no_11m_buildings = Combined_2.iloc[:, 5].reset_index(drop=True)
-    max_total = no_11m_buildings[3]
-    yet_to_identify_lower = 5723 - max_total
+    total_buildings = no_11m_buildings[3]
+    yet_to_identify_lower = 5723 - total_buildings
     yet_to_identify_lower = round(yet_to_identify_lower/100) * 100 #round to the nearest 10
-    yet_to_identify_upper = 8584 - max_total - yet_to_identify_lower
+    yet_to_identify_upper = 8584 - total_buildings - yet_to_identify_lower
     yet_to_identify_upper = round(yet_to_identify_upper/100) * 100 #round to the nearest 100
 
     data = pd.DataFrame({
@@ -84,7 +80,7 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
             label = f'{width:.0f}'
          
             if i < 3:
-                if width / max_total >= 0.019:
+                if width / total_buildings >= 0.019:
                     label = f'{width:.0f}'
                     ax.text(bar.get_x() + width / 2, bar.get_y() + bar.get_height() / 2, label, **font_dict)    
             elif i == 4:
@@ -105,7 +101,7 @@ def create_11m_RAP_estimates(type, figure_count, colours, grey, secondary_grey, 
     ax.spines['left'].set_color('darkgrey')
     
     # Add horizontal arrow
-    arrow = FancyArrowPatch((max_total, -0.1), (max_total + yet_to_identify_upper + yet_to_identify_lower, -0.1),
+    arrow = FancyArrowPatch((total_buildings, -0.1), (total_buildings + yet_to_identify_upper + yet_to_identify_lower, -0.1),
                         arrowstyle='<->', color='black',
                         linewidth=2, mutation_scale=20)
     ax.add_patch(arrow)

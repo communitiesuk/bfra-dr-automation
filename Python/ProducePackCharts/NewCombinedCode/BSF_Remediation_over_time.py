@@ -4,7 +4,6 @@ Created on Thursday 20 February 2025, 11:27:10
 author: Harry Simmons
 """
 
-import re
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -16,7 +15,7 @@ from dateutil.relativedelta import relativedelta
 # Now you can import your functions
 from Utility.functions import chop_df
 
-def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
+def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variables, month, year, data_label_font_dict_white, data_label_font_dict_black):
     if type==0:
         print(f'Figure{figure_count}_BSF_Remediation_over_time')
 
@@ -27,26 +26,6 @@ def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variable
 
     MI_tables_path = paths_variables['MI_tables_path']
     partial_output_path= paths_variables['partial_output_path']
-
-
-    # Pull through title
-    cover = pd.read_excel(MI_tables_path, sheet_name='Cover')
-    title = cover.columns[0]
-
-    # Extract year using regex
-    year_match = re.search(r'\b\d{4}\b', title)
-    year = int(year_match.group()) if year_match else None
-
-    # Extract month using regex
-    month_match = re.search(r'\b(January|February|March|April|May|June|July|August|September|October|November|December)\b', title)
-    month_word = month_match.group() if month_match else None
-
-    # Convert month to its corresponding number
-    month = {
-        "January": 1, "February": 2, "March": 3, "April": 4,
-        "May": 5, "June": 6, "July": 7, "August": 8,
-        "September": 9, "October": 10, "November": 11, "December": 12
-    }.get(month_word, None)
 
     # Accessing and transforming BSF_5
     BSF_5 = pd.read_excel(MI_tables_path, sheet_name='BSF_5')
@@ -76,11 +55,11 @@ def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variable
         BSF_5[col] = remediation_stages[col]
 
     # Convert the numeric columns to float
-    BSF_5.iloc[:, 1:] = BSF_5.iloc[:, 1:].astype(float)  # <--- Added this line
+    BSF_5.iloc[:, 1:] = BSF_5.iloc[:, 1:].astype(float) 
 
     # Plotting the stacked bar chart
     fig, ax = plt.subplots(figsize = (10,8))
-    bottom = np.zeros(len(BSF_5.columns) - 1, dtype=float)  # <--- Modified this line
+    bottom = np.zeros(len(BSF_5.columns) - 1, dtype=float)  
 
 
     # Plot each stack in reverse order
@@ -109,14 +88,14 @@ def create_BSF_Remediation_over_time(type, figure_count, colours, paths_variable
     ax.yaxis.label.set_color('None')
     ax.xaxis.label.set_color('darkgrey')
     # Get handles and labels from the current legend
-    handles, labels = ax.get_legend_handles_labels()  # <--- Added this line
+    handles, labels = ax.get_legend_handles_labels()  
 
     # Reverse the order of handles and labels
-    handles = handles[::-1]  # <--- Added this line
-    labels = labels[::-1]    # <--- Added this line
+    handles = handles[::-1] 
+    labels = labels[::-1]   
 
     # Create a new legend with the reversed order
-    ax.legend(handles, labels, fontsize=13,  # <--- Modified this line
+    ax.legend(handles, labels, fontsize=13,  
             loc='upper center',
             bbox_to_anchor=(0.5, 1.15),
             fancybox=False,

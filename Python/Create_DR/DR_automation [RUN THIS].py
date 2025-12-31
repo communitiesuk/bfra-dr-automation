@@ -16,57 +16,27 @@ import os
 # Start the timer
 start_time = time.time()
 
-from Utility.dates import sort_dates
-from Utility.functions import create_paths
+from Utility import sort_dates, create_paths
 
-from DR_infrastructure.DR_setup import setup_doc
-from DR_infrastructure.DR_start_infrastructure import DR_start
-from DR_infrastructure.DR_introduction import DR_introduction
-from DR_infrastructure.DR_enquiries import DR_enquiries
-from DR_infrastructure.DR_building_safety_overview import DR_building_safety_overview
-from DR_infrastructure.DR_end_infrastructure import DR_end
+from DR_infrastructure import setup_doc, DR_start, DR_introduction, DR_enquiries, DR_building_safety_overview, DR_end
 
-from Portfolio.Portfolio_data_handler import Portfolio_retrieve_data
-from Portfolio.Portfolio_variables import Portfolio_variable_creator
-from Portfolio.Portfolio_headline_writer import Portfolio_headline_writer
-from Portfolio.Portfolio_section_writer import Portfolio_section_writer
+from Portfolio import Portfolio_retrieve_data, Portfolio_variable_creator, Portfolio_headline_writer, Portfolio_section_writer
 
-from Estimates.Estimates_variables import Estimates_variable_creator
-from Estimates.Estimates_section_writer import Estimates_section_writer
+from Estimates import Estimates_variable_creator, Estimates_section_writer
 
-from ACM.ACM_data_handler import ACM_retrieve_data
-from ACM.ACM_variables import ACM_variable_creator
-from ACM.ACM_headline_writer import ACM_headline_writer
-from ACM.ACM_section_writer import ACM_section_writer  
+from Costs import Costs_retrieve_data, Costs_variable_creator, Costs_section_writer
 
-from BSF.BSF_data_handler import BSF_retrieve_data
-from BSF.BSF_variables import BSF_variable_creator
-from BSF.BSF_headline_writer import BSF_headline_writer
-from BSF.BSF_section_writer import BSF_section_writer
+from ACM import ACM_retrieve_data, ACM_variable_creator, ACM_headline_writer, ACM_section_writer
 
-from CSS.CSS_data_handler import CSS_retrieve_data
-from CSS.CSS_variables import CSS_variable_creator
-from CSS.CSS_headline_writer import CSS_headline_writer
-from CSS.CSS_section_writer import CSS_section_writer
+from BSF import BSF_retrieve_data, BSF_variable_creator, BSF_headline_writer, BSF_section_writer
 
-from Developer.Developer_data_handler import Developer_retrieve_data_last_month, Developer_retrieve_data_this_month
-from Developer.Developer_variables import Developer_variable_creator
-from Developer.Developer_headline_writer import Developer_headline_writer
-from Developer.Developer_section_writer import Developer_section_writer
+from CSS import CSS_retrieve_data, CSS_variable_creator, CSS_headline_writer, CSS_section_writer
 
-#from RAP.RAP_data_handler import RAP_retrieve_data
-#from RAP.RAP_variables import RAP_variable_creator
-#from RAP.RAP_section_writer import RAP_section_writer
+from Developer import Developer_retrieve_data_last_month, Developer_retrieve_data_this_month, Developer_variable_creator, Developer_headline_writer, Developer_section_writer
 
-from Social.Social_data_handler import Social_retrieve_data_last_quarter, Social_retrieve_data_last_month, Social_retrieve_data_this_month
-from Social.Social_variables import Social_variable_creator
-from Social.Social_headline_writer import Social_headline_writer
-from Social.Social_section_writer import Social_section_writer
+from Social import Social_retrieve_data_last_quarter, Social_retrieve_data_last_month, Social_retrieve_data_this_month, Social_variable_creator, Social_headline_writer, Social_section_writer
 
-from Enforcement.Enforcement_data_handler import Enforcement_retrieve_data
-from Enforcement.Enforcement_variables import Enforcement_variable_creator
-from Enforcement.Enforcement_headline_writer import Enforcement_headline_writer
-from Enforcement.Enforcement_section_writer import Enforcement_section_writer
+from Enforcement import Enforcement_retrieve_data, Enforcement_variable_creator, Enforcement_headline_writer, Enforcement_section_writer
 
 
 def create_DR():
@@ -77,6 +47,7 @@ def create_DR():
     paths_variables = create_paths()
 
     Portfolio_handled_data = Portfolio_retrieve_data(paths_variables)
+    Costs_handled_data = Costs_retrieve_data(paths_variables)
     ACM_handled_data = ACM_retrieve_data(dates_variables, paths_variables)
     BSF_handled_data = BSF_retrieve_data(paths_variables)
     CSS_handled_data = CSS_retrieve_data(paths_variables)
@@ -91,6 +62,7 @@ def create_DR():
     # Format variables
     print('Formatting Variables')
     Estimates_tables, Estimates_headline_dict, Estimates_section_dict = Estimates_variable_creator(Portfolio_handled_data)
+    Costs_tables, Costs_section_dict = Costs_variable_creator(Costs_handled_data)
     Portfolio_tables, Portfolio_headline_dict, Portfolio_section_dict = Portfolio_variable_creator(Portfolio_handled_data)
     ACM_tables, ACM_headline_dict, ACM_section_dict = ACM_variable_creator(ACM_handled_data, dates_variables)
     BSF_tables, BSF_headline_dict, BSF_section_dict, BSF_developer_transfers = BSF_variable_creator (BSF_handled_data)
@@ -116,6 +88,7 @@ def create_DR():
     DR_enquiries(dates_variables, DR)
     DR_building_safety_overview(DR)
     table_count = Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_count, dates_variables, DR)
+    table_count = Costs_section_writer(Costs_section_dict, Costs_tables, table_count, dates_variables, DR)
     figure_count, table_count= Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, dates_variables, paths_variables, DR)

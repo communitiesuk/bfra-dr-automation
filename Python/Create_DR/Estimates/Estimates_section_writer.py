@@ -6,12 +6,7 @@ Author: Harry Simmons
 """
 
 from docx.shared import Cm
-import sys
-import os
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 from Utility.functions import create_table, add_hyperlink
 import Utility.docx_svg_patch
@@ -64,7 +59,7 @@ def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_cou
 
     # Paragraph
     text = f'The estimates of the number of 11-18m buildings in England and the subset of those with unsafe cladding, as of January 2025, replace the estimates first published in 2021 and in 2022.'
-    text +='New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
+    text +=' New estimates use the recently released Ordnance Survey National Geographic Database (OS NGD) data which was not available when the first estimates were calculated. More information on the methodology is available in the '
     paragraph = DR.add_paragraph(text, style = 'Normal')
     add_hyperlink(paragraph, 'Technical Note', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}')
     paragraph.add_run('.')

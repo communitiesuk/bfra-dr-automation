@@ -20,8 +20,6 @@ from Utility.functions import create_table, add_hyperlink
 # Developer section writer
 def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, Developer_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking Dates variables
-    figure_path = os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg')
-    
     cutoff = dates_variables['cutoff']
     last_month = dates_variables['last_month']
     #converts this month into a format which will work in the hyperlink
@@ -135,6 +133,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
 
     Developer_self_reported_started_c_no = Developer_section_dict['Developer_self_reported_started_c_no']
     Developer_self_reported_started_c_pct = Developer_section_dict['Developer_self_reported_started_c_pct']
+    Developer_self_reported_started_line = Developer_section_dict['Developer_self_reported_started_line']
 
     Developer_self_reported_plans_c_no = Developer_section_dict['Developer_self_reported_plans_c_no']
     Developer_self_reported_plans_c_pct = Developer_section_dict['Developer_self_reported_plans_c_pct']
@@ -361,7 +360,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point
-    text = f'{Developer_self_reported_started_c_no} buildings ({Developer_self_reported_started_c_pct}) have started or completed remediation, {Developer_BSF_transfer_started_line} since the {last_month} data release.'
+    text = f'{Developer_self_reported_started_c_no} buildings ({Developer_self_reported_started_c_pct}) have started or completed remediation, {Developer_self_reported_started_line} since the {last_month} data release.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point

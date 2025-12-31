@@ -33,7 +33,7 @@ def create_ACM_By_Tenure(type, figure_count, colours, paths_variables, data_labe
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming ACM_2
     ACM_2 = pd.read_excel(MI_tables_path, sheet_name='ACM_2')
     ACM_2 = chop_df(ACM_2, 2, 7)
 

@@ -84,7 +84,7 @@ def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
         if ACM_enforcement_not_enforced_no_forecast_word == 'one':
             text += f', the remaining building came into scope in 2024'
         else:
-            text += f', the remaining {ACM_enforcement_not_enforced_no_forecast_word} buildings have come into scope in 2024 and 2025'
+            text += f', the remaining {ACM_enforcement_not_enforced_no_forecast_word} buildings have come into scope in 2025'
 
     text += '.'
 

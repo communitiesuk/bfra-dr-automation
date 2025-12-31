@@ -18,8 +18,8 @@ def generate_BSF_misc(BSF_cut):
     BSF_RAS_tables = BSF_wb['RAS Tables']
 
     #get the values from the relevant cells
-    BSF_reimburse = BSF_RAS_tables['C15'].value
-    BSF_transfers_expected = BSF_RAS_tables['C16'].value
+    BSF_reimburse = BSF_RAS_tables['K15'].value
+    BSF_transfers_expected = BSF_RAS_tables['K16'].value
     BSF_transfers_actual = BSF_RAS_tables['C19'].value
     
     BSF_dwellings_total = BSF_tables_DR['D40'].value
