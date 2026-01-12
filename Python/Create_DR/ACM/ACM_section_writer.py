@@ -132,7 +132,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
 
     # Bullet point
     text = f'{ACM_started_c_no} buildings ({ACM_started_c_pct} of all buildings) have started or completed ACM remediation – {ACM_started_line} since the end of {last_month}.'
-    text += f'Of these, {ACM_removed_c_no} buildings ({ACM_removed_c_pct} of all buildings) have removed ACM cladding – {ACM_removed_line} since the end of {last_month}.'
+    text += f' Of these, {ACM_removed_c_no} buildings ({ACM_removed_c_pct} of all buildings) have removed ACM cladding – {ACM_removed_line} since the end of {last_month}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph 

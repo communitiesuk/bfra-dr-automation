@@ -40,7 +40,7 @@ def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
     paragraph = DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph 
-    text = f'As at {cutoff} of the {ACM_total} high-rise (18 metres and over in height) residential and publicly owned buildings with ACM cladding systems, unlikely to meet Building Regulations,'
+    text = f'As at {cutoff} of the {ACM_total} high-rise (18 metres and over in height) residential and publicly owned buildings with ACM cladding systems, unlikely to meet Building Regulations, '
     text += f'{ACM_started_c_no} ({ACM_started_c_pct}) have either started or completed remediation works, {ACM_started_line} since the end of {last_month}.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
