@@ -10,7 +10,7 @@ import pandas as pd
 from Utility.functions import format_percentage, chop_df
 
 def BSF_retrieve_data(paths_variables):
-    print('Handing BSF Data')
+    print('Handling BSF Data')
     # Accessing the folder which stores the MI tables
     MI_tables_path = paths_variables['MI_tables_path']
 

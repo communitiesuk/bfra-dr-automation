@@ -15,7 +15,7 @@ import pandas as pd
 from Utility.functions import format_percentage, chop_df, convert_number
 
 def ACM_retrieve_data(dates_variables, paths_variables):
-    print('Handing ACM Data')
+    print('Handling ACM Data')
     # Imports the date variables
     year = dates_variables['year']
 
