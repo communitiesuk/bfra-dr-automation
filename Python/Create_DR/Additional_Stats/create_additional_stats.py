@@ -33,7 +33,7 @@ def create_AdditionalStats():
 
     #save the additional stats
     with pd.ExcelWriter(f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT ADDITIONAL DR STATS HERE]\\[AUTOMATION]\\Additional_stats_{month}.xlsx') as writer:
-        ACM_start_trajectory.to_excel(writer, sheet_name = 'ACM_Start_Trajectory', index = False)
+        ACM_start_trajectory.to_excel(writer, sheet_name = 'ACM_start_trajectory', index = False)
         BSF_reg_status.to_excel(writer, sheet_name = 'BSF_reg_status', index = False)
         BSF_misc.to_excel(writer, sheet_name = 'BSF_misc')
         CSS_misc.to_excel(writer, sheet_name = 'CSS_misc')
