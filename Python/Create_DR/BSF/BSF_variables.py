@@ -68,7 +68,7 @@ def BSF_variable_creator (BSF_handled_data):
 
         'BSF_developer_transfers': format(BSF_misc.loc[0, 'Number'], ','),
         'BSF_insufficient_evidence': format(BSF_reg_status.loc[5, 'Current Month'] + BSF_reg_status.loc[6, 'Current Month'], ','),
-        'BSF_BSF_1_total': format(BSF_reg_status.loc[0, 'Current Month'] - BSF_reg_status.loc[8, 'Current Month'], ','),
+        'BSF_BSF_1_total': format(BSF_reg_status.loc[8, 'Current Month'] - BSF_reg_status.loc[0, 'Current Month'], ','),
 
         'BSF_developer_reimbursed_word': convert_number(BSF_misc.loc[1, 'Number']),
         'BSF_developer_anticipated_word': convert_number(BSF_misc.loc[2, 'Number']),
