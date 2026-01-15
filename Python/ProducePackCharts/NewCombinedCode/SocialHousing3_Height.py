@@ -1,7 +1,7 @@
 """
-Created on Thursday 20 February 2025, 11:27:10
+Created on Tuesday 13 January 2026, 12:07:32
 
-author: Harry Simmons
+author: Matthew Bandura
 """
 
 import os
@@ -13,14 +13,14 @@ import numpy as np
 # Now you can import your functions
 from Utility.functions import chop_df
 
-def create_SocialHousing2_Height(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
+def create_SocialHousing3_Height(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
     ###########
     # Main script Notifications
     if type==0:
-        print(f'Figure{figure_count}_SocialHousing2_Height')
+        print(f'Figure{figure_count}_SocialHousing3_Height')
 
     if type==1:
-        print(f'Accessible_Figure{figure_count}_SocialHousing2_Height')
+        print(f'Accessible_Figure{figure_count}_SocialHousing3_Height')
     ###########
 
 
@@ -35,20 +35,19 @@ def create_SocialHousing2_Height(type, figure_count, colours, paths_variables, d
 
     # Accessing and transforming Social_1
     Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
-    Social_1a = chop_df(Social_1, 3, 5)
+    Social_1b = chop_df(Social_1, 10, 4)
 
     # Select the required columns
-    number_of_11_18m = Social_1a.iloc[:, 1].reset_index(drop=True)
-    number_of_18m = Social_1a.iloc[:, 3].reset_index(drop=True)
+    number_of_11_18m = Social_1b.iloc[:, 1].reset_index(drop=True)
+    number_of_18m = Social_1b.iloc[:, 3].reset_index(drop=True)
 
     max_total = max(sum(number_of_11_18m), sum(number_of_18m))
 
     data = pd.DataFrame({
-        "Remediation complete": [number_of_11_18m[0],number_of_18m[0]],
-        "Remediation complete - awaiting building control sign-off": [number_of_11_18m[1], number_of_18m[1]],
-        "Remediation works in progress": [number_of_11_18m[2], number_of_18m[2]],
-        "Remediation works planned": [number_of_11_18m[3], number_of_18m[3]],
-        "Remediation plans unclear": [number_of_11_18m[4], number_of_18m[4]],
+        "Remediation completed": [number_of_11_18m[0],number_of_18m[0]],
+        "Works started": [number_of_11_18m[1], number_of_18m[1]],
+        "Works not started": [number_of_11_18m[2], number_of_18m[2]],
+        "Remediation progress currently unknown": [number_of_11_18m[3], number_of_18m[3]],
     }, index=["11-18m", "18m+"])
 
 
