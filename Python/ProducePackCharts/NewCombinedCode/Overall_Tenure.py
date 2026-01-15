@@ -35,7 +35,7 @@ def create_Overall_Tenure(type, figure_count, colours, paths_variables, data_lab
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming Combined_5
     Combined_5 = pd.read_excel(MI_tables_path, sheet_name='Combined_5')
     Combined_5 = chop_df(Combined_5, 3, 3)
 
