@@ -1,7 +1,7 @@
 """
-Created on Thursday 20 February 2025, 11:27:10
+Created on Tuesday 13 January 2026, 12:08:55
 
-author: Harry Simmons
+author: Matthew Bandura
 """
 
 import os
@@ -15,14 +15,14 @@ import numpy as np
 from Utility.functions import chop_df
 from Utility.MakeCurlyBrace import curlyBrace
 
-def create_SocialHousing_Remediation3_Curly(type, figure_count, colours, grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict):
+def create_SocialHousing_Remediation4_Curly(type, figure_count, colours, grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict):
     ###########
     # Main script Notifications
     if type==0:
-        print(f'Figure{figure_count}_SocialHousing_Remediation3_Curly')
+        print(f'Figure{figure_count}_SocialHousing_Remediation4_Curly')
 
     if type==1:
-        print(f'Accessible_Figure{figure_count}_SocialHousing_Remediation3_Curly')
+        print(f'Accessible_Figure{figure_count}_SocialHousing_Remediation4_Curly')
     ###########
 
 
@@ -37,22 +37,21 @@ def create_SocialHousing_Remediation3_Curly(type, figure_count, colours, grey, p
 
     # Accessing and transforming Social_1
     Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
-    Social_1a = chop_df(Social_1, 3, 5)
+    Social_1a = chop_df(Social_1, 3, 4)
 
     # Select the required columns
     number_of_buildings = Social_1a.iloc[:, 5].reset_index(drop=True)
-
     total = sum(number_of_buildings)
-
     yet_to_be_completed = number_of_buildings[1:].sum()
+
+
  
     data = pd.DataFrame({
-        "No plans in place": [0] + [number_of_buildings[4]] * (len(number_of_buildings) - 1),
-        "Plans in place": [0] + [number_of_buildings[3]] * (len(number_of_buildings) - 1),
-        "Remediation started": [0] + [number_of_buildings[2]] * (len(number_of_buildings) - 1),
-        "Remediation complete - awaiting building control sign-off": [yet_to_be_completed] + [number_of_buildings[1]] * (len(number_of_buildings) - 1),
-        "Remediation complete": [number_of_buildings[0]] * len(number_of_buildings)
-    }, index=["Remediation complete", "Remediation complete - awaiting\nbuilding control sign-off", "Remediation started", "Plans in place", "No plans in place"])
+        "Remediation progress currently unknown": [0] + [number_of_buildings[3]] * (len(number_of_buildings) - 1),
+        "Works not started": [0] + [number_of_buildings[2]] * (len(number_of_buildings) - 1),
+        "Works started": [yet_to_be_completed] + [number_of_buildings[1]] * (len(number_of_buildings) - 1),
+        "Remediation completed": [number_of_buildings[0]] * len(number_of_buildings)
+    }, index=["Remediation completed", "Works started", "Works not started", "Remediation progress currently unknown"])
 
 
     ###########
@@ -128,7 +127,7 @@ def create_SocialHousing_Remediation3_Curly(type, figure_count, colours, grey, p
     ax.set_xticks(range(len(data.index)))
     ax.set_xticklabels(["Total buildings"] + data.index.tolist()[1:], fontsize=12)
 
-    legend_names = ['Remediation complete - with\nbuilding control sign-off'] + ['Yet to be completed - including awaiting\nbuilding control sign-off']
+    legend_names = ['Remediation completed'] + ['Yet to be completed']
     legend_colours = [colours[-1], grey]
 
     handles = [Patch(facecolor=color, edgecolor='none') for color in legend_colours]
