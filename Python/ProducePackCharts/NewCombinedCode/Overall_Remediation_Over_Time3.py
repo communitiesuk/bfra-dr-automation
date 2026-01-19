@@ -43,9 +43,10 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
     eligibility_colours = colours[:4] 
     eligibility_colours.insert(0, secondary_grey) #eligibility pending colour should be grey
 
+
     eligibility_data = pd.DataFrame({  
-        "Remediation Stage": ['Eligibility Pending', 'Complete', 'Underway', 'In Programme', 'Remediation stage\ncurrently unknown'],
-        'Dec-25\npending' : [Combined_2.iloc[4, -2], Combined_2.iloc[0, -2], Combined_2.iloc[1, -2],  Combined_2.iloc[2, -2], Combined_2.iloc[3, -2] ]  #total no of buildings including new categories
+        "Remediation Stage": ['Eligibility Pending\n(social sector)', 'Complete', 'Underway', 'In Programme', 'Remediation stage\ncurrently unknown'],
+        'Dec-25\n eligiblity\npending' : [round(Combined_2.iloc[4, -2], -2), Combined_2.iloc[0, -2], Combined_2.iloc[1, -2],  Combined_2.iloc[2, -2], Combined_2.iloc[3, -2] ]  #total no of buildings including new categories
     })
 
     # Generate headers
@@ -53,8 +54,6 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
     for i in range(13):
         current_date = datetime(year, month, 1) - relativedelta(months=i)
         header = current_date.strftime('%b-%y')
-        if header == 'Dec-25':
-            header = 'Dec-25\nconfirmed'
         headers.append(header)
     
     #take the order of the months (col 0 is remediation stage so is excluded) and reverse them 
