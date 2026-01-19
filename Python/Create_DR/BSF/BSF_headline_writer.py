@@ -5,13 +5,8 @@ Created on Monday 20 January 2025, 14:11:13
 Author: Harry Simmons
 """
 
-import sys
-import os
 from Utility.functions import add_hyperlink
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 def BSF_headline_writer(BSF_headline_dict, dates_variables, DR):
     cutoff = dates_variables['cutoff']
