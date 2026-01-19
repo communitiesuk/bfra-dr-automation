@@ -7,9 +7,7 @@ Author: Harry Simmons
 
 from docx.shared import Cm
 
-
 from Utility.functions import create_table, add_hyperlink
-import Utility.docx_svg_patch
 
 # Estimates section writer
 def Estimates_section_writer(Estimates_section_dict, Estimates_tables, table_count, dates_variables, DR):
