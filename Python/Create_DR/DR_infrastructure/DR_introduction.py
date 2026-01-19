@@ -7,7 +7,7 @@ Author: Harry Simmons
 
 def DR_introduction(DR, figure_count):
     # Section Title 
-    paragraph = DR.add_paragraph('Introduction', style = 'Heading 2')
+    DR.add_paragraph('Introduction', style = 'Heading 2')
 
     # Paragraph
     DR.add_paragraph('This Data Release provides data on:', style = 'Normal')

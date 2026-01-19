@@ -7,13 +7,16 @@ Author: Harry Simmons
 
 def DR_building_safety_overview(DR):
     # Section Title 
-    paragraph = DR.add_paragraph('Building Safety Overview', style = 'Heading 2')
+    DR.add_paragraph('Building Safety Overview', style = 'Heading 2')
 
     # Paragraph
     DR.add_paragraph('This data release publishes data across all government remediation activities to give an overview of the status of progress to remediate unsafe cladding on residential buildings over 11m in England. This includes:')
 
     # Bullet point
     DR.add_paragraph('Estimates of the number of buildings that have or had unsafe cladding to be remediated in a government remediation programme.', style = 'List Bullet')
+
+    # Bullet point
+    DR.add_paragraph('Estimates of the total cost to remediate buildings that have or had unsafe cladding by funding source.', style = 'List Bullet')
 
     # Bullet point
     DR.add_paragraph('Data relating to the Aluminium Composite Material (ACM) cladding programme – those highest risk buildings that are high-rise buildings with unsafe, ‘Grenfell-style’ ACM cladding.', style = 'List Bullet')
