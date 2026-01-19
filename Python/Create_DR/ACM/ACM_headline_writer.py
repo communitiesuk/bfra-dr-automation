@@ -5,12 +5,7 @@ Created on Monday 20 January 2025, 14:10:37
 Author: Harry Simmons
 """
 
-import sys
-import os
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 def ACM_headline_writer(ACM_headline_dict, dates_variables, DR):
     cutoff = dates_variables['cutoff']
