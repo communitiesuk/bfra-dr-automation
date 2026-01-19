@@ -6,15 +6,6 @@ Author: Harry Simmons
 """
 
 import pandas as pd
-import sys
-import os
-
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
 
 from Utility.functions import convert_number, format_percentage, Change_line_in_DR, more_or_fewer
 
