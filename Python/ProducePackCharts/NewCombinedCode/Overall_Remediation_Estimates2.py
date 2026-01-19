@@ -47,9 +47,9 @@ def create_Overall_remediation_estimates2(type, figure_count, colours, grey, sec
 
 
     yet_to_identify_lower = 5723 - total_buildings - eligibility_pending
-    yet_to_identify_lower = round(yet_to_identify_lower/100) * 100 #round to the nearest 10
+    yet_to_identify_lower = round(yet_to_identify_lower, -2) #round to the nearest 100
     yet_to_identify_upper = 8584 - total_buildings - yet_to_identify_lower - eligibility_pending
-    yet_to_identify_upper = round(yet_to_identify_upper/100) * 100 #round to the nearest 100
+    yet_to_identify_upper = round(yet_to_identify_upper, -2) #round to the nearest 100
 
     data = pd.DataFrame({
         "Identified - Remediation progress monitored": [total_buildings],
