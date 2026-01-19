@@ -37,10 +37,9 @@ def create_SocialHousing_Remediation4_Curly(type, figure_count, colours, grey, p
 
     # Accessing and transforming Social_1
     Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
-    Social_1a = chop_df(Social_1, 3, 4)
-
+    Social_1b = chop_df(Social_1, 10, 4)
     # Select the required columns
-    number_of_buildings = Social_1a.iloc[:, 5].reset_index(drop=True)
+    number_of_buildings = Social_1b.iloc[:, 5].reset_index(drop=True)
     total = sum(number_of_buildings)
     yet_to_be_completed = number_of_buildings[1:].sum()
 
