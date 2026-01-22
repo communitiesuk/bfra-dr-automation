@@ -5,20 +5,8 @@ Created on Monday 22nd December 2025 15:32:21
 Author: Matthew Bandura
 """
 
-import docx
-from docx.shared import Pt, Cm, RGBColor
-from docx.enum.table import WD_ROW_HEIGHT_RULE, WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement
-from docx.enum.text import WD_COLOR_INDEX
-from docx.oxml.ns import qn
-import sys
-import os
-
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
-
 from Utility.functions import create_table, add_hyperlink
+from docx.shared import Cm
 
 
 def Costs_section_writer(Costs_section_dict, Costs_tables, table_count, dates_variables, DR):    
@@ -51,7 +39,7 @@ def Costs_section_writer(Costs_section_dict, Costs_tables, table_count, dates_va
     Costs_proportions_table = Costs_tables['Costs_proportions_table']
 
     # Section Title 
-    paragraph = DR.add_paragraph('Estimated cost of external wall system\n remediation of 11m+ residential buildings in\n England', style = 'Heading 2')
+    paragraph = DR.add_paragraph('Estimated cost of external wall system remediation of 11m+ residential buildings in England', style = 'Heading 2')
 
     # Intro
     paragraph = DR.add_paragraph('Key statistics:', style = 'Heading 3')
@@ -65,10 +53,10 @@ def Costs_section_writer(Costs_section_dict, Costs_tables, table_count, dates_va
     paragraph = DR.add_paragraph(f'Of this total estimated capital cost:', style = 'Normal')
 
     #Bullet Point 1
-    paragraph = DR.add_paragraph(f'An estimated £{Costs_gvt_high}bn - £{Costs_gvt_low}bn will have been funded by government once all works have been completed ({Costs_gvt_low_pct} - {Costs_gvt_high_pct} of the total capital costs;', style = 'List Bullet')
+    paragraph = DR.add_paragraph(f'An estimated £{Costs_gvt_low}bn - £{Costs_gvt_high}bn will have been funded by government once all works have been completed ({Costs_gvt_low_pct} - {Costs_gvt_high_pct} of the total capital costs);', style = 'List Bullet')
 
     #Bullet Point 2
-    paragraph = DR.add_paragraph(f'An estimated £{Costs_other_high}bn - £{Costs_other_low}bn will have been funded by government once all works have been completed ({Costs_other_low_pct} - {Costs_other_high_pct} of the total capital costs. This includes developers, registered providers of social housing and other actors.', style = 'List Bullet')
+    paragraph = DR.add_paragraph(f'An estimated £{Costs_other_high}bn - £{Costs_other_low}bn will have been funded by government once all works have been completed ({Costs_other_high_pct} - {Costs_other_low_pct} of the total capital costs). This includes developers, registered providers of social housing and other actors.', style = 'List Bullet')
 
     # Paragraph 3
     paragraph = DR.add_paragraph(style = 'Normal')

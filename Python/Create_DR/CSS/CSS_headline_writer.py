@@ -4,12 +4,6 @@ Created on Friday 17 January 2025, 14:33:41
 
 Author: Harry Simmons
 """
-import sys
-import os
-
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 def CSS_headline_writer(CSS_headline_dict, dates_variables, DR):
     cutoff = dates_variables['cutoff']

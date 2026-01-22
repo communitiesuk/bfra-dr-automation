@@ -7,6 +7,7 @@ Author: Harry Simmons
 
 from docx.shared import Cm
 import os
+import Utility.docx_svg_patch
 
 from Utility.functions import add_hyperlink
 

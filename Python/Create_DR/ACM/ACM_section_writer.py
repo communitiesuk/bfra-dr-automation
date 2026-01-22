@@ -7,15 +7,10 @@ Author: Harry Simmons
 
 from docx.shared import Cm 
 from docx.enum.text import WD_COLOR_INDEX
-import sys
 import os
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 from Utility.functions import create_table, create_bullet_points_forecast 
-import Utility.docx_svg_patch
 
 # ACM section writer
 def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, dates_variables, paths_variables, DR):
@@ -132,7 +127,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
 
     # Bullet point
     text = f'{ACM_started_c_no} buildings ({ACM_started_c_pct} of all buildings) have started or completed ACM remediation – {ACM_started_line} since the end of {last_month}.'
-    text += f'Of these, {ACM_removed_c_no} buildings ({ACM_removed_c_pct} of all buildings) have removed ACM cladding – {ACM_removed_line} since the end of {last_month}.'
+    text += f' Of these, {ACM_removed_c_no} buildings ({ACM_removed_c_pct} of all buildings) have removed ACM cladding – {ACM_removed_line} since the end of {last_month}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph 
@@ -216,7 +211,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     run.bold = True
     run = paragraph.add_run('[ADD STATISTIC]')
     run.font.highlight_color = WD_COLOR_INDEX.YELLOW
-    text = f' of buildings identified at 31 December 2023 have started or completed remediation compared to {ACM_started_c_pct} of all buildings in the programme.'
+    text = f' of buildings identified at 31 December 2024 have started or completed remediation compared to {ACM_started_c_pct} of all buildings in the programme.'
     run = paragraph.add_run(text)
     run.bold = True
     

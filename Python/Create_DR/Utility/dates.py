@@ -76,26 +76,6 @@ def get_end_of_year_word(year, month):
     else:
         return f'December {year}'
 
-def calculate_previous_release(MI_tables_path):
-    Social_5 = pd.read_excel(MI_tables_path, sheet_name='Social_5')
-    quarter_cell = Social_5.iloc[4, -4]
-    quarter_initial = quarter_cell[:6]
-
-    months = {
-        "1": 'Jan', "Feb": 2, "Mar": 3, "Apr": 4,
-        "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
-        "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12}
-    
-    quarter_month = months[quarter_initial[:3]]
-
-    quarter_year = '20' + quarter_initial[4:6]
-
-    _, last_day = cal.monthrange(int(quarter_year), quarter_month)
-    previous_release = f"{last_day} {cal.month_name[quarter_month]} {quarter_year}"
-    return previous_release
-
-
-
 
 def extract_month_year(sheet_name, file_path):
     #Extracts month and year from the first column header of a given Excel sheet using regex searches.
@@ -152,12 +132,6 @@ def sort_dates():
     dev_info = extract_month_year('Developer_3', MI_tables_path)
     dev_month, dev_year, dev_last_day,  = dev_info['dev_month'], dev_info['dev_year'], dev_info['dev_last_day']
     dev_cutoff = f"{dev_last_day} {cal.month_name[dev_month]} {dev_year}"
-    
-    # this is the info related to the social section of the DR
-    social_title = pd.read_excel(MI_tables_path, sheet_name = 'Social_2').columns[0]
-    social_cutoff = re.search(r'\d{1,2} \w+ \d{4}', social_title).group()
-
-    social_previous_release = calculate_previous_release(MI_tables_path)
 
     # Working out dates for the main DR
     cutoff = f"{last_day} {cal.month_name[month]} {year}"
@@ -204,8 +178,6 @@ def sort_dates():
         'dev_month' : dev_month,
         'dev_year' : dev_year,
         'dev_last_day' : dev_last_day,
-        'social_cutoff' : social_cutoff,
-        'social_previous_release' : social_previous_release,
         'end_year_word': end_year_word,
         'end_this_year': end_this_year,
         'last_year_month': last_year_month,

@@ -6,15 +6,9 @@ Author: Harry Simmons
 """
 
 from docx.shared import Cm
-import sys
 import os
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
-
 from Utility.functions import create_table
-import Utility.docx_svg_patch
 
 def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     
@@ -131,7 +125,7 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = f'The number of buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of eligible CSS buildings that have transferred from the BSF in the CSS section of the data release. This is because different programmes may define buildings differently due to how they operate. One building has also withdrawn from the CSS since transferring from the BSF.'
+    text = f'The number of buildings reported as transferred from the BSF to the CSS in this section of the data release may not be the same as the number of eligible CSS buildings that have transferred from the BSF in the CSS section of the data release. This is because different programmes may define buildings differently due to how they operate. Two buildings have also withdrawn from the CSS since transferring from the BSF.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph

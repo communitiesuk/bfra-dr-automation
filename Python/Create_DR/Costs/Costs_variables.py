@@ -5,18 +5,7 @@ Created on Monday 22nd December 2025, 14:36:06
 Author: Matthew Bandura
 """
 
-import os
-import sys
 import pandas as pd 
-
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Navigate to the Utility folder relative to the script
-utility_path = os.path.join(script_dir, 'Utility')
-# Add it to sys.path so that python can import from it
-sys.path.append(utility_path)
-
-from Utility.functions import format_percentage
 
 def Costs_variable_creator(Costs_handled_data):
     # Unpacking dataframes from Costs_data_handler
@@ -30,15 +19,15 @@ def Costs_variable_creator(Costs_handled_data):
     'Costs_total_low' : Estimated_5.loc[2, 'Low Estimate'],
     'Costs_total_high' : Estimated_5.loc[2, 'High Estimate'],
 
-    'Costs_gvt_low_pct' : Estimated_6.loc[1, 'Low Estimate'],
-    'Costs_gvt_high_pct' : Estimated_6.loc[1, 'High Estimate'],
+    'Costs_gvt_low_pct' : Estimated_6.loc[0, 'Formatted Low Estimate'],
+    'Costs_gvt_high_pct' : Estimated_6.loc[0, 'Formatted High Estimate'],
     'Costs_gvt_low' : Estimated_5.loc[0, 'Low Estimate'],
     'Costs_gvt_high' : Estimated_5.loc[0, 'High Estimate'],
 
     'Costs_other_high' : Estimated_5.loc[1, 'Low Estimate'],
     'Costs_other_low' : Estimated_5.loc[1, 'High Estimate'],
-    'Costs_other_low_pct' : Estimated_6.loc[2, 'Low Estimate'],
-    'Costs_other_high_pct' : Estimated_6.loc[2, 'High Estimate'],
+    'Costs_other_low_pct' : Estimated_6.loc[1, 'Formatted Low Estimate'],
+    'Costs_other_high_pct' : Estimated_6.loc[1, 'Formatted High Estimate'],
 
     'Costs_total_available' : Estimated_7.loc[3, 'Estimate'],
     'Costs_exchequer' : Estimated_7.loc[0, 'Estimate'],
@@ -55,9 +44,9 @@ def Costs_variable_creator(Costs_handled_data):
 
     Costs_proportions_table = pd.DataFrame({
         'Funding Source': ['Government Programmes', 'Non-government actors', 'Total'],
-        'Low Estimate': Estimated_6['Low Estimate'],
-        'Central Estimate': Estimated_6['Central Estimate'],
-        'High Estimate': Estimated_6['High Estimate'],
+        'Low Estimate': Estimated_6['Formatted Low Estimate'],
+        'Central Estimate': Estimated_6['Formatted Central Estimate'],
+        'High Estimate': Estimated_6['Formatted High Estimate'],
     })
 
 

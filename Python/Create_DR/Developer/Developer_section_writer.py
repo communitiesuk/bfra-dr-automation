@@ -5,15 +5,9 @@ Created on Wednesday 19 February 2025, 14:39:56
 Author: Harry Simmons
 """
 
-from docx import Document
 from docx.shared import Cm
 from docx.enum.text import WD_COLOR_INDEX
-import sys
 import os
-
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility'))  # Replace 'folder_name' with the folder's name
-sys.path.append(folder_path)
 
 from Utility.functions import create_table, add_hyperlink
 

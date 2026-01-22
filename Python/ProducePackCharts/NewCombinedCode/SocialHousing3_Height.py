@@ -1,7 +1,7 @@
 """
-Created on Thursday 20 February 2025, 11:27:10
+Created on Tuesday 13 January 2026, 12:07:32
 
-author: Harry Simmons
+author: Matthew Bandura
 """
 
 import os
@@ -13,16 +13,14 @@ import numpy as np
 # Now you can import your functions
 from Utility.functions import chop_df
 
-def create_Overall_Tenure(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
+def create_SocialHousing3_Height(type, figure_count, colours, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
     ###########
     # Main script Notifications
     if type==0:
-        text = f'Figure{figure_count}_Overall_Tenure'
-        print(text)
+        print(f'Figure{figure_count}_SocialHousing3_Height')
 
     if type==1:
-        text = f'Accessible_Figure{figure_count}_Overall_Tenure'
-        print(text)
+        print(f'Accessible_Figure{figure_count}_SocialHousing3_Height')
     ###########
 
 
@@ -35,24 +33,24 @@ def create_Overall_Tenure(type, figure_count, colours, paths_variables, data_lab
     partial_output_path= paths_variables['partial_output_path']
 
 
-    # Accessing and transforming Combined_5
-    Combined_5 = pd.read_excel(MI_tables_path, sheet_name='Combined_5')
-    Combined_5 = chop_df(Combined_5, 3, 3)
+    # Accessing and transforming Social_1
+    Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
+    Social_1b = chop_df(Social_1, 10, 4)
 
     # Select the required columns
-    number_of_other = Combined_5.iloc[:, 5].reset_index(drop=True)
-    number_of_social = Combined_5.iloc[:, 3].reset_index(drop=True)
-    number_of_private = Combined_5.iloc[:, 1].reset_index(drop=True)
+    number_of_11_18m = Social_1b.iloc[:, 1].reset_index(drop=True)
+    number_of_18m = Social_1b.iloc[:, 3].reset_index(drop=True)
 
-    max_total = max(sum(number_of_other), sum(number_of_social), sum(number_of_private))
+    max_total = max(sum(number_of_11_18m), sum(number_of_18m))
 
     data = pd.DataFrame({
-        "Remediation complete": [number_of_other[0], number_of_social[0], number_of_private[0]],
-        "Remediation underway": [number_of_other[1], number_of_social[1], number_of_private[1]],
-        "In programme": [number_of_other[2], number_of_social[2], number_of_private[2]]
-    }, index=["Other", "Social", "Private"])
+        "Remediation completed": [number_of_11_18m[0],number_of_18m[0]],
+        "Works started": [number_of_11_18m[1], number_of_18m[1]],
+        "Works not started": [number_of_11_18m[2], number_of_18m[2]],
+        "Remediation progress currently unknown": [number_of_11_18m[3], number_of_18m[3]],
+    }, index=["11-18m", "18m+"])
 
-    
+
     ###########
     # CREATING THE GRAPH
     ###########
@@ -102,10 +100,10 @@ def create_Overall_Tenure(type, figure_count, colours, paths_variables, data_lab
     ax.set_axisbelow(True)
     ax.legend(fontsize = 12,
             loc='upper center', 
-            bbox_to_anchor=(0.5, 1.15),
+            bbox_to_anchor=(0.5, 1.5),
             fancybox=False,
             shadow=False,
-            ncol=3,
+            ncol=2,
             edgecolor = 'white'
             )  
     ax.grid(which = 'major',
@@ -118,7 +116,6 @@ def create_Overall_Tenure(type, figure_count, colours, paths_variables, data_lab
     ##########
     # SAVING THE GRAPH
     ##########
-
     # Save the plot as SVG file
     if type==0:
         output_filename = f"Figure{figure_count}.svg"

@@ -5,17 +5,11 @@ Created on Friday 17 January 2025, 14:32:06
 Author: Harry Simmons
 """
 
-import docx
 from docx.shared import Cm
-import sys
 import os
 
-# Add the Utility folder to sys.path
-folder_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'Utility')) 
-sys.path.append(folder_path)
-
 from Utility.functions import create_table
-import Utility.docx_svg_patch
+
 
 def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking date variables
@@ -77,7 +71,7 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
     run.bold = True
     
     # Figure
-    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
+    DR.add_picture(figure_path)
     figure_count += 1
 
     # Table caption
@@ -166,6 +160,6 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
    
 
     # Figure
-    DR.add_picture(os.path.join(paths_variables['figure_path'], f'Figure{figure_count}.svg'), width=Cm(17))
+    DR.add_picture(figure_path)
     figure_count += 1
     return figure_count, table_count

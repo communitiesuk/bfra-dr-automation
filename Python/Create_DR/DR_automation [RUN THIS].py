@@ -15,7 +15,7 @@ import time
 import os 
 # Start the timer
 start_time = time.time()
-
+##__init__ files in each subfolder set up these imports 
 from Utility import sort_dates, create_paths
 
 from DR_infrastructure import setup_doc, DR_start, DR_introduction, DR_enquiries, DR_building_safety_overview, DR_end
@@ -53,9 +53,9 @@ def create_DR():
     CSS_handled_data = CSS_retrieve_data(paths_variables)
     Developer_handled_data_last_month = Developer_retrieve_data_last_month(paths_variables)
     Developer_handled_data_this_month = Developer_retrieve_data_this_month(paths_variables)
-    Social_handled_data_last_quarter = Social_retrieve_data_last_quarter(paths_variables)
-    Social_handled_data_last_month = Social_retrieve_data_last_month(paths_variables)
-    Social_handled_data_this_month = Social_retrieve_data_this_month(paths_variables)
+    #Social_handled_data_last_quarter = Social_retrieve_data_last_quarter(paths_variables)
+    #Social_handled_data_last_month = Social_retrieve_data_last_month(paths_variables)
+    #Social_handled_data_this_month = Social_retrieve_data_this_month(paths_variables)
 #    RAP_handled_data = RAP_retrieve_data(paths_variables)
     Enforcement_handled_data = Enforcement_retrieve_data(paths_variables)
 
@@ -69,7 +69,7 @@ def create_DR():
     CSS_tables, CSS_headline_dict, CSS_section_dict = CSS_variable_creator (CSS_handled_data)
     Developer_tables, Developer_headline_dict, Developer_section_dict = Developer_variable_creator(Developer_handled_data_last_month, Developer_handled_data_this_month, dates_variables)
 #    RAP_section_dict = RAP_variable_creator(RAP_handled_data)
-    Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_last_quarter, Social_handled_data_this_month, Social_handled_data_last_month)
+    #Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_last_quarter, Social_handled_data_this_month, Social_handled_data_last_month)
     Enforcement_headline_dict, Enforcement_section_dict = Enforcement_variable_creator(Enforcement_handled_data)
     print('DONE!')
 
@@ -82,7 +82,7 @@ def create_DR():
     BSF_headline_writer(BSF_headline_dict, dates_variables, DR)
     CSS_headline_writer(CSS_headline_dict, dates_variables, DR)
     Developer_headline_writer(Developer_headline_dict, dates_variables, DR)
-    Social_headline_writer(Social_headline_dict, dates_variables, DR)
+    #Social_headline_writer(Social_headline_dict, dates_variables, DR)
     Enforcement_headline_writer(Enforcement_headline_dict, dates_variables, DR)
     DR_introduction(DR, figure_count)
     DR_enquiries(dates_variables, DR)
@@ -95,7 +95,7 @@ def create_DR():
     figure_count, table_count = CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     figure_count, table_count = Developer_section_writer(Developer_section_dict, BSF_developer_transfers, Developer_tables, figure_count, table_count, dates_variables, paths_variables, DR)
 #    figure_count = RAP_section_writer(RAP_section_dict,figure_count, dates_variables, DR)
-    figure_count, table_count = Social_section_writer(Social_section_dict, Social_tables, figure_count, table_count, dates_variables, paths_variables, DR)
+    #figure_count, table_count = Social_section_writer(Social_section_dict, Social_tables, figure_count, table_count, dates_variables, paths_variables, DR)
     Enforcement_section_writer(Enforcement_section_dict, dates_variables, DR)
     DR_end(DR, dates_variables)
     print('DONE!')

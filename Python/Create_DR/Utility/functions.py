@@ -242,7 +242,7 @@ def create_paths():
     MI_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]"
     MI_tables_path = get_excel_path(MI_folder)
 
-    additional_folder = r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT ADDITIONAL DR STATS HERE]'
+    additional_folder = r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT ADDITIONAL DR STATS HERE]\[AUTOMATION]'
     additional_tables_path = get_excel_path(additional_folder)
 
     save_path = r'Q:\BSP\Automation\DR Automation\DR_outputs\Auto_DR'
