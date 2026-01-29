@@ -42,12 +42,18 @@ def create_paths():
     # extract the current DR month and year
     this_month, this_year = extract_month_year('Cover', MI_tables_path)
 
-    md_path =f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\DR_markdown\\Building Safety Release {this_month} {this_year} - Markdown version.md'
+    md_path =f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\Markdown\\DR_doc\\Building Safety Release {this_month} {this_year} - Markdown version.md'
 
     docx_path = f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT DR HERE]\\Building Safety Release {this_month} {this_year} for release.docx'
+    
+    technical_note_input_path = f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT TECHNICAL NOTE HERE]\\Building Safety Technical Note {this_month} {this_year}.docx'
+
+    technical_note_output_path =f'Q:\\BSP\\Automation\\DR Automation\\DR_outputs\\Markdown\\Technical_Note\\Building Safety Technical Note {this_month} {this_year} - Markdown version.md'
 
     paths = {'docx_path' : docx_path,
              'md_path' : md_path,
+             'technical_note_input_path' : technical_note_input_path,
+             'technical_note_output_path' : technical_note_output_path
     }
     return paths
 
