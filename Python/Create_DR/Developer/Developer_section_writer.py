@@ -138,7 +138,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     Developer_self_reported_no_plans_line = Developer_section_dict['Developer_self_reported_no_plans_line']
 
     # Section Title
-    paragraph = DR.add_paragraph('Developer-Led Remediation', style = 'Heading 2')
+    paragraph = DR.add_paragraph('Developer-led remediation', style = 'Heading 2')
 
     # Paragraph
     text = f'Information in this section received by developers is correct as at {Developer_cutoff}{Developer_data_change_line}. '

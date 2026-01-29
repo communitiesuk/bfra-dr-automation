@@ -7,7 +7,7 @@ Author: Harry Simmons
 
 def DR_building_safety_overview(DR):
     # Section Title 
-    DR.add_paragraph('Building Safety Overview', style = 'Heading 2')
+    DR.add_paragraph('Building safety overview', style = 'Heading 2')
 
     # Paragraph
     DR.add_paragraph('This data release publishes data across all government remediation activities to give an overview of the status of progress to remediate unsafe cladding on residential buildings over 11m in England. This includes:')

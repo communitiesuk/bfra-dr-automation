@@ -82,7 +82,7 @@ def ACM_section_writer(ACM_section_dict, ACM_tables, figure_count, table_count, 
     ACM_yet_to_dwellings_high = ACM_section_dict['ACM_yet_to_dwellings_high']
 
     # Section Title
-    paragraph = DR.add_paragraph('ACM Remediation', style = 'Heading 2')
+    paragraph = DR.add_paragraph('ACM remediation', style = 'Heading 2')
 
     # Paragraph 
     text = f'Information in this section is correct as at {cutoff} and shows a monthly update from the previous publication.'

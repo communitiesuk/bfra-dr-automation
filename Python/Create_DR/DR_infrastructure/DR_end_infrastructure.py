@@ -44,7 +44,7 @@ def DR_end(DR, dates_variables):
     DR.add_paragraph('the remediation progress of buildings covered by the developer remediation contract, including a developer-by-developer breakdown,', style = 'List Bullet')
 
     # Bullet point
-    DR.add_paragraph('the remediation progress of buildings monitored under the social housing survey, including a provider-by-provider breakdown,', style = 'List Bullet')
+    DR.add_paragraph('the remediation progress of social housing buildings reported by registered providers as being self-funded,', style = 'List Bullet')
 
     # Bullet point
     DR.add_paragraph('the progress of the Waking Watch Relief Fund and Waking Watch Replacement Fund, and', style = 'List Bullet')
@@ -53,7 +53,7 @@ def DR_end(DR, dates_variables):
     DR.add_paragraph('building safety enforcement action undertaken by Local Authorities in England.', style = 'List Bullet')
 
     # Section Title 
-    paragraph = DR.add_paragraph('Related Statistics', style = 'Heading 2')
+    paragraph = DR.add_paragraph('Related statistics', style = 'Heading 2')
 
     # Heading
     paragraph = DR.add_paragraph('BRE Testing', style = 'Heading 3')
@@ -117,9 +117,9 @@ def DR_end(DR, dates_variables):
     paragraph = DR.add_paragraph('RSH publication', style = 'Heading 3')
 
     # Paragraph
-    paragraph = DR.add_paragraph("On 25 September 2025, the Regulator of Social Housing published ", style = 'Normal')
-    add_hyperlink(paragraph, "findings from the Fire Safety Remediation Survey (FRS)", "https://www.gov.uk/government/collections/fire-safety-remediation-in-social-housing-in-england")
-    paragraph.add_run(" for buildings 11 metres and over in height as at 30 June 2025, which opened to all landlords on 23 June 2025 and closed on 1 September 2025.")
+    paragraph = DR.add_paragraph("On 18 December 2025, the Regulator of Social Housing published ", style = 'Normal')
+    add_hyperlink(paragraph, "findings from the Fire Safety Remediation Survey", "https://www.gov.uk/government/collections/fire-safety-remediation-in-social-housing-in-england")
+    paragraph.add_run(" (FRS) collected from Registered Providers of Social Housing for buildings 11 metres and over in height as at 30 September 2025.")
 
     # Heading
     paragraph = DR.add_paragraph('Social Housing Provider Data', style = 'Heading 3')
@@ -142,9 +142,9 @@ def DR_end(DR, dates_variables):
     paragraph = DR.add_paragraph('Cladding remediation unit costs', style = 'Heading 3')
 
     # Paragraph
-    paragraph = DR.add_paragraph("On 17 December 2024, MHCLG published data on ", style = 'Normal')
+    paragraph = DR.add_paragraph("On 19 December 2025, MHCLG published data on ", style = 'Normal')
     add_hyperlink(paragraph, "cladding remediation unit costs", "https://www.gov.uk/government/publications/cladding-remediation-unit-costs-analysis-of-high-rise-non-acm-buildings")
-    paragraph.add_run(", providing data on costs per square metre of cladding remediated for high-rise non-ACM buildings, including analysis by cladding area and cost categories.")
+    paragraph.add_run(", providing data on costs per square metre of cladding remediated for high-rise and mid-rise non-ACM buildings, including analysis by cladding area and cost categories.")
 
     # Section Title 
     paragraph = DR.add_paragraph('Technical note', style = 'Heading 3')
