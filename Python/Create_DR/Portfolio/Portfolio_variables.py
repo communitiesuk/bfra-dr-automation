@@ -34,8 +34,10 @@ def Portfolio_variable_creator(Portfolio_handled_data):
         'Portfolio_started_c_pct': Combined_2.loc[1, 'Cumulative Percentage'],
         'Portfolio_completed_c_no': format(Combined_6.loc[0, 'Current Month'], ','),
         'Portfolio_completed_c_pct': Combined_2.loc[0, 'Cumulative Percentage'],
+        'Portfolio_pending_no' : format(round(Combined_2.iloc[4, -2], -2), ','),
         'Estimates_11m_remaining_low' : format(round( ( (5723 - Combined_6.loc[3, 'Current Month'])/100 ))*100, ','),
-        'Estimates_11m_remaining_high' : format(round( ( (8584 - Combined_6.loc[3, 'Current Month'] )/100))*100, ',')
+        'Estimates_11m_remaining_high' : format(round( ( (8584 - Combined_6.loc[3, 'Current Month'] )/100))*100, ','),
+
     }
 
     Portfolio_section_dict = {
