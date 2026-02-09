@@ -34,7 +34,7 @@ from CSS import CSS_retrieve_data, CSS_variable_creator, CSS_headline_writer, CS
 
 from Developer import Developer_retrieve_data_last_month, Developer_retrieve_data_this_month, Developer_variable_creator, Developer_headline_writer, Developer_section_writer
 
-from Social import Social_retrieve_data_last_quarter, Social_retrieve_data_last_month, Social_retrieve_data_this_month, Social_variable_creator, Social_headline_writer, Social_section_writer
+from Social import Social_retrieve_data_last_month, Social_retrieve_data_this_month, Social_variable_creator, Social_headline_writer, Social_section_writer
 
 from Enforcement import Enforcement_retrieve_data, Enforcement_variable_creator, Enforcement_headline_writer, Enforcement_section_writer
 
@@ -53,9 +53,8 @@ def create_DR():
     CSS_handled_data = CSS_retrieve_data(paths_variables)
     Developer_handled_data_last_month = Developer_retrieve_data_last_month(paths_variables)
     Developer_handled_data_this_month = Developer_retrieve_data_this_month(paths_variables)
-    #Social_handled_data_last_quarter = Social_retrieve_data_last_quarter(paths_variables)
-    #Social_handled_data_last_month = Social_retrieve_data_last_month(paths_variables)
-    #Social_handled_data_this_month = Social_retrieve_data_this_month(paths_variables)
+    Social_handled_data_last_month = Social_retrieve_data_last_month(paths_variables)
+    Social_handled_data_this_month = Social_retrieve_data_this_month(paths_variables)
 #    RAP_handled_data = RAP_retrieve_data(paths_variables)
     Enforcement_handled_data = Enforcement_retrieve_data(paths_variables)
 
@@ -69,7 +68,7 @@ def create_DR():
     CSS_tables, CSS_headline_dict, CSS_section_dict = CSS_variable_creator (CSS_handled_data)
     Developer_tables, Developer_headline_dict, Developer_section_dict = Developer_variable_creator(Developer_handled_data_last_month, Developer_handled_data_this_month, dates_variables)
 #    RAP_section_dict = RAP_variable_creator(RAP_handled_data)
-    #Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_last_quarter, Social_handled_data_this_month, Social_handled_data_last_month)
+    Social_tables, Social_headline_dict, Social_section_dict = Social_variable_creator(Social_handled_data_this_month, Social_handled_data_last_month)
     Enforcement_headline_dict, Enforcement_section_dict = Enforcement_variable_creator(Enforcement_handled_data)
     print('DONE!')
 
