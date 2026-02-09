@@ -84,6 +84,10 @@ def CSS_variable_creator (CSS_handled_data):
         'CSS_11_18m_c_pct': format_percentage(CSS_3.loc[1, '11_18m Cumulative Percentage']),
         'CSS_private_c_pct': format_percentage(CSS_4.loc[1, 'Private Cumulative Percentage']),
         'CSS_social_c_pct': format_percentage(CSS_4.loc[1, 'Social Cumulative Percentage']),
+
+        'CSS_pre_elig_private_pct' : format_percentage(CSS_misc.loc[2, 'Current Month']),
+        'CSS_pre_elig_social_pct' : format_percentage(CSS_misc.loc[3, 'Current Month']),
+        'CSS_pre_elig_unknown_pct' : format_percentage(CSS_misc.loc[4, 'Current Month'])
     }
 
     return CSS_tables, CSS_headline_dict, CSS_section_dict
