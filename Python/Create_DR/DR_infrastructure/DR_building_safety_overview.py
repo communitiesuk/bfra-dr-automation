@@ -31,4 +31,4 @@ def DR_building_safety_overview(DR):
     DR.add_paragraph('Data relating to developer-led remediation, which reports on those buildings that developers have agreed to remediate.', style = 'List Bullet')
 
     # Bullet point
-    DR.add_paragraph('Data on residential buildings over 11m in height that are the responsibility of registered social housing providers.', style = 'List Bullet')
+    DR.add_paragraph('Data on social buildings over 11m in height whose cladding remediation is funded by registered social housing providers.', style = 'List Bullet')

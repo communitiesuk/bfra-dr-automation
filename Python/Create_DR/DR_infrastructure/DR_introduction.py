@@ -28,7 +28,7 @@ def DR_introduction(DR, figure_count):
     DR.add_paragraph('Progress of remediation of residential buildings 11 metres and over in height with life-critical fire safety risks under the developer remediation contract.', style = 'List Bullet')
 
     #Bullet Point 6
-    DR.add_paragraph('Progress of remediation of residential buildings 11 metres and over in height with unsafe cladding reported by registered providers of social housing.', style = 'List Bullet')
+    DR.add_paragraph('Progress of remediation of residential buildings 11 metres and over in height with unsafe cladding reported by registered providers of social housing as being self-funded.', style = 'List Bullet')
 
     #Bullet Point 7
     DR.add_paragraph('Enforcement action taken by local authorities against high-rise residential buildings with unsafe cladding under the Housing Act 2004.', style = 'List Bullet')
@@ -40,7 +40,7 @@ def DR_introduction(DR, figure_count):
     DR.add_paragraph(f'The data in Figure {figure_count} and the overall remediation progress section of the data release, shows the combined remediation progress across MHCLG’s Building Safety Remediation portfolio, covering buildings and accounting for crossover in the ACM programme, Building Safety Fund, Cladding Safety Scheme, developer remediation contract and reported by registered providers of social housing.', style = 'Normal')
 
     # Paragraph
-    DR.add_paragraph('The figures in this publication are correct as at the specified dates. Remediation progress on the ACM programme, BSF and CSS will be updated monthly, and remediation progress on the developer remediation contract and registered providers of social housing will be updated quarterly.', style = 'Normal')
+    DR.add_paragraph('The figures in this publication are correct as at the specified dates. Remediation progress on the ACM programme, BSF, CSS and social self-funded buildings will be updated monthly, and remediation progress on the developer remediation contract will be updated quarterly.', style = 'Normal')
 
     # Paragraph
     DR.add_paragraph('From June 2025 the Building Safety Remediation data release includes estimates on the number of residential buildings 11 metres and over in height in England with unsafe cladding requiring remediation. These estimates are not expected to change frequently.', style = 'Normal')

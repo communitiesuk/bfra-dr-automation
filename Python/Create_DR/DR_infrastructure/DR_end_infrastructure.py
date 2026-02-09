@@ -90,7 +90,7 @@ def DR_end(DR, dates_variables):
     # Paragraph
     paragraph = DR.add_paragraph("MHCLG has published data on the ", style = 'Normal')
     add_hyperlink(paragraph, "prevalence of external wall system life-safety fire risk in mid-rise (11-18m) residential buildings in England", "https://www.gov.uk/government/publications/estimating-the-prevalence-and-costs-of-external-wall-system-life-safety-fire-risk-in-mid-rise-residential-buildings-in-england")
-    paragraph.add_run(", and the estimated cost as at July 2021 to remediate or mitigate these buildings. On 17th July, MHCLG published an ")
+    paragraph.add_run(", and the estimated cost as at July 2021 to remediate or mitigate these buildings. On 17th July 2025, MHCLG published an ")
     add_hyperlink(paragraph, "updated estimate of the prevalence of external wall system fire risk in mid-rise buildings", "https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-june-2025")
     paragraph.add_run(". Should these figures change further, MHCLG will publish a new update.")
 
@@ -121,14 +121,6 @@ def DR_end(DR, dates_variables):
     add_hyperlink(paragraph, "findings from the Fire Safety Remediation Survey", "https://www.gov.uk/government/collections/fire-safety-remediation-in-social-housing-in-england")
     paragraph.add_run(" (FRS) collected from Registered Providers of Social Housing for buildings 11 metres and over in height as at 30 September 2025.")
 
-    # Heading
-    paragraph = DR.add_paragraph('Social Housing Provider Data', style = 'Heading 3')
-
-    # Paragraph
-    paragraph = DR.add_paragraph(style = 'Normal')
-    paragraph.add_run('MHCLG has published ')
-    add_hyperlink(paragraph, 'data provided by social housing providers', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_quarterly_dr}')
-    paragraph.add_run(' on remediation progress of their building stock. This release provides information on the number of buildings, assessments in place, number of buildings requiring remediation works and status of those works by social housing provider.')
 
     # Heading
     paragraph = DR.add_paragraph('Waking Watch costs', style = 'Heading 3')
