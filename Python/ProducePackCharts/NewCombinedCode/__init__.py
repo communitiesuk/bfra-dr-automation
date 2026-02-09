@@ -1,6 +1,6 @@
 print('Importing graph creation functions...')
 from .Overall_Remediation_Over_Time3 import create_Overall_Remediation_over_time3
-from .Overall_Remediation_Estimates2 import create_Overall_remediation_estimates2
+from .Overall_Remediation_Estimates2 import create_Overall_remediation_estimates2, create_Overall_remediation_estimates2_internal
 from .Overall_Remediation2_Curly import create_Overall_Remediation2_Curly
 from .Overall_Remediation_Across_Schemes2 import create_Overall_Remediation_Across_Schemes2
 from .Overall_Height import create_Overall_Height
@@ -27,3 +27,6 @@ from .Developer_Height import create_Developer_Height
 # Social
 from .SocialHousing_Remediation4_Curly import create_SocialHousing_Remediation4_Curly
 from .SocialHousing3_Height import create_SocialHousing3_Height
+
+# Residents
+from .RAP_Estimates_Residents import create_RAP_estimates_residents_nov25, create_RAP_estimates_residents_NRS, create_RAP_estimates_residents_dec24

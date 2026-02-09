@@ -30,43 +30,48 @@ def create_RAP_estimates_residents(type, figure_count, colours, grey, secondary_
     ###########
     # Accessing the folder which stores the MI tables
 
-    MI_tables_path = paths_variables['MI_tables_path']
+    dummy_tables_path = paths_variables['dummy_tables_path']
     partial_output_path= paths_variables['partial_output_path']
 
 
-    Combined_4 = pd.read_excel(MI_tables_path, sheet_name='Combined_4')
-    Combined_4 = chop_df(Combined_4, 3, 4)
-    Estimated_4 = pd.read_excel(MI_tables_path, sheet_name='Estimated_4')
-    Estimated_4 = chop_df(Estimated_4, 3, 4)
+    dwellings_dec24 = pd.read_excel(dummy_tables_path, sheet_name='dwellings_dec24')
+    dwellings_dec24 = chop_df(dwellings_dec24, 3, 4)
+    estimates_dec24 = chop_df(dwellings_dec24, 5, 3)
 
     # Select the required data
-    remediation_complete_18m_estimate = Combined_4.iloc[0, 2] * 1.9
-    remediation_complete_11m_estimate = Combined_4.iloc[0, 1] * 1.9
+    remediation_complete_18m_estimate = dwellings_dec24.iloc[0, 2] * 1.9
+    remediation_complete_11m_estimate = dwellings_dec24.iloc[0, 1] * 1.8
     remediation_complete_residents = remediation_complete_18m_estimate + remediation_complete_11m_estimate
-    # print(Combined_4.iloc[0, 2])
-    # print(Combined_4.iloc[0, 1])
+    # print(dwellings_dec24.iloc[0, 2])
+    # print(dwellings_dec24.iloc[0, 1])
 
-    remediation_underway_18m_estimate = Combined_4.iloc[1, 2] *1.9
-    remediation_underway_11m_estimate = Combined_4.iloc[1, 1] *1.9
+    remediation_underway_18m_estimate = dwellings_dec24.iloc[1, 2] *1.9
+    remediation_underway_11m_estimate = dwellings_dec24.iloc[1, 1] *1.8
     remediation_underway_residents = remediation_underway_18m_estimate + remediation_underway_11m_estimate
     # print(remediation_underway_18m_estimate)
     # print(remediation_underway_11m_estimate)
 
-    remediation_18m_programme_estimate = Combined_4.iloc[2, 2] * 1.9
-    remediation_11m_programme_estimate = Combined_4.iloc[2, 1] * 1.9
+    remediation_18m_programme_estimate = dwellings_dec24.iloc[2, 2] * 1.9
+    remediation_11m_programme_estimate = dwellings_dec24.iloc[2, 1] * 1.8
     # print(remediation_18m_programme_estimate)
     # print(remediation_11m_programme_estimate)
-
     remediation_programme_residents = remediation_18m_programme_estimate + remediation_11m_programme_estimate
 
-    total_residents = Combined_4.iloc[3,1] * 1.9 + Combined_4.iloc[3,2] *1.9
-    print(total_residents)
-    #SEE 'Resident Number Workings.xlsx' in the November 2025 file in Sharepoint for the source of these figures
-    yet_to_identify_lower = 9108
-    yet_to_identify_lower = round(yet_to_identify_lower/100) * 100 #round to the nearest 100
 
-    yet_to_identify_upper =  117018 + 8265
-    yet_to_identify_upper = round(yet_to_identify_upper/1000) * 1000 #round to the nearest 1000
+
+    total_residents = remediation_complete_residents + remediation_underway_residents + 
+
+
+    #SEE 'Resident Number Workings.xlsx' in the November 2025 file in Sharepoint for the source of these figures
+    yet_to_identify_11m_lower = estimates_dec24.iloc[0,1] * 1.8
+    yet_to_identify_18m_lower = estimates_dec24.iloc[0,2] * 1.9
+    yet_to_identify_lower = yet_to_identify_11m_lower + yet_to_identify_18m_lower
+
+    yet_to_identify_11m_higher = estimates_dec24.iloc[1,1] * 1.8
+    yet_to_identify_18m_higher = estimates_dec24.iloc[1,2] * 1.9
+    yet_to_identify_upper = yet_to_identify_11m_higher + yet_to_identify_18m_higher
+
+
 
     data = pd.DataFrame({
         "Complete": [remediation_complete_residents],
@@ -74,7 +79,7 @@ def create_RAP_estimates_residents(type, figure_count, colours, grey, secondary_
         "Identified - in programme": [remediation_programme_residents],
         "Estimated yet to identify - low estimate": [yet_to_identify_lower],
         "Estimated yet to identify - high estimate": [yet_to_identify_upper]
-    }, index=["Number of Residents"])
+    }, index=["Dec-24"])
 
 
     ###########
