@@ -236,11 +236,13 @@ def create_paths():
     previous_MI_folder = (r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\[LAST MONTHS MI TABLES]')
     previous_tables_path = get_excel_path(previous_MI_folder)
 
-    previous_social_folder = (r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\[LAST MONTHS MI TABLES]\[LAST SOCIAL RELEASE MI TABLES]')
-    previous_social_path = get_excel_path(previous_social_folder)
-
     MI_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]"
     MI_tables_path = get_excel_path(MI_folder)
+
+    
+    dummy_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\[DUMMY DATA]"
+    dummy_tables_path = get_excel_path(MI_folder)
+
 
     additional_folder = r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT ADDITIONAL DR STATS HERE]\[AUTOMATION]'
     additional_tables_path = get_excel_path(additional_folder)
@@ -253,7 +255,7 @@ def create_paths():
              'additional_tables_path' : additional_tables_path,
              'save_path' : save_path, 
              'placeholder_path' : placeholder_path,
-             'previous_social_path' : previous_social_path
+             'dummy_tables_path' : dummy_tables_path
     }
     return paths
 
