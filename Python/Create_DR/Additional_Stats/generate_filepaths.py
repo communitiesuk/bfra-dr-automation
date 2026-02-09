@@ -44,14 +44,15 @@ def generate_filepaths():
     previous_folder = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{last_month_year}\\{last_month}' + ' ' + f'{last_month_year}')
 
     Master_analytical = get_filepath(ACM_folder, r'\d{8} ACM MASTER ANALYTICAL.xlsx')
-    # Portfolio_outputs = get_filepath(main_folder, f'Portfolio building list {month_year}.xlsx')
+    CSS_data = get_filepath(main_folder, f'CSS data end {month_word}.xlsx')
     BSF_cut = get_filepath(main_folder, rf"\d{{8}} End {month_word} BSF Data\.xlsx")
     last_month_BSF_cut = get_filepath(previous_folder, rf"\d{{8}} End {last_month} BSF Data\.xlsx")
 
+    MI_tables_path = rf'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\Building Safety Remediation Tables {month_word} {year}.xlsm'
 
     Master_analytical_path = ACM_folder + f'\\{Master_analytical}'
-    # Portfolio_outputs_path = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{year}\\{month_year}\\ACM\\{Portfolio_outputs}')
+    CSS_data_path = main_folder + f'\\{CSS_data}'
     BSF_cut_path = main_folder + f'\\{BSF_cut}'
     last_month_BSF_cut_path = previous_folder + f'\\{last_month_BSF_cut}'
-    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, month_word
+    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, CSS_data_path, MI_tables_path, month_word, year, last_month
 
