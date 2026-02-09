@@ -10,11 +10,12 @@ import pandas as pd
 from Utility.functions import more_or_fewer, Change_line_in_DR
 
 def Portfolio_variable_creator(Portfolio_handled_data):
-    # Unpacking dataframes from ACM_data_handler
+    # Unpacking dataframes from Portfolio_data_handler
     Combined_2 = Portfolio_handled_data['Combined_2']
     Combined_4 = Portfolio_handled_data['Combined_4']
     Combined_5 = Portfolio_handled_data['Combined_5']
     Combined_6 = Portfolio_handled_data['Combined_6']
+    Social_misc = Portfolio_handled_data['Social_misc']
 
     Portfolio_remediation_table = pd.DataFrame({
         'Remediation Stage': ['Remediation complete', 'Remediation underway', 'In programme', 'Total'],
@@ -73,7 +74,9 @@ def Portfolio_variable_creator(Portfolio_handled_data):
         'Portfolio_18m_started_c_pct': Combined_2.loc[1, 'Cumulative 18m Percentage'],
         
         'Portfolio_social_started_c_pct': Combined_5.loc[1, 'Cumulative Social Percentage'],
-        'Portfolio_private_started_c_pct': Combined_5.loc[1, 'Cumulative Private Percentage']
+        'Portfolio_private_started_c_pct': Combined_5.loc[1, 'Cumulative Private Percentage'],
+
+        'Portfolio_unknown_no' : Social_misc.iloc[1, -1]
     }
 
     return Portfolio_tables, Portfolio_headline_dict, Portfolio_section_dict

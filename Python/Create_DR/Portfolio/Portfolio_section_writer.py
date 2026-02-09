@@ -45,6 +45,8 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     Portfolio_social_started_c_pct = Portfolio_section_dict['Portfolio_social_started_c_pct']
     Portfolio_private_started_c_pct = Portfolio_section_dict['Portfolio_private_started_c_pct']
 
+    Portfolio_unknown_no = Portfolio_section_dict['Portfolio_unknown_no']
+
     # Section Title 
     paragraph = DR.add_paragraph('Overall remediation progress', style = 'Heading 2')
 
@@ -71,6 +73,11 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     table_widths = [Cm(6.5), Cm(2.65), Cm(2.65), Cm(2.75), Cm(3.4)]
     table_heights = [Cm(1.15), Cm(1.75), Cm(0.55), Cm(0.55), Cm(0.55)]
     table = create_table(DR, table_data, table_widths, table_heights)
+
+    # Table footer
+    text = f'The in programme figures currently include {Portfolio_unknown_no} social self-funded buildings where their remediation status is unknown as registered providers are yet to provide remediation dates. We expect buildings with unknown remediation status to be confirmed in coming months as further data is collected through engagement with Homes England.'
+    DR.add_paragraph(text, style = 'Normal')
+
 
     # Heading
     paragraph = DR.add_paragraph('Overall remediation: key statistics', style = 'Heading 3')
@@ -165,7 +172,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: Most buildings that the department are monitoring the cladding remediation of are concentrated around urbanised areas in England, particularly the urban areas of Greater London, Greater Manchester, West Yorkshire and the south coast.'
+    text = f'Figure {figure_count}: Most buildings that the department are monitoring the cladding remediation of are concentrated around urbanised areas in England, particularly the urban areas of Greater London, Greater Manchester, West Yorkshire and the West of England.'
     run = paragraph.add_run(text)
     run.bold = True
     

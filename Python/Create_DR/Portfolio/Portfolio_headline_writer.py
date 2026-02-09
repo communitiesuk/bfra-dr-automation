@@ -80,4 +80,11 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
     add_hyperlink(paragraph, 'Overall Remediation section', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}/building-safety-remediation-monthly-data-release-{hyperlink_month}#overall-remediation-progress')                 
     paragraph.add_run(' of the data release, does not sum to the total number of buildings in each remediation programme, reported in each respective section of the data release. This is due to some buildings appearing in more than one remediation programme.')
 
+    # Figure caption
+    text = 'The total number of 11m+ buildings identified with unsafe cladding decreased between November 2025 and December 2025 due to a change in the data collection and categorisation of social sector buildings used in our monitoring and reporting. The overall remediation progress figures from December 2025 are therefore not directly comparable to prior months.' 
+    text += ' Fluctuations in the social self-funded data is expected over the coming months, which will affect the overall remediation progress figures. Further information is available in the technical note.'
+    DR.add_paragraph(text, style = 'Normal')
+
+
+
     return figure_count
