@@ -8,13 +8,11 @@ from Utility.functions import add_hyperlink
 
 def Social_headline_writer(Social_headline_dict, dates_variables, DR):
 
-    social_cutoff = dates_variables['social_cutoff']
     last_month = dates_variables['last_month']
     cutoff = dates_variables['cutoff']
-    hyperlink_month = dates_variables['hyperlink_month']
 
-    Social_life_critical_total_no = Social_headline_dict['Social_life_critical_total_no']
-    Social_life_critical_total_change = Social_headline_dict['Social_life_critical_total_change']
+    Social_self_funded_total = Social_headline_dict['Social_self_funded_total']
+    Social_self_funded_total_change = Social_headline_dict['Social_self_funded_total_change']
 
     Social_started_no = Social_headline_dict['Social_started_no']
     Social_started_pct = Social_headline_dict['Social_started_pct']
@@ -25,21 +23,19 @@ def Social_headline_writer(Social_headline_dict, dates_variables, DR):
     Social_completed_change = Social_headline_dict['Social_completed_change']
 
     # Headline Title
-    text = f'Social housing sector – quarterly data received from Registered Providers of social housing is at {social_cutoff}. Where data from other government programmes has been used to supplement this, the data is as at {cutoff}.'
+    text = f'Social self-funded remediation – data as at {cutoff}.'
     DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph
-    text = f'As at {cutoff}, {Social_life_critical_total_no} 11 metres and over in height have been identified as having life-critical fire safety cladding defects. This is {Social_life_critical_total_change} since reported in the {last_month} data release. '
+    text = f'As at {cutoff}, there are {Social_self_funded_total} social buildings identified with unsafe cladding where remediation is self-funded by registered providers of social housing – {Social_self_funded_total_change} since the end of {last_month}. '
     text += f'The {Social_life_critical_total_no} buildings have been identified using survey data submitted by Registered Providers of social housing and data on buildings the government in monitoring under other government programmes (ACM programme, BSF, CSS, and Developer Remediation contract).'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
     text = f'Of these, {Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation works - {Social_started_change} since reported in the {last_month} data release. '
-    text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the {last_month} data release.' 
+    text += f'Of these, {Social_completed_no} ({Social_completed_pct} of buildings) have completed remediation - {Social_completed_change} since the end of {last_month}.' 
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    paragraph = DR.add_paragraph(style = 'Normal')
-    paragraph.add_run(f'Further detail is available in the ')
-    add_hyperlink(paragraph, 'social housing section', f'https://www.gov.uk/government/publications/building-safety-remediation-monthly-data-release-{hyperlink_month}#social-housing-sector')
-    paragraph.add_run(f' section of the data release.')
+    text = f'While work is underway to migrate data to the NRS, fluctuations in the remediation progress figures for social buildings where registered providers are self-funding remediation is expected.' 
+    DR.add_paragraph(text, style = 'Normal')
