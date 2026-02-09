@@ -13,6 +13,7 @@ def Portfolio_retrieve_data(paths_variables):
     print('Handling Portfolio Data')
     # Accessing the folder which stores the MI tables
     MI_tables_path = paths_variables['MI_tables_path']
+    additional_tables_path = paths_variables['additional_tables_path']
 
     # Accessing and transforming Combined_2
     Combined_2 = pd.read_excel(MI_tables_path, sheet_name='Combined_2')
@@ -60,11 +61,16 @@ def Portfolio_retrieve_data(paths_variables):
     Combined_6.at[3, 'Cumulative Monthly Change'] = Combined_6.at[3, 'Monthly Change']
     Combined_6.at[3, 'Cumulative Yearly Change'] = Combined_6.at[3, 'Yearly Change']
 
+
+    #accessing social_misc
+    Social_misc = pd.read_excel(additional_tables_path, sheet_name = 'Social_misc')
+
     Portfolio_handled_data = {
         'Combined_2': Combined_2,
         'Combined_4': Combined_4,
         'Combined_5': Combined_5,
-        'Combined_6': Combined_6
+        'Combined_6': Combined_6,
+        'Social_misc' : Social_misc
     }
 
     print('DONE!')
