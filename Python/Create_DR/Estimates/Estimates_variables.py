@@ -11,7 +11,7 @@ from Utility.functions import format_percentage
 
 def Estimates_variable_creator(Portfolio_handled_data):
     # Unpacking dataframes from Portfolio_data_handler
-    Combined_2 = Portfolio_handled_data['Combined_2']
+    Combined_2 = Portfolio_handled_data['Combined_2a']
 
     Estimates_tables_number_of_buildings = pd.DataFrame({
         'Height': ['11-18m ', '18m+', 'Total 11m+'],
