@@ -9,6 +9,8 @@ from docx.shared import Cm
 import os
 
 from Utility.functions import create_table
+import Utility.docx_svg_patch
+
 
 def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_count, table_count, dates_variables, paths_variables, DR):
     # Unpacking date variables

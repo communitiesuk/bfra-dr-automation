@@ -13,25 +13,29 @@ def Portfolio_retrieve_data(paths_variables):
     print('Handling Portfolio Data')
     # Accessing the folder which stores the MI tables
     MI_tables_path = paths_variables['MI_tables_path']
-    additional_tables_path = paths_variables['additional_tables_path']
 
-    # Accessing and transforming Combined_2
+    # Accessing and transforming Combined_2a
     Combined_2 = pd.read_excel(MI_tables_path, sheet_name='Combined_2')
-    Combined_2 = chop_df(Combined_2, 3, 4)
-    Combined_2.rename(columns={Combined_2.columns[1]: '11_18m Number', Combined_2.columns[3]: '18m Number', Combined_2.columns[5]: 'Current Number', Combined_2.columns[-1]: 'Current Percentage'}, inplace=True)
-    Combined_2['Cumulative Percentage'] = Combined_2['Current Percentage'].cumsum()
-    Combined_2.at[3, 'Cumulative Percentage'] = Combined_2.at[3, 'Current Percentage']
-    Combined_2['Cumulative 11_18m Percentage'] = Combined_2.iloc[:, 2].cumsum()
-    Combined_2['Cumulative 18m Percentage'] = Combined_2.iloc[:, 4].cumsum()
-    Combined_2['Current Percentage'] = Combined_2['Current Percentage'].apply(format_percentage)
-    Combined_2['Cumulative Percentage'] = Combined_2['Cumulative Percentage'].apply(format_percentage)
-    Combined_2['Cumulative 11_18m Percentage'] = Combined_2['Cumulative 11_18m Percentage'].apply(format_percentage)
-    Combined_2['Cumulative 18m Percentage'] = Combined_2['Cumulative 18m Percentage'].apply(format_percentage)
-    Combined_2.at[3, 'Current Percentage'] = "100%"
-    Combined_2.at[3, 'Cumulative Percentage'] = "100%"
-    Combined_2.at[2, 'Cumulative Percentage'] = "100%"
-    Combined_2.at[3, 'Cumulative 11_18m Percentage'] = "100%"
-    Combined_2.at[3, 'Cumulative 18m Percentage'] = "100%"
+    Combined_2a = chop_df(Combined_2, 3, 4)
+    Combined_2a.rename(columns={Combined_2a.columns[1]: '11_18m Number', Combined_2a.columns[3]: '18m Number', Combined_2a.columns[5]: 'Current Number', Combined_2a.columns[-1]: 'Current Percentage'}, inplace=True)
+    Combined_2a['Cumulative Percentage'] = Combined_2a['Current Percentage'].cumsum()
+    Combined_2a.at[3, 'Cumulative Percentage'] = Combined_2a.at[3, 'Current Percentage']
+    Combined_2a['Cumulative 11_18m Percentage'] = Combined_2a.iloc[:, 2].cumsum()
+    Combined_2a['Cumulative 18m Percentage'] = Combined_2a.iloc[:, 4].cumsum()
+    Combined_2a['Current Percentage'] = Combined_2a['Current Percentage'].apply(format_percentage)
+    Combined_2a['Cumulative Percentage'] = Combined_2a['Cumulative Percentage'].apply(format_percentage)
+    Combined_2a['Cumulative 11_18m Percentage'] = Combined_2a['Cumulative 11_18m Percentage'].apply(format_percentage)
+    Combined_2a['Cumulative 18m Percentage'] = Combined_2a['Cumulative 18m Percentage'].apply(format_percentage)
+    Combined_2a.at[3, 'Current Percentage'] = "100%"
+    Combined_2a.at[3, 'Cumulative Percentage'] = "100%"
+    Combined_2a.at[2, 'Cumulative Percentage'] = "100%"
+    Combined_2a.at[3, 'Cumulative 11_18m Percentage'] = "100%"
+    Combined_2a.at[3, 'Cumulative 18m Percentage'] = "100%"
+
+    # Accessing and transforming Combined_2b
+    Combined_2b = chop_df(Combined_2, 11, 6)
+
+
 
     # Accessing and transforming Combined_4
     Combined_4 = pd.read_excel(MI_tables_path, sheet_name='Combined_4')
@@ -62,15 +66,12 @@ def Portfolio_retrieve_data(paths_variables):
     Combined_6.at[3, 'Cumulative Yearly Change'] = Combined_6.at[3, 'Yearly Change']
 
 
-    #accessing social_misc
-    Social_misc = pd.read_excel(additional_tables_path, sheet_name = 'Social_misc')
-
     Portfolio_handled_data = {
-        'Combined_2': Combined_2,
+        'Combined_2a': Combined_2a,
+        'Combined_2b' : Combined_2b,
         'Combined_4': Combined_4,
         'Combined_5': Combined_5,
         'Combined_6': Combined_6,
-        'Social_misc' : Social_misc
     }
 
     print('DONE!')

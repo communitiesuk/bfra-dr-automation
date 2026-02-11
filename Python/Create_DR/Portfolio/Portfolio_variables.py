@@ -11,18 +11,19 @@ from Utility.functions import more_or_fewer, Change_line_in_DR
 
 def Portfolio_variable_creator(Portfolio_handled_data):
     # Unpacking dataframes from Portfolio_data_handler
-    Combined_2 = Portfolio_handled_data['Combined_2']
+    Combined_2a = Portfolio_handled_data['Combined_2a']
+    Combined_2b = Portfolio_handled_data['Combined_2b']
+
     Combined_4 = Portfolio_handled_data['Combined_4']
     Combined_5 = Portfolio_handled_data['Combined_5']
     Combined_6 = Portfolio_handled_data['Combined_6']
-    Social_misc = Portfolio_handled_data['Social_misc']
 
     Portfolio_remediation_table = pd.DataFrame({
         'Remediation Stage': ['Remediation complete', 'Remediation underway', 'In programme', 'Total'],
         'Number of buildings': Combined_6['Current Month'],
-        'Percentage': Combined_2['Current Percentage'],
+        'Percentage': Combined_2a['Current Percentage'],
         'Cumulative Number': Combined_6['Formatted Cumulative Number'],
-        'Cumulative Percentage': Combined_2['Cumulative Percentage']
+        'Cumulative Percentage': Combined_2a['Cumulative Percentage']
     })
     Portfolio_tables = {
         'Portfolio_remediation_table' : Portfolio_remediation_table
@@ -32,10 +33,10 @@ def Portfolio_variable_creator(Portfolio_handled_data):
         'Portfolio_total_line': Change_line_in_DR(Combined_6.loc[3, 'Monthly Change']),
         'Portfolio_total_since_oct_23': more_or_fewer(Combined_6.loc[3, 'Since October 2023']),
         'Portfolio_started_c_no': format(Combined_6.loc[1, 'Formatted Cumulative Number'], ','),
-        'Portfolio_started_c_pct': Combined_2.loc[1, 'Cumulative Percentage'],
+        'Portfolio_started_c_pct': Combined_2a.loc[1, 'Cumulative Percentage'],
         'Portfolio_completed_c_no': format(Combined_6.loc[0, 'Current Month'], ','),
-        'Portfolio_completed_c_pct': Combined_2.loc[0, 'Cumulative Percentage'],
-        'Portfolio_pending_no' : format(round(Combined_2.iloc[4, -2], -2), ','),
+        'Portfolio_completed_c_pct': Combined_2a.loc[0, 'Cumulative Percentage'],
+        'Portfolio_pending_no' : format(round(Combined_2b.iloc[4, -2], -2), ','),
         'Estimates_11m_remaining_low' : format(round( ( (5723 - Combined_6.loc[3, 'Current Month'])/100 ))*100, ','),
         'Estimates_11m_remaining_high' : format(round( ( (8584 - Combined_6.loc[3, 'Current Month'] )/100))*100, ','),
 
@@ -43,18 +44,18 @@ def Portfolio_variable_creator(Portfolio_handled_data):
 
     Portfolio_section_dict = {
         'Portfolio_started_c_no': format(Combined_6.loc[1, 'Formatted Cumulative Number'], ','),
-        'Portfolio_started_c_pct': Combined_2.loc[1, 'Cumulative Percentage'],
+        'Portfolio_started_c_pct': Combined_2a.loc[1, 'Cumulative Percentage'],
 
         'Portfolio_completed_c_no': format(Combined_6.loc[0, 'Current Month'], ','),
-        'Portfolio_completed_c_pct': Combined_2.loc[0, 'Cumulative Percentage'],
+        'Portfolio_completed_c_pct': Combined_2a.loc[0, 'Cumulative Percentage'],
 
         'Portfolio_total': format(Combined_6.loc[3, 'Current Month'], ','),
 
         'Portfolio_started_nc_no': format(Combined_6.loc[1, 'Current Month'], ','),
-        'Portfolio_started_nc_pct': Combined_2.loc[1, 'Current Percentage'],
+        'Portfolio_started_nc_pct': Combined_2a.loc[1, 'Current Percentage'],
 
         'Portfolio_in_programme_nc_no': format(Combined_6.loc[2, 'Current Month'], ','),
-        'Portfolio_in_programme_nc_pct': Combined_2.loc[2, 'Current Percentage'],
+        'Portfolio_in_programme_nc_pct': Combined_2a.loc[2, 'Current Percentage'],
 
         'Portfolio_total_monthly_change': more_or_fewer(Combined_6.loc[3, 'Monthly Change']),
         'Portfolio_started_c_monthly_change': more_or_fewer(Combined_6.loc[1, 'Cumulative Monthly Change']),
@@ -70,13 +71,13 @@ def Portfolio_variable_creator(Portfolio_handled_data):
 
         'Portfolio_in_programme_dwellings': format(Combined_4.loc[2, 'Total Dwellings'], ','),
 
-        'Portfolio_11_18m_started_c_pct': Combined_2.loc[1, 'Cumulative 11_18m Percentage'],
-        'Portfolio_18m_started_c_pct': Combined_2.loc[1, 'Cumulative 18m Percentage'],
+        'Portfolio_11_18m_started_c_pct': Combined_2a.loc[1, 'Cumulative 11_18m Percentage'],
+        'Portfolio_18m_started_c_pct': Combined_2a.loc[1, 'Cumulative 18m Percentage'],
         
         'Portfolio_social_started_c_pct': Combined_5.loc[1, 'Cumulative Social Percentage'],
         'Portfolio_private_started_c_pct': Combined_5.loc[1, 'Cumulative Private Percentage'],
 
-        'Portfolio_unknown_no' : Social_misc.iloc[1, -1]
+        'Portfolio_unknown_no' : Combined_2b.iloc[3, -2]
     }
 
     return Portfolio_tables, Portfolio_headline_dict, Portfolio_section_dict
