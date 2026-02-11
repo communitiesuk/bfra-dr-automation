@@ -78,7 +78,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
 
     # Paragraph
     text = f'As at {cutoff}, there are {Social_total_no} 11m+ social buildings identified with unsafe cladding which registered providers are self-funding the remediation of, a change of {Social_total_change} since the end of {last_month} {last_month_year}.'
-    text += 'This includes social buildings that registered providers reported to be self-funding the cladding remediation of in the NRS, that were not identified in another remediation programme, and 19 social buildings monitored in the ACM programme where registered providers have self-funded ACM remediation.'
+    text += ' This includes social buildings that registered providers reported to be self-funding the cladding remediation of in the NRS, that were not identified in another remediation programme, and 19 social buildings monitored in the ACM programme where registered providers have self-funded ACM remediation.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -86,19 +86,19 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'Normal')
 
     # Bullet point 1
-    text = f'{Social_completed_no} ({Social_completed_pct}%) are reported to have completed remediation – {Social_completed_change} since the end of {last_month} {last_month_year}.'
+    text = f'{Social_completed_no} ({Social_completed_pct}) are reported to have completed remediation – {Social_completed_change} since the end of {last_month} {last_month_year}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point 2
-    text = f'{Social_started_no} ({Social_started_pct}%) are reported to have started or completed remediation – {Social_started_change} since the end of {last_month} {last_month_year}.'
+    text = f'{Social_started_no} ({Social_started_pct}) are reported to have started or completed remediation – {Social_started_change} since the end of {last_month} {last_month_year}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point 3
-    text = f'{Social_not_started_no} ({Social_not_started_pct}%) are reported to have started or completed remediation – {Social_not_started_change} since the end of {last_month} {last_month_year}.'
+    text = f'{Social_not_started_no} ({Social_not_started_pct}) are reported to have started or completed remediation – {Social_not_started_change} since the end of {last_month} {last_month_year}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point 4
-    text = f'The remediation status of {Social_unknown_no} ({Social_unknown_pct}%) buildings is currently unknown as registered providers are yet to provide remediation dates on the NRS. We expect buildings with unknown remediation status to be confirmed in coming months as further data is collected.'
+    text = f'The remediation status of {Social_unknown_no} ({Social_unknown_pct}) buildings is currently unknown as registered providers are yet to provide remediation dates on the NRS. We expect buildings with unknown remediation status to be confirmed in coming months as further data is collected.'
     DR.add_paragraph(text, style = 'List Bullet')
     
     # Subheading
