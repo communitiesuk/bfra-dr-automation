@@ -60,8 +60,10 @@ def create_paths():
 
     save_path = r'Q:\BSP\Automation\DR Automation\DR_outputs\Auto_DR'
 
-    dummy_tables_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\[DUMMY DATA]"
-    dummy_tables_path = get_excel_path(dummy_tables_folder)
+    residents_tables_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\[RESIDENTS DATA]"
+    residents_tables_path = get_excel_path(residents_tables_folder)
+
+
     paths = {'figure_path' : figure_path,
              'previous_tables_path' : previous_tables_path,
              'MI_tables_path' : MI_tables_path,
@@ -69,7 +71,7 @@ def create_paths():
              'save_path' : save_path,
              'combined_ts_path' : combined_ts_path,
              'partial_output_path' : partial_output_path,
-             'dummy_tables_path' : dummy_tables_path
+             'residents_tables_path' : residents_tables_path
     }
     return paths
 
