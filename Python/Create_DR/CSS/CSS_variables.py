@@ -87,7 +87,6 @@ def CSS_variable_creator (CSS_handled_data):
 
         'CSS_pre_elig_private_pct' : format_percentage(CSS_misc.loc[2, 'Current Month']),
         'CSS_pre_elig_social_pct' : format_percentage(CSS_misc.loc[3, 'Current Month']),
-        'CSS_pre_elig_unknown_pct' : format_percentage(CSS_misc.loc[4, 'Current Month'])
     }
 
     return CSS_tables, CSS_headline_dict, CSS_section_dict

@@ -58,7 +58,6 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
 
     CSS_pre_elig_private_pct = CSS_section_dict['CSS_pre_elig_private_pct']
     CSS_pre_elig_social_pct = CSS_section_dict['CSS_pre_elig_social_pct']
-    CSS_pre_elig_unknown_pct = CSS_section_dict['CSS_pre_elig_unknown_pct']
 
     # Section Title 
     paragraph = DR.add_paragraph('Cladding Safety Scheme', style = 'Heading 2')
@@ -171,7 +170,7 @@ def CSS_section_writer(CSS_section_dict, CSS_tables, figure_count, table_count, 
 
     # Figure subheading
     text = f'Social housing funding eligibility criteria changed in June 2025, allowing more social housing buildings to access government funding from the CSS. Therefore, we expect more eligible social buildings will appear on the social bar of this graph over time.'
-    text+= f'As of the end of {cutoff}, of the pre-eligible CSS buildings with a live application, {CSS_pre_elig_social_pct} are social, {CSS_pre_elig_private_pct}% are private, and for {CSS_pre_elig_unknown_pct}% their tenure is currently unknown.'
+    text+= f' As of the end of {cutoff}, of the pre-eligible CSS buildings with a live application, {CSS_pre_elig_social_pct} are social and {CSS_pre_elig_private_pct} are private.'
     paragraph = DR.add_paragraph(text, style = 'Normal')
 
     return figure_count, table_count
