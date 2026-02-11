@@ -48,8 +48,12 @@ def create_paths():
     MI_folder = r"Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]"
     MI_tables_path = get_excel_path(MI_folder)
 
-    additional_folder = r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT ADDITIONAL DR STATS HERE]'
+    additional_folder = r'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT ADDITIONAL DR STATS HERE]\[AUTOMATION]'
     additional_tables_path = get_excel_path(additional_folder)
+
+    combined_folder = r'Q:\BSP\Automation\MI Tables\Combined'
+    combined_ts_path = get_excel_path(combined_folder)
+
 
 
     partial_output_path = r'Q:\BSP\Automation\DR Automation\DR_outputs\DR_graphs'
@@ -63,6 +67,7 @@ def create_paths():
              'MI_tables_path' : MI_tables_path,
              'additional_tables_path' : additional_tables_path,
              'save_path' : save_path,
+             'combined_ts_path' : combined_ts_path,
              'partial_output_path' : partial_output_path,
              'dummy_tables_path' : dummy_tables_path
     }
