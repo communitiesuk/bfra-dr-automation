@@ -83,8 +83,8 @@ def create_Overall_Remediation_Across_Schemes2(type, figure_count, colours, path
 
 
     # Normalize the data to 100%
-    data_normalized = data.div(data.sum(axis=1), axis=0)
-
+    # data_normalized = data.div(data.sum(axis=1), axis=0)
+    data_normalized = data
     # Create the horizontal 100% stacked bar chart
     fig, ax = plt.subplots(figsize=(10, 6))
     left = np.zeros(len(data_normalized))
@@ -95,10 +95,8 @@ def create_Overall_Remediation_Across_Schemes2(type, figure_count, colours, path
         bars = ax.barh(data_normalized.index, data_normalized[column] * 100, left=left * 100, color=colours[idx], label=label)
         legend_labels.append(column)
         left += data_normalized[column]
-
     # Add data labels
     bottom = np.zeros(len(data_normalized))
-
     for i in range(data_normalized.shape[1]): 
         label = data_normalized.columns[i] if data_normalized.columns[i] not in legend_labels else None
         bars = ax.barh(data_normalized.index, data_normalized.iloc[:, i] * 100, left=bottom * 100, color=colours[i], label=label)
@@ -106,7 +104,7 @@ def create_Overall_Remediation_Across_Schemes2(type, figure_count, colours, path
         bottom += data_normalized.iloc[:, i].astype(float)
 
         for j, bar in enumerate(bars):
-            width = bar.get_width()  
+            width = bar.get_width()
             if width < 3:
                     continue
             bar_color = mcolors.to_rgb(colours[i])
