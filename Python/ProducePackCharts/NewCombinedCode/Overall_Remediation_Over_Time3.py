@@ -29,26 +29,22 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
     MI_tables_path = paths_variables['MI_tables_path']
     partial_output_path = paths_variables['partial_output_path']
 
-    # Accessing and transforming Combined_6
-    Combined_6 = pd.read_excel(MI_tables_path, sheet_name='Combined_6')
-    Combined_6 = chop_df(Combined_6, 4, 3)
-    Combined_6 = Combined_6.iloc[:, -14:]
+    #Combined_6 time series with all remediation categories is stored separately
+    combined_ts_path = paths_variables['combined_ts_path']
 
+
+    # Accessing and transforming Combined_6
+    Combined_6 = pd.read_excel(combined_ts_path, sheet_name='Combined_6')
+    Combined_6 = Combined_6.iloc[:5, -14:]
     
-    # Accessing and transforming Combined_2 for the eligibility data
+    # Accessing and transforming Combined_2 for the latest month's data
     Combined_2 = pd.read_excel(MI_tables_path, sheet_name='Combined_2')
-    Combined_2 = chop_df(Combined_2, 11, 5)
+    Combined_2 = chop_df(Combined_2, 3, 6)
 
     #correct colour scheme for the remediation complete - unknown progress buildings
     eligibility_colours = colours[:4] 
     eligibility_colours.insert(0, secondary_grey) #eligibility pending colour should be grey
-
-
-    eligibility_data = pd.DataFrame({  
-        "Remediation Stage": ['Eligibility Pending\n(social sector)', 'Complete', 'Underway', 'In Programme', 'Remediation stage\ncurrently unknown'],
-        'Dec-25\n eligiblity\npending' : [round(Combined_2.iloc[4, -2], -2), Combined_2.iloc[0, -2], Combined_2.iloc[1, -2],  Combined_2.iloc[2, -2], Combined_2.iloc[3, -2] ]  #total no of buildings including new categories
-    })
-
+    
     # Generate headers
     headers = ["Remediation Stage"]
     for i in range(13):
@@ -56,34 +52,84 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
         header = current_date.strftime('%b-%y')
         headers.append(header)
     
+    latest_month = headers[1] #access the name of the most recent month's data
+
+    #dataframe without eligibility pending and unknown remediation stages
+    nonelig_data = pd.DataFrame({  
+        "Remediation Stage": ['Complete', 'Underway', 'In Programme'],
+        f'{latest_month}' : [Combined_2.iloc[0, -2], Combined_2.iloc[1, -2],  Combined_2.iloc[2, -2]]  #total no of buildings without new categories
+    })
+
+    headers[1] = f'{latest_month}\neligibility\npending' #add the eligibility pending label to the latest month's data
+
     #take the order of the months (col 0 is remediation stage so is excluded) and reverse them 
     headers[1:] = headers[1:][::-1]
 
     # Make headers strings
     headers = [str(header) for header in headers]
 
-    # Assign headers to the DataFrame
+    # Match the columns to the month names in the time series
     Combined_6.columns = headers
-
     remediation_stages = {
-        "Remediation Stage": ['Complete', 'Underway', 'In Programme'],
+        'Remediation Stage' : ['Eligibility Pending\n(social sector)', 'Complete', 'Underway', 'In Programme', 'Remediation stage\ncurrently unknown']
     }
 
-    # Replace the data in the first column
+    # remediation_stages = {
+    #     "Remediation Stage": ['Eligibility Pending\n(social sector)', 'Complete', 'Underway', 'In Programme', 'Remediation stage\ncurrently unknown'],
+    # }
+    
+    # eligibility_history = eligibility_ts.iloc[1,-13:]
+    # unknown_history = eligibility_ts.iloc[0,-13:]
+
+    # Combined_6.loc[3] = eligibility_history
+    # Combined_6.loc[4] = unknown_history
+
+    # Replace the data in the first column 
     for col in remediation_stages:
         Combined_6[col] = remediation_stages[col]
 
     # Convert the numeric columns to float
-    Combined_6.iloc[:, 1:] = Combined_6.iloc[:, 1:].astype(float)  
+    # Combined_6.iloc[:, 1:] = Combined_6.iloc[:, 1:].astype(float)  
+
 
     # Plotting the stacked bar chart
     fig, ax = plt.subplots(figsize = (12.5,6))
-    bottom = np.zeros(len(Combined_6.columns) - 1, dtype=float) 
+    bottom = np.zeros(len(Combined_6.columns) - 2, dtype=float) 
 
+
+    ## plotting 11 months with 5 categories of remediation
+    for i in range(Combined_6.shape[0] -1, -1, -1):
+        bars = ax.bar(Combined_6.columns[1:13], Combined_6.iloc[i, 1:13], bottom=bottom, color=eligibility_colours[i], label=Combined_6.iloc[i, 0], width=0.6)
+        bottom += Combined_6.iloc[i, 1:13].astype(float)
+
+        for j, bar in enumerate(bars):
+            height = bar.get_height()
+
+            if height == 0: # don't display 0 height bars (i.e. categories with no buildings in them)
+                continue
+            bar_color = mcolors.to_rgb(eligibility_colours[i]) # Convert color to RGB tuple
+            luminance = 0.2126 * bar_color[0] + 0.7152 * bar_color[1] + 0.0722 * bar_color[2]
+
+            # Choose font color based on luminance
+            font_dict = data_label_font_dict_black if luminance > 0.5 else data_label_font_dict_white
+
+            label = f'{height:.0f}'
+            label_elig = f'~{round(height, -2):.0f}'
+
+            if i == 0:
+                 ax.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + height / 2,
+                    label_elig, **font_dict) #use a separate label for eligible remaining to indicate uncertainty
+            else:
+                 ax.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + height / 2,
+                    label, **font_dict)
+                 
+
+    ## plotting the latest month using only the 3 categories
+    bottom = 0
     # Plot each stack in reverse order
-    for i in range(Combined_6.shape[0] - 1, -1, -1):
-        bars = ax.bar(Combined_6.columns[1:], Combined_6.iloc[i, 1:], bottom=bottom, color=colours[i], label=Combined_6.iloc[i, 0], width=0.6)
-        bottom += Combined_6.iloc[i, 1:].astype(float)
+    for i in range(nonelig_data.shape[0] - 1, -1, -1):
+        bars = ax.bar(nonelig_data.columns[1:], nonelig_data.iloc[i, 1:], bottom=bottom, color=colours[i], label=nonelig_data.iloc[i, 0], width=0.6)
+        bottom += nonelig_data.iloc[i, 1:].astype(float)
 
         for j, bar in enumerate(bars):
             height = bar.get_height()
@@ -101,16 +147,17 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
             ax.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + height / 2,
                     label, **font_dict)
 
-
-
-    #add in the extra bar for Dec-25 showing the buildings which 'disappeared' from the NRS
-    bottom_elig = 0.0
-    for i in range(eligibility_data.shape[0] -1, -1, -1):
-        bars = ax.bar(eligibility_data.columns[-1], eligibility_data.iloc[i, 1:], bottom=bottom_elig, color=eligibility_colours[i], label=eligibility_data.iloc[i, 0], width=0.6)
-        bottom_elig += eligibility_data.iloc[i, 1:].astype(float)
+    bottom = 0 
+    #plotting the latest month's data with all the categories 
+    for i in range(Combined_6.shape[0] -1, -1, -1):
+        bars = ax.bar(Combined_6.columns[13], Combined_6.iloc[i, 13], bottom=bottom, color=eligibility_colours[i], label=Combined_6.iloc[i, 0], width=0.6)
+        bottom += Combined_6.iloc[i, 13].astype(float)
 
         for j, bar in enumerate(bars):
             height = bar.get_height()
+
+            if height == 0:
+                continue
             bar_color = mcolors.to_rgb(eligibility_colours[i]) # Convert color to RGB tuple
             luminance = 0.2126 * bar_color[0] + 0.7152 * bar_color[1] + 0.0722 * bar_color[2]
 
@@ -118,7 +165,7 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
             font_dict = data_label_font_dict_black if luminance > 0.5 else data_label_font_dict_white
 
             label = f'{height:.0f}'
-            label_elig = f'~{height:.0f}'
+            label_elig = f'~{round(height, -2):.0f}'
 
             if i == 0:
                  ax.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + height / 2,
@@ -126,6 +173,8 @@ def create_Overall_Remediation_over_time3(type, figure_count, colours, secondary
             else:
                  ax.text(bar.get_x() + bar.get_width() / 2, bar.get_y() + height / 2,
                     label, **font_dict)
+                 
+
 
     # Add labels and title
     ax.spines['bottom'].set_color('darkgrey')
