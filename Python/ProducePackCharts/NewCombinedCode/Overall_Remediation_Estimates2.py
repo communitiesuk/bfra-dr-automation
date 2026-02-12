@@ -16,13 +16,27 @@ from matplotlib.patches import FancyArrowPatch
 from Utility.functions import chop_df
 
 def create_Overall_remediation_estimates2(type, figure_count, colours, grey, secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
+    #initialise the variables
+    buildings_remaining_low = 0
+    buildings_remaining_high = 0
+
     ###########
     # Main script Notifications
+
+    # type = 0 is the published version of the graph using published estimates of number of buildings left to remediate
     if type==0:
         print(f'Figure{figure_count}_Overall_Remediation_estimates2')
+        buildings_remaining_low = 5723
+        buildings_remaining_high = 8584
 
     if type==1:
         print(f'Accessible_Figure{figure_count}_Overall_Remediation_estimates2')
+
+    # type = 2 corresponds to internal version of the graph using up to date estimates of number of buildings left to remediate
+    if type==2:
+        print(f'Figure{figure_count}_Overall_Remediation_estimates2_internal')
+        buildings_remaining_low = 6100
+        buildings_remaining_high = 9200
     ###########
 
 
@@ -43,12 +57,11 @@ def create_Overall_remediation_estimates2(type, figure_count, colours, grey, sec
     # Select the required column
     no_11m_buildings = Combined_2.iloc[:, 5].reset_index(drop=True)
     total_buildings = no_11m_buildings[5] - no_11m_buildings[4] #all buildings not including eligibility pending 
-    eligibility_pending = round(no_11m_buildings[4]/100) * 100 #round to nearest 100
+    eligibility_pending = round(no_11m_buildings[4], -2) #round to nearest 100
 
-
-    yet_to_identify_lower = 5723 - total_buildings - eligibility_pending
+    yet_to_identify_lower = buildings_remaining_low - total_buildings - eligibility_pending
     yet_to_identify_lower = round(yet_to_identify_lower, -2) #round to the nearest 100
-    yet_to_identify_upper = 8584 - total_buildings - yet_to_identify_lower - eligibility_pending
+    yet_to_identify_upper = buildings_remaining_high - total_buildings - yet_to_identify_lower - eligibility_pending
     yet_to_identify_upper = round(yet_to_identify_upper, -2) #round to the nearest 100
 
     data = pd.DataFrame({
@@ -148,10 +161,17 @@ def create_Overall_remediation_estimates2(type, figure_count, colours, grey, sec
     if type==1:
         output_filename = f"Accessible_Figure{figure_count}.svg"
         output_path = os.path.join(partial_output_path, output_filename)
+    # output internal graph in separate folder
+    if type == 2:
+        output_filename = f"Internal_Figure{figure_count}.svg"
+        output_path = os.path.join(partial_output_path + r'\Internal', output_filename)
+    
+
     plt.xticks(rotation=0)
     plt.savefig(output_path)
     plt.close(fig)
 
     print('DONE!')
-    figure_count += 1
+    if type != 2: # internal grah should not increase figure count
+        figure_count += 1
     return figure_count
