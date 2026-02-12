@@ -48,11 +48,11 @@ def generate_filepaths():
     BSF_cut = get_filepath(main_folder, rf"\d{{8}} End {month_word} BSF Data\.xlsx")
     last_month_BSF_cut = get_filepath(previous_folder, rf"\d{{8}} End {last_month} BSF Data\.xlsx")
 
-    MI_tables_path = rf'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\Building Safety Remediation Tables {month_word} {year}.xlsm'
+    # MI_tables_path = rf'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\Building Safety Remediation Tables {month_word} {year}.xlsm'
 
     Master_analytical_path = ACM_folder + f'\\{Master_analytical}'
     CSS_data_path = main_folder + f'\\{CSS_data}'
     BSF_cut_path = main_folder + f'\\{BSF_cut}'
     last_month_BSF_cut_path = previous_folder + f'\\{last_month_BSF_cut}'
-    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, CSS_data_path, MI_tables_path, month_word, year, last_month
+    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, CSS_data_path, month_word
 

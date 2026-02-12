@@ -9,12 +9,11 @@ from generate_BSF_reg_status import generate_BSF_reg_status
 from generate_BSF_misc import generate_BSF_misc
 from generate_CSS_misc import generate_CSS_misc
 from generate_developer_misc import generate_developer_misc
-from generate_social_misc import generate_social_misc
 
 
 
 def create_AdditionalStats():
-    Master_analytical, BSF_cut, last_month_BSF_cut, CSS_data_path, MI_tables, month, year, last_month  = generate_filepaths()
+    Master_analytical, BSF_cut, last_month_BSF_cut, CSS_data_path, month = generate_filepaths()
     #FULLY AUTOMATED
     ACM_start_trajectory = generate_ACM_start_trajectory(Master_analytical)
 
@@ -28,17 +27,13 @@ def create_AdditionalStats():
     #UPDATE QUARTERLY
     Developer_misc = generate_developer_misc()
 
-    #UPDATE MONTHLY
-    Social_misc = generate_social_misc(MI_tables, month, year, last_month)
-
     #save the additional stats
-    with pd.ExcelWriter(f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT ADDITIONAL DR STATS HERE]\\[AUTOMATION]\\Additional_stats_{month}_test.xlsx') as writer:
+    with pd.ExcelWriter(f'Q:\\BSP\Automation\\DR Automation\\Excel_inputs\\[PUT ADDITIONAL DR STATS HERE]\\[AUTOMATION]\\Additional_stats_{month}.xlsx') as writer:
         ACM_start_trajectory.to_excel(writer, sheet_name = 'ACM_start_trajectory', index = False)
         BSF_reg_status.to_excel(writer, sheet_name = 'BSF_reg_status', index = False)
         BSF_misc.to_excel(writer, sheet_name = 'BSF_misc')
         CSS_misc.to_excel(writer, sheet_name = 'CSS_misc')
         Developer_misc.to_excel(writer, sheet_name = 'Developer_misc')
-        Social_misc.to_excel(writer, sheet_name= 'Social_misc')
         
 
 
