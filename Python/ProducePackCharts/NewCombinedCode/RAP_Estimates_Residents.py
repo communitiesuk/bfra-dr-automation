@@ -14,6 +14,8 @@ from matplotlib.patches import FancyArrowPatch
 # Now you can import your functions
 from Utility.functions import chop_df
 
+
+
 def create_RAP_estimates_residents_nov25(type, figure_count, colours, grey, secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black):
     ###########
     # Main script Notifications
@@ -30,11 +32,11 @@ def create_RAP_estimates_residents_nov25(type, figure_count, colours, grey, seco
     ###########
     # Accessing the folder which stores the MI tables
 
-    dummy_tables_path = paths_variables['dummy_tables_path']
-    partial_output_path= paths_variables['partial_output_path']
+    residents_tables_path = paths_variables['residents_tables_path']
+    partial_output_path= paths_variables['partial_output_path'] + r'\Residents'
 
 
-    dwellings_sheet = pd.read_excel(dummy_tables_path, sheet_name='residents_nov25')
+    dwellings_sheet = pd.read_excel(residents_tables_path, sheet_name='residents_nov25')
     residents_nov25 = chop_df(dwellings_sheet, 3, 4)
     estimates_nov25 = chop_df(dwellings_sheet, 9, 3)
 
@@ -153,7 +155,7 @@ def create_RAP_estimates_residents_nov25(type, figure_count, colours, grey, seco
     ##########
     # Save the plot as SVG file
     if type==0:
-        output_filename = f"Figure2_residents_nov25.svg"
+        output_filename = f"Figure1_residents_nov25.svg"
         output_path = os.path.join(partial_output_path, output_filename)
 
     if type==1:
@@ -183,11 +185,11 @@ def create_RAP_estimates_residents_dec24(type, figure_count, colours, grey, seco
     ###########
     # Accessing the folder which stores the MI tables
 
-    dummy_tables_path = paths_variables['dummy_tables_path']
+    residents_tables_path = paths_variables['residents_tables_path']
     partial_output_path= paths_variables['partial_output_path']
 
 
-    dwellings_sheet = pd.read_excel(dummy_tables_path, sheet_name='residents_dec24')
+    dwellings_sheet = pd.read_excel(residents_tables_path, sheet_name='residents_dec24')
     residents_dec24 = chop_df(dwellings_sheet, 3, 4)
     estimates_dec24 = chop_df(dwellings_sheet, 9, 3)
 
@@ -305,7 +307,7 @@ def create_RAP_estimates_residents_dec24(type, figure_count, colours, grey, seco
     ##########
     # Save the plot as SVG file
     if type==0:
-        output_filename = f"Figure2_residents_dec24.svg"
+        output_filename = f"Figure1_residents_dec24.svg"
         output_path = os.path.join(partial_output_path, output_filename)
 
     if type==1:
@@ -335,11 +337,11 @@ def create_RAP_estimates_residents_NRS(type, figure_count, colours, grey, second
     ###########
     # Accessing the folder which stores the MI tables
 
-    dummy_tables_path = paths_variables['dummy_tables_path']
+    residents_tables_path = paths_variables['residents_tables_path']
     partial_output_path= paths_variables['partial_output_path']
 
 
-    dwellings_sheet = pd.read_excel(dummy_tables_path, sheet_name='residents_dec25')
+    dwellings_sheet = pd.read_excel(residents_tables_path, sheet_name='residents_dec25')
     residents_dec25 = chop_df(dwellings_sheet, 3, 4)
     estimates_dec25 = chop_df(dwellings_sheet, 9, 4)
 
@@ -463,7 +465,7 @@ def create_RAP_estimates_residents_NRS(type, figure_count, colours, grey, second
     ##########
     # Save the plot as SVG file
     if type==0:
-        output_filename = f"Figure2_residents_NRS.svg"
+        output_filename = f"Figure1_residents_NRS.svg"
         output_path = os.path.join(partial_output_path, output_filename)
 
     if type==1:
