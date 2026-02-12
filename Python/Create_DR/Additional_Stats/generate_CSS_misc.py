@@ -21,7 +21,8 @@ def generate_CSS_misc(CSS_data_path):
     #AUTO UPDATE
     CSS_social = CSS_misc_stats['A2'].value
     CSS_private = CSS_misc_stats['B2'].value
+    CSS_unknown = CSS_misc_stats['C2'].value
 
 
-    CSS_misc= pd.DataFrame({ 'Current Month': [CSS_GFA_this_month, CSS_transfers_this_month, CSS_social, CSS_private], 'Last Month': [CSS_GFA_last_month, CSS_transfers_last_month, '', '']}, index = ['CSS Transfers', 'GFA', 'Social Tenure', 'Private Tenure'])
+    CSS_misc= pd.DataFrame({ 'Current Month': [CSS_GFA_this_month, CSS_transfers_this_month, CSS_social, CSS_private, CSS_unknown], 'Last Month': [CSS_GFA_last_month, CSS_transfers_last_month, '', '', '']}, index = ['CSS Transfers', 'GFA', 'Social Tenure', 'Private Tenure', 'Unknown Tenure'])
     return CSS_misc

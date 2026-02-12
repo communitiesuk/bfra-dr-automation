@@ -64,12 +64,12 @@ def CSS_variable_creator (CSS_handled_data):
         'CSS_pre_application': format(CSS_1a.iloc[0, 1], ','),
         'CSS_eligible_total_line': Change_line_in_DR(CSS_6.loc[3, 'Change']),
 
-        'CSS_BSF_transfer': format(CSS_misc.loc[1, 'Current Month'], ','),
-        'CSS_BSF_transfer_line': number_or_none(CSS_misc.loc[1, 'Change']),
+        'CSS_BSF_transfer': format(int(CSS_misc.loc[1, 'Current Month']), ','),
+        'CSS_BSF_transfer_line': number_or_none(int(CSS_misc.loc[1, 'Change'])),
 
-        'CSS_GFA': format(CSS_misc.loc[0, 'Current Month'], ','),
-        'CSS_GFA_pct': format_percentage(CSS_misc.loc[0, 'Current Month'] / CSS_6.loc[3, 'Current Month']),
-        'CSS_GFA_line': Change_line_in_DR(CSS_misc.loc[0, 'Change']),
+        'CSS_GFA': format(int(CSS_misc.loc[0, 'Current Month']), ','),
+        'CSS_GFA_pct': format_percentage(int(CSS_misc.loc[0, 'Current Month']) / CSS_6.loc[3, 'Current Month']),
+        'CSS_GFA_line': Change_line_in_DR(int(CSS_misc.loc[0, 'Change'])),
 
         'CSS_PTSP': format(CSS_5_current.loc[0, 'Total'], ','),
         'CSS_PTSP_pct': format_percentage(CSS_5_current.loc[0, 'Total'] / CSS_6.loc[3, 'Current Month']),
@@ -87,6 +87,7 @@ def CSS_variable_creator (CSS_handled_data):
 
         'CSS_pre_elig_private_pct' : format_percentage(CSS_misc.loc[2, 'Current Month']),
         'CSS_pre_elig_social_pct' : format_percentage(CSS_misc.loc[3, 'Current Month']),
+        'CSS_pre_elig_unknown_pct' : format_percentage(CSS_misc.loc[4, 'Current Month'])
     }
 
     return CSS_tables, CSS_headline_dict, CSS_section_dict
