@@ -12,11 +12,9 @@ from Utility.functions import Change_line_in_DR, format_percentage
 def Social_variable_creator(Social_handled_data_this_month, Social_handled_data_last_month):
 
     # Unpack last months dfs
-    Social_1a_last_month = Social_handled_data_last_month['Social_1a']
     Social_1b_last_month = Social_handled_data_last_month['Social_1b']
 
     # Unpack this months dfs
-    Social_1a_this_month = Social_handled_data_this_month['Social_1a']
     Social_1b_this_month = Social_handled_data_this_month['Social_1b']
 
 
