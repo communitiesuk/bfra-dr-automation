@@ -11,7 +11,7 @@ import time
 start_time = time.time()
 
 #these imports have all been set up in __init__.py in the NewCombinedCode folder
-from NewCombinedCode import create_Overall_Remediation_over_time3, create_Overall_remediation_estimates2, create_Overall_remediation_estimates2_internal, create_Overall_Remediation2_Curly, create_Overall_Remediation_Across_Schemes2, create_Overall_Height, create_Overall_Tenure, create_ACM_Remediation, create_ACM_By_Tenure, create_BSF_Remediation_Curly, create_BSF_Remediation_over_time, create_BSF_Tenure, create_CSS_Eligibility2, create_CSS_Height, create_CSS_Tenure, create_Developer_Remediation_Curly, create_Developer_Height, create_SocialHousing_Remediation4_Curly, create_SocialHousing3_Height
+from NewCombinedCode import create_Overall_Remediation_over_time3, create_Overall_remediation_estimates2, create_Overall_Remediation2_Curly, create_Overall_Remediation_Across_Schemes2, create_Overall_Height, create_Overall_Tenure, create_ACM_Remediation, create_ACM_By_Tenure, create_BSF_Remediation_Curly, create_BSF_Remediation_over_time, create_BSF_Tenure, create_CSS_Eligibility2, create_CSS_Height, create_CSS_Tenure, create_Developer_Remediation_Curly, create_Developer_Height, create_SocialHousing_Remediation4_Curly, create_SocialHousing3_Height
 
 from Utility import create_paths, sort_dates
 
@@ -63,9 +63,9 @@ def create_graphs(non_accessible_colour_scheme, non_accessible_grey, accessible_
 
 
   # Overall
-  non_accessible_figure_count = create_Overall_remediation_estimates2_internal(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
+  non_accessible_figure_count = create_Overall_remediation_estimates2(2, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
   non_accessible_figure_count = create_Overall_remediation_estimates2(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, non_accessible_secondary_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black)
-  
+
 
   non_accessible_figure_count = create_Overall_Remediation_over_time3(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_secondary_grey, paths_variables, month, year, data_label_font_dict_white, data_label_font_dict_black)
   non_accessible_figure_count = create_Overall_Remediation2_Curly(0, non_accessible_figure_count, non_accessible_colour_scheme, non_accessible_grey, paths_variables, data_label_font_dict_white, data_label_font_dict_black, brace_label_font_dict)
