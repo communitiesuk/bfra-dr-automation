@@ -13,7 +13,7 @@ def DR_introduction(DR, figure_count):
     DR.add_paragraph('This Data Release provides data on:', style = 'Normal')
     
     #Bullet Point 1
-    DR.add_paragraph('The estimated number of residential buildings 11 metres and over in height in England that have or had unsafe cladding requiring remediation.', style = 'List Bullet')
+    DR.add_paragraph('The estimated number of residential buildings 11 metres and over in height in England that have or had unsafe cladding requiring remediation and the estimated cost to remediate them.', style = 'List Bullet')
 
     #Bullet Point 2
     DR.add_paragraph('Remediation progress across MHCLG’s Building Safety Remediation portfolio, covering buildings in the ACM programme, Building Safety Fund, Cladding Safety Scheme, developer remediation contract and reported by registered providers of social housing.', style = 'List Bullet')
@@ -22,7 +22,7 @@ def DR_introduction(DR, figure_count):
     DR.add_paragraph('Progress with remediation of high-rise (18 metres and over in height) residential buildings (including student accommodation and hotels) and publicly owned buildings with ACM cladding systems unlikely to meet Building Regulations in the ACM programme.', style = 'List Bullet')
 
     #Bullet Point 4
-    DR.add_paragraph('Progress with the applications for and remediation of medium-rise (11 – 18 metres in height) residential buildings in England, and Northern Ireland, and high-rise residential buildings outside of London with non-ACM cladding systems in the Cladding Safety Scheme.', style = 'List Bullet')
+    DR.add_paragraph('Progress with the applications for and remediation of medium-rise (11-18 metres in height) and high-rise residential buildings in England, and Northern Ireland, with non-ACM cladding systems in the Cladding Safety Scheme.', style = 'List Bullet')
 
     #Bullet Point 5
     DR.add_paragraph('Progress of remediation of residential buildings 11 metres and over in height with life-critical fire safety risks under the developer remediation contract.', style = 'List Bullet')
@@ -37,10 +37,13 @@ def DR_introduction(DR, figure_count):
     DR.add_paragraph('In additional management information tables only, the progress of the Waking Watch Relief Fund and Waking Watch Replacement Fund. From June 2025 this includes data on the Waking Watch Replacement Fund 2023.', style = 'List Bullet')
     
     # Paragraph
-    DR.add_paragraph(f'The data in Figure {figure_count} and the overall remediation progress section of the data release, shows the combined remediation progress across MHCLG’s Building Safety Remediation portfolio, covering buildings and accounting for crossover in the ACM programme, Building Safety Fund, Cladding Safety Scheme, developer remediation contract and reported by registered providers of social housing.', style = 'Normal')
+    DR.add_paragraph(f'The data in Figures {figure_count} and {figure_count + 1} and the overall remediation progress section of the data release, shows the combined remediation progress across MHCLG’s Building Safety Remediation portfolio, covering buildings and accounting for crossover in the ACM programme, Building Safety Fund, Cladding Safety Scheme, developer remediation contract and reported by registered providers of social housing as being self-funded.', style = 'Normal')
 
     # Paragraph
     DR.add_paragraph('The figures in this publication are correct as at the specified dates. Remediation progress on the ACM programme, BSF, CSS and social self-funded buildings will be updated monthly, and remediation progress on the developer remediation contract will be updated quarterly.', style = 'Normal')
 
     # Paragraph
     DR.add_paragraph('From June 2025 the Building Safety Remediation data release includes estimates on the number of residential buildings 11 metres and over in height in England with unsafe cladding requiring remediation. These estimates are not expected to change frequently.', style = 'Normal')
+
+    # paragraph
+    DR.add_paragraph('From November 2025 the Building Safety Remediation data release includes estimates on the cost of external wall system remediation of residential buildings 11 metres and over in height in England. These estimates are not expected to change frequently.', style = 'Normal')
