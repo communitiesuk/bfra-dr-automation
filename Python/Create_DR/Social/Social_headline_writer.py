@@ -8,6 +8,7 @@ Author: Matthew Bandura
 def Social_headline_writer(Social_headline_dict, dates_variables, DR):
 
     last_month = dates_variables['last_month']
+    this_month = dates_variables['this_month']
     cutoff = dates_variables['cutoff']
 
     Social_self_funded_total = Social_headline_dict['Social_self_funded_total']
@@ -18,7 +19,7 @@ def Social_headline_writer(Social_headline_dict, dates_variables, DR):
     Social_self_funded_started_change = Social_headline_dict['Social_self_funded_started_change']
 
     # Headline Title
-    text = f'Social self-funded remediation – data as at {cutoff}.'
+    text = f'Social self-funded remediation – monthly update (as at end {this_month}) since previous publication.'
     DR.add_paragraph(text, style = 'Heading 3')
 
     # Paragraph

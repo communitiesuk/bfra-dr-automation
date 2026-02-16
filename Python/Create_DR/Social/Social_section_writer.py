@@ -35,9 +35,12 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
 
     Social_unknown_no = Social_section_dict['Social_unknown_no']
     Social_unknown_pct = Social_section_dict['Social_unknown_pct']
+    Social_unknown_change = Social_section_dict['Social_unknown_change']
 
     Social_SF_18m_starts_pct = Social_section_dict['Social_SF_18m_starts_pct']
     Social_SF_11m_starts_pct = Social_section_dict['Social_SF_11m_starts_pct']
+
+    Social_SF_ACM = Social_section_dict['Social_SF_ACM']
 
     # Section Heading
     DR.add_paragraph('Social housing self-funded remediation', style = 'Heading 2')
@@ -52,7 +55,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: {Social_started_pct} of social buildings identified to have unsafe cladding have started or completed remediation works, with {Social_completed_pct} (of identified buildings) having completed remediation works, including those awaiting building control sign-off.'
+    text = f'Figure {figure_count}: {Social_started_pct} of social self-funded buildings reported to have unsafe cladding have started or completed remediation works, with {Social_completed_pct} (of identified buildings) having completed remediation works.'
     run = paragraph.add_run(text)
     run.bold = True
  
@@ -64,7 +67,7 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     figure_count += 1
 
     # Table caption
-    text = f'Table {table_count}: Remediation status of social buildings with unsafe cladding, {cutoff}.'
+    text = f'Table {table_count}: Remediation status of social self-funded buildings with unsafe cladding, {cutoff}.'
     paragraph = DR.add_paragraph(style = 'Normal')
     run = paragraph.add_run(text)
     run.bold = True
@@ -76,12 +79,12 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     table_heights = [Cm(1.12), Cm(0.55), Cm(1.13), Cm(0.55), Cm(1.13), Cm(0.55)]
     create_table(DR, table_data, table_widths, table_heights)
 
-    # Paragraph
-    text = f'As at {cutoff}, there are {Social_total_no} 11m+ social buildings identified with unsafe cladding which registered providers are self-funding the remediation of, a change of {Social_total_change} since the end of {last_month} {last_month_year}.'
-    text += ' This includes social buildings that registered providers reported to be self-funding the cladding remediation of in the NRS, that were not identified in another remediation programme, and 19 social buildings monitored in the ACM programme where registered providers have self-funded ACM remediation.'
+    # Paragraph 2
+    text = f'As at {cutoff}, there are {Social_total_no} 11m+ social buildings identified with unsafe cladding which registered providers are self-funding the remediation of, {Social_total_change} since the end of {last_month} {last_month_year}.'
+    text += f' This includes social buildings that registered providers reported to be self-funding the cladding remediation of in the NRS, that were not identified in another remediation programme, and {Social_SF_ACM} social buildings monitored in the ACM programme where registered providers have self-funded ACM remediation.'
     DR.add_paragraph(text, style = 'Normal')
 
-    # Paragraph
+    # Paragraph 3
     text = f'Of these {Social_total_no} 11m+ social buildings where registered providers are self-funding remediation:'
     DR.add_paragraph(text, style = 'Normal')
 
@@ -94,11 +97,11 @@ def Social_section_writer(Social_section_dict, Social_tables, figure_count, tabl
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point 3
-    text = f'{Social_not_started_no} ({Social_not_started_pct}) are reported to have started or completed remediation – {Social_not_started_change} since the end of {last_month} {last_month_year}.'
+    text = f'{Social_not_started_no} ({Social_not_started_pct}) are reported to have not started remediation – {Social_not_started_change} since the end of {last_month} {last_month_year}.'
     DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet point 4
-    text = f'The remediation status of {Social_unknown_no} ({Social_unknown_pct}) buildings is currently unknown as registered providers are yet to provide remediation dates on the NRS. We expect buildings with unknown remediation status to be confirmed in coming months as further data is collected.'
+    text = f'The remediation status of {Social_unknown_no} ({Social_unknown_pct}) buildings is currently unknown as registered providers are yet to provide remediation dates on the NRS – {Social_unknown_change} since the end of {last_month}. We expect buildings with unknown remediation status to be confirmed in coming months as further data is collected.'
     DR.add_paragraph(text, style = 'List Bullet')
     
     # Subheading
