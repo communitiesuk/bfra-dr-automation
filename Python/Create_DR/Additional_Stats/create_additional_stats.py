@@ -9,17 +9,20 @@ from generate_BSF_reg_status import generate_BSF_reg_status
 from generate_BSF_misc import generate_BSF_misc
 from generate_CSS_misc import generate_CSS_misc
 from generate_developer_misc import generate_developer_misc
+from generate_social_misc import generate_social_misc 
 
 
 
 def create_AdditionalStats():
-    Master_analytical, BSF_cut, last_month_BSF_cut, CSS_data_path, month = generate_filepaths()
+    Master_analytical, BSF_cut, last_month_BSF_cut, CSS_data_path, Social_MI, month = generate_filepaths()
     #FULLY AUTOMATED
     ACM_start_trajectory = generate_ACM_start_trajectory(Master_analytical)
 
     BSF_reg_status = generate_BSF_reg_status(BSF_cut, last_month_BSF_cut)
     
     BSF_misc = generate_BSF_misc(BSF_cut)
+
+    Social_misc = generate_social_misc(Social_MI)
 
     #UPDATE MONTHLY
     CSS_misc = generate_CSS_misc(CSS_data_path)
@@ -34,6 +37,7 @@ def create_AdditionalStats():
         BSF_misc.to_excel(writer, sheet_name = 'BSF_misc')
         CSS_misc.to_excel(writer, sheet_name = 'CSS_misc')
         Developer_misc.to_excel(writer, sheet_name = 'Developer_misc')
+        Social_misc.to_excel(writer, sheet_name = 'Social_misc', index = False)
         
 
 

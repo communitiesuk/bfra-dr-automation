@@ -41,18 +41,21 @@ def generate_filepaths():
 
     ACM_folder = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{year}\\{month_year}\\ACM')
     main_folder = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{year}\\{month_year}')
+    MI_folder = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{year}\\{month_year}\\MI Automation')
     previous_folder = os.path.expanduser(f'~\\OneDrive - MHCLG\\BSP Data and Analysis - Publication of Information\\{last_month_year}\\{last_month}' + ' ' + f'{last_month_year}')
 
     Master_analytical = get_filepath(ACM_folder, r'\d{8} ACM MASTER ANALYTICAL.xlsx')
     CSS_data = get_filepath(main_folder, f'CSS data end {month_word}.xlsx')
     BSF_cut = get_filepath(main_folder, rf"\d{{8}} End {month_word} BSF Data\.xlsx")
+    Social_MIs = get_filepath(MI_folder, rf'Social MI Automation {month_year}')
     last_month_BSF_cut = get_filepath(previous_folder, rf"\d{{8}} End {last_month} BSF Data\.xlsx")
-
-    # MI_tables_path = rf'Q:\BSP\Automation\DR Automation\Excel_inputs\[PUT MI TABLES HERE]\Building Safety Remediation Tables {month_word} {year}.xlsm'
 
     Master_analytical_path = ACM_folder + f'\\{Master_analytical}'
     CSS_data_path = main_folder + f'\\{CSS_data}'
     BSF_cut_path = main_folder + f'\\{BSF_cut}'
     last_month_BSF_cut_path = previous_folder + f'\\{last_month_BSF_cut}'
-    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, CSS_data_path, month_word
+    Social_MI_path = MI_folder + f'\\{Social_MIs}'
+
+
+    return Master_analytical_path, BSF_cut_path, last_month_BSF_cut_path, CSS_data_path, Social_MI_path, month_word
 

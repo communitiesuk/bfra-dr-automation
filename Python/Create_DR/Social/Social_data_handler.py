@@ -33,9 +33,13 @@ def Social_retrieve_data_this_month(paths_variables):
     print("Handling This Month's Social Data")
     # Accessing the folder which stores the MI tables
     MI_tables_path = paths_variables['MI_tables_path']
+    additional_tables_path = paths_variables['additional_tables_path']
 
     # Accessing Social_1
     Social_1 = pd.read_excel(MI_tables_path, sheet_name='Social_1')
+
+    ## accessing social_misc
+    Social_misc = pd.read_excel(additional_tables_path, sheet_name = 'Social_misc')
 
     # Transforming Social_1b
     Social_1b = chop_df(Social_1, 10, 6)
@@ -57,6 +61,7 @@ def Social_retrieve_data_this_month(paths_variables):
     # Dictionary for transporting dataframes to the next script
     Social_handled_data_this_month = {
         'Social_1b': Social_1b,
+        'Social_misc' : Social_misc
     }
     print('DONE!')
 
