@@ -64,7 +64,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
 
 
     # Table caption
-    text = f'Table {table_count}: Remediation progress for buildings monitored by MHCLG in the ACM programme, Building Safety Fund, the CSS, the developer remediation contract, and social housing surveys, England, {cutoff}.'
+    text = f'Table {table_count}: Remediation progress for 11m+ buildings identified with unsafe cladding which are in the ACM programme, eligible for the Building Safety Fund and the CSS, remediated under the developer remediation contract and self-funded by registered providers of social housing, England, {cutoff}.'
     paragraph = DR.add_paragraph(style = 'Normal')
     run = paragraph.add_run(text)
     run.bold = True
@@ -112,17 +112,6 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
     text = f'{Portfolio_started_c_monthly_change.capitalize()} buildings are known to have started or completed remediation, and {Portfolio_completed_c_monthly_change} buildings are known to have completed remediation.'
     DR.add_paragraph(text, style = 'List Bullet')
 
-    # Paragraph
-    text = f'Since the end of {last_year_month}:'
-    DR.add_paragraph(text, style = 'Normal')
-
-    # Bullet point
-    text = f'The department is monitoring the remediation progress of {Portfolio_total_yearly_change} buildings, largely due to more buildings being identified with unsafe cladding in the CSS and reported by developers and social housing registered providers.'
-    DR.add_paragraph(text, style = 'List Bullet')
-
-    # Bullet point
-    text = f'{Portfolio_started_c_yearly_change.capitalize()} buildings are known to have started or completed remediation, of which {Portfolio_completed_c_yearly_change} buildings are known to have completed remediation.'
-    DR.add_paragraph(text, style = 'List Bullet')
 
     # Paragraph
     text = f'There are an estimated {Portfolio_total_dwellings} dwellings in the occupied private and social sector 11m+ residential buildings with unsafe cladding that the department are monitoring. '
@@ -131,7 +120,7 @@ def Portfolio_section_writer(Portfolio_section_dict, Portfolio_tables, figure_co
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: Progress of remediating unsafe cladding differs across the programmes due to the differing maturity of the schemes.'
+    text = f'Figure {figure_count}: Progress of remediating unsafe cladding differs across the programmes and monitoring routes due to the differing maturity of the programmes.'
     run = paragraph.add_run(text)
     run.bold = True
     
