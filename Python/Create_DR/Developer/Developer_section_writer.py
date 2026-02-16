@@ -146,7 +146,7 @@ def Developer_section_writer(Developer_section_dict, BSF_developer_transfers, De
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
-    text = 'The estimates in this section include some buildings which are also included in other sections of this data release e.g., those reported under the following sections: ‘ACM Remediation’, ‘Building Safety Fund’, ‘Cladding Safety Scheme’ and ‘Social Housing Sector’.'
+    text = 'The estimates in this section include some buildings which are also included in other sections of this data release e.g., those reported under the following sections: ‘ACM Remediation’, ‘Building Safety Fund’ and ‘Cladding Safety Scheme’.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Figure Title
