@@ -43,7 +43,7 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
 
     # Paragraph
     text = f'As at the end of {this_month}, there are {Portfolio_total} residential buildings 11 metres and over in height identified with unsafe cladding whose remediation progression is being reported on in this release, {Portfolio_total_line} since the end of {last_month} {last_month_year}. This is an estimated {Estimates_11m_proportion_of_high_estimate}-{Estimates_11m_proportion_of_low_estimate} of all buildings 11 metres and over in height expected to be remediated as part of MHCLG’s remediation programmes.'
-    text += f' An additional {Portfolio_pending_no} social sector buildings have since applied to the CSS and are progressing through eligibility checks.'
+    text += f' An additional {Portfolio_pending_no} social sector buildings have applied to the CSS and are progressing through eligibility checks.'
     DR.add_paragraph(text, style = 'Normal')
 
     # Paragraph
@@ -56,7 +56,7 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: {Portfolio_total} 11m+ buildings have been identified with unsafe cladding, and there are an estimated {Estimates_11m_remaining_low}-{Estimates_11m_remaining_high} 11m+ buildings expected to be remediated as part of MHCLG\'s remediation programmes yet to be brought into a remediation programme.'
+    text = f'Figure {figure_count}: {Portfolio_total} 11m+ buildings have been identified with unsafe cladding, and there are an estimated {Estimates_11m_remaining_low}-{Estimates_11m_remaining_high} 11m+ buildings expected to be remediated as part of MHCLG\'s remediation programmes yet to be brought into a remediation programme, including {Portfolio_pending_no} social sector buildings progressing through CSS eligibility checks.'
     run = paragraph.add_run(text)
     run.bold = True
   
@@ -66,7 +66,7 @@ def Portfolio_headline_writer(Portfolio_headline_dict, Estimates_headline_dict, 
 
     # Figure Title
     paragraph = DR.add_paragraph(style = 'Normal')
-    text = f'Figure {figure_count}: Of the {Portfolio_total} buildings identified with unsafe cladding, {Portfolio_started_c_no} ({Portfolio_started_c_pct}) have started or completed remediation works, of which {Portfolio_completed_c_no} ({Portfolio_completed_c_pct}) have completed remediation works. This includes remediation progress on high rise (18m+) and mid-rise (11-18m) buildings in height.'
+    text = f'Figure {figure_count}: Of the {Portfolio_total} buildings identified with unsafe cladding, {Portfolio_started_c_no} ({Portfolio_started_c_pct}) have started or completed remediation works, of which {Portfolio_completed_c_no} ({Portfolio_completed_c_pct}) have completed remediation works. A further {Portfolio_pending_no} social sector buildings have applied to the CSS and are progressing through eligibility checks.'
     run = paragraph.add_run(text)
     run.bold = True
   
