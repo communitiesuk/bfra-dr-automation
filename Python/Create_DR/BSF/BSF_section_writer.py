@@ -206,7 +206,9 @@ def BSF_section_writer(BSF_section_dict, BSF_tables, figure_count, table_count, 
     paragraph = DR.add_paragraph(text, style = 'List Bullet')
 
     # Bullet Point
-    text = f'{BSF_fig_completed_c_change} eligible buildings have completed remediation.''
+    text = f'{BSF_fig_completed_c_change} eligible buildings have completed remediation.'
+    paragraph = DR.add_paragraph(text, style = 'List Bullet')
+    
     # Heading
     paragraph = DR.add_paragraph('BSF remediation by tenure', style = 'Heading 3')
 
