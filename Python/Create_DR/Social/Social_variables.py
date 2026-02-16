@@ -16,6 +16,7 @@ def Social_variable_creator(Social_handled_data_this_month, Social_handled_data_
 
     # Unpack this months dfs
     Social_1b_this_month = Social_handled_data_this_month['Social_1b']
+    Social_misc = Social_handled_data_this_month['Social_misc']
 
 
     # Format the table for social remediation progress
@@ -53,14 +54,18 @@ def Social_variable_creator(Social_handled_data_this_month, Social_handled_data_
         'Social_completed_pct': Social_1b_this_month.loc[0, 'Formatted Cumulative Percentage'],
         'Social_completed_change': Change_line_in_DR(Social_1b_this_month.loc[0, 'Cumulative Number'] - Social_1b_last_month.loc[0, 'Cumulative Number']),
 
-        'Social_not_started_no' : format(Social_1b_this_month.loc[2, 'Total Number'] + Social_1b_this_month.loc[3, 'Total Number'], ','),
-        'Social_not_started_pct' : format_percentage(Social_1b_this_month.loc[2, 'Total Percentage'] + Social_1b_this_month.loc[3, 'Total Percentage']),
-        'Social_not_started_change' : Change_line_in_DR((Social_1b_this_month.loc[2, 'Total Number'] + Social_1b_this_month.loc[3, 'Total Number']) - (Social_1b_last_month.loc[2, 'Total Number'] + Social_1b_last_month.loc[3, 'Total Number'])),
+        'Social_not_started_no' : format(Social_1b_this_month.loc[2, 'Total Number'], ','),
+        'Social_not_started_pct' : format_percentage(Social_1b_this_month.loc[2, 'Total Percentage']),
+        'Social_not_started_change' : Change_line_in_DR((Social_1b_this_month.loc[2, 'Total Number']) - (Social_1b_last_month.loc[2, 'Total Number'])),
 
         'Social_unknown_no' : format(Social_1b_this_month.loc[3, 'Total Number'], ','),
         'Social_unknown_pct' : Social_1b_this_month.loc[3, 'Formatted Total Percentage'],
+        'Social_unknown_change' : Change_line_in_DR(Social_1b_this_month.loc[3, 'Total Number'] - Social_1b_last_month.loc[3, 'Total Number']),
+
 
         'Social_SF_18m_starts_pct' : Social_1b_this_month.loc[1, 'Cumulative 18m Percentage'],
         'Social_SF_11m_starts_pct' : Social_1b_this_month.loc[1, 'Cumulative 11_18m Percentage'],
+
+        'Social_SF_ACM' : Social_misc.iloc[1,1]
     }
     return Social_tables, Social_headline_dict, Social_section_dict
